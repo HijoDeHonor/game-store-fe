@@ -11,6 +11,13 @@
     text-align: center;
 }
 
+.wrapper h2 {
+    color: #7749f8;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 30px;
+}
+
 .wrapper .input-container {
     display: flex;
     justify-content: center;

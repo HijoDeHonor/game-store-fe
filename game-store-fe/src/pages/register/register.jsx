@@ -57,6 +57,7 @@ function RegisterForm() {
     <div className="wrapper">
       <form>
         <h1>GAME STORE</h1>
+        <h2>Register</h2>
         <div className="input-container">
           <div className="input-box">
             <input
