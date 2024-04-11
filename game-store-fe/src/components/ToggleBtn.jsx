@@ -1,27 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import SearchBar from "./SearchBar";
+import jason from "../services/DB-Server.json";
+import jason2 from "../services/DB-User.json";
 
-function ToggleButton({ on, off, onClick }) {
+function ToggleButton({ on, off }) {
   const [isActive, setIsActive] = useState(false);
+  const [currentView, setCurrentView] = useState("myItems");
 
   const toggleButton = () => {
     setIsActive(!isActive);
+    setCurrentView(currentView === "myItems" ? "allItems" : "myItems");
   };
 
   const handleToggle = () => {
     toggleButton();
-    onClick();
-  }
+  };
+
   return (
-    <button onClick={handleToggle} style={{ backgroundColor: isActive ? 'green' : 'grey' }}>
-      {isActive ? on : off}
-    </button>
+    <div>
+      <button
+        className="toggle-btn"
+        onClick={handleToggle}
+        style={{ backgroundColor: isActive ? "green" : "grey" }}
+      >
+        {isActive ? on : off}
+      </button>
+      <div>
+        {currentView === "myItems" ? (
+          <SearchBar filterKey={"Name"} fetchData={jason} />
+        ) : (
+          <SearchBar filterKey={"Name"} fetchData={jason2} />
+        )}
+      </div>
+    </div>
   );
 }
 
 
+
 ToggleButton.defaultProps = {
-  on: 'Activado',
-  off: 'Desactivado'
+  on: "Activado",
+  off: "Desactivado",
 };
 
 export default ToggleButton;

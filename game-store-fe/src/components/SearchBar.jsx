@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import MyInventory from "./Inventory";
-import jason from "../services/base-de-datos-fic.json";
+import ItemList from "./Itemlist";
 
-const SearchBar = ({ filterKey }) => {
+const SearchBar = ({ filterKey, fetchData}) => {
   const [query, setQuery] = useState("");
-  const [data] = useState(jason);
+  let data = fetchData
+  ;
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
@@ -19,19 +19,20 @@ const SearchBar = ({ filterKey }) => {
     );
   }
 
-  const todoslositems = filteredData;
+  const allTheItems = filteredData;
 
   return (
     <div className="search-bar">
-      <label htmlFor="search-input">Search: </label>
-      <input
+      <div className="search-bar-header">
+      <input className="search-input"
         id="search-input"
         type="text"
         value={query}
         onChange={handleInputChange}
         placeholder="Search..."
       />
-      <MyInventory todoslositems={todoslositems} />
+      </div>
+      <ItemList allTheItems={allTheItems} />
     </div>
   );
 };

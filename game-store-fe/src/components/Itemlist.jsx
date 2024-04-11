@@ -1,20 +1,17 @@
 import React from 'react';
-import Item from './item'; // Nuevo componente
+import Item from './Item';
 
-function ItemList({ items }) {
-    let itemList = [];
-    items.forEach((item) => {
-       itemList.push( <Item key={item.Id} item={item} />)
-
-    })
-
-
-
+function ItemList({ allTheItems }) {
+    const ItemList = allTheItems.map((item) => (
+      <Item key={item.id} item={item} />
+    ));
+  
     return (
-        <div>
-            {itemList}
-        </div>
+      
+        <div className="item-list">{ItemList}</div>
+      
     );
-}
+  }
+  
 
 export default ItemList;
