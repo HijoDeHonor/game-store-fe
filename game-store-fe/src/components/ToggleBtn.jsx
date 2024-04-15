@@ -6,10 +6,13 @@ import jason2 from "../services/DB-User.json";
 function ToggleButton({ on, off }) {
   const [isActive, setIsActive] = useState(false);
   const [currentView, setCurrentView] = useState("myItems");
+  const [key, setKey] = useState(0);
 
   const toggleButton = () => {
     setIsActive(!isActive);
     setCurrentView(currentView === "myItems" ? "allItems" : "myItems");
+    setKey(prevkey => prevkey + 1);
+    console.log(key)
   };
 
   const handleToggle = () => {
@@ -25,12 +28,8 @@ function ToggleButton({ on, off }) {
       >
         {isActive ? on : off}
       </button>
-      <div>
-        {currentView === "myItems" ? (
-          <SearchBar filterKey={"Name"} fetchData={jason} />
-        ) : (
-          <SearchBar filterKey={"Name"} fetchData={jason2} />
-        )}
+      <div>        
+      <SearchBar key={key} filterKey={"Name"} fetchData={currentView === "myItems" ? jason : jason2} />     
       </div>
     </div>
   );

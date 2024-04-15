@@ -1,24 +1,23 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import React from "react";
+import ModalItems from "./Modal";
 
 function Item({ item }) {
   return (
     <div className="item-container" key={item.id}>
-      <Card className="item-card">
-        <Card.Img className="item-img" variant="top" src={item.img} alt={item.Name} />
-        <Card.Body>
-          <Card.Title className="item-p">{item.Name}</Card.Title>
-          {item.Quantity &&(
-            <Card.Text className="item-p">{item.Quantity}</Card.Text>
+      <div className="item-card">
+        <img
+          className="item-img"
+          src={item.img}
+          alt={item.Name}
+        />
+        <div className="item-card-body">
+          <div className="item-name">{item.Name}</div>
+          {item.Quantity && (
+            <div className="item-quantity">{item.Quantity}</div>
           )}
-          {item.Quantity &&(
-            <Button className="item-btn" >Show Modal</Button>
-          )}
-          {!item.Quantity &&(
-            <Button className="item-btn" >Add Item</Button>
-          )}
-        </Card.Body>
-      </Card>
+          <ModalItems item={item} />
+        </div>
+      </div>
     </div>
   );
 }
