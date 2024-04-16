@@ -8,7 +8,7 @@ function ModalItems({ item }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [quantity, setQuantity] = useState(item.Quantity || undefined);
+  const [quantity, setQuantity] = useState(item.Quantity || 0);
 
   const onHandleUpdate = (newQuantity) => {
     setQuantity(newQuantity);
@@ -19,7 +19,7 @@ function ModalItems({ item }) {
     //       id: Id,
     //       Name: item.Name,
     //       img: item.img,
-    //       Quantity: Quantity,
+    //       Quantity: quantity,
     //     };
     //     try{
     //         await updatedItem(updatedItem);
@@ -35,7 +35,7 @@ function ModalItems({ item }) {
     //       id: Id,
     //       Name: item.Name,
     //       img: item.img,
-    //       Quantity: Quantity,
+    //       Quantity: quantity,
     //     };
     //     try{
     //         await addItem(newItem);
@@ -48,12 +48,12 @@ function ModalItems({ item }) {
 
   return (
     <>
-      {quantity === undefined && (
+      {item.Quantity === 0 && (
         <Button className="modal-open-btn" onClick={handleShow}>
           Add Item
         </Button>
       )}
-      {quantity > 0 && (
+      {item.Quantity > 0 && (
         <Button className="modal-open-btn" onClick={handleShow}>
           Update Item
         </Button>

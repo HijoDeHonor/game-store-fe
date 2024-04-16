@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
-import jason from "../services/DB-Server.json";
-import jason2 from "../services/DB-User.json";
+import jason2 from "../services/DB-Server.json";
+import jason from "../services/DB-User.json";
 
 function ToggleButton({ on, off }) {
   const [isActive, setIsActive] = useState(false);
@@ -29,7 +29,7 @@ function ToggleButton({ on, off }) {
         {isActive ? on : off}
       </button>
       <div>        
-      <SearchBar key={key} filterKey={"Name"} fetchData={currentView === "myItems" ? jason : jason2} />     
+      <SearchBar key={key} filterKey={"Name"} fetchData={currentView === "myItems" ? jason2 : jason} />     
       </div>
     </div>
   );

@@ -31,6 +31,7 @@ const SearchBar = ({ filterKey, fetchData}) => {
         onChange={handleInputChange}
         placeholder="Search..."
       />
+      <hr className="hr" />
       </div>
       <ItemList allTheItems={allTheItems} />
     </div>

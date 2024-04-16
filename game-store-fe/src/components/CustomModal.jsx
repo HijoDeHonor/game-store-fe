@@ -10,7 +10,7 @@ const CustomModal = ({
   quantity,
   handleUpdate,
   handleAdd,
-  onQuantityChange
+  onQuantityChange,
 }) => {
   return (
     <Modal
@@ -31,12 +31,12 @@ const CustomModal = ({
         <Button className="modal-btn" onClick={handleClose}>
           Close
         </Button>
-        {quantity > 0 && (
+        {item.Quantity > 0 && (
           <Button className="modal-btn" onClick={handleUpdate}>
             Update Item
           </Button>
         )}
-        {quantity === undefined && (
+        {item.Quantity === 0 && (
           <Button className="modal-btn" onClick={handleAdd}>
             Add Item
           </Button>
