@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const App = () => {
   return (
     <React.StrictMode>
-      <ToggleButton on="My items" off="All items" onClick={() => {}} />
+      <ToggleButton on="My items" off="All items" />
     </React.StrictMode>
   );
 };
