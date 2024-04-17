@@ -29,7 +29,7 @@ function ToggleButton({ on, off }) {
         {isActive ? on : off}
       </button>
       <div>        
-      <SearchBar key={key} filterKey={"Name"} fetchData={currentView === "myItems" ? jason2 : jason} />     
+      <SearchBar key={key} filterKey={"Name"} fetchData={currentView === "myItems" ? jason : jason2 } />     
       </div>
     </div>
   );
