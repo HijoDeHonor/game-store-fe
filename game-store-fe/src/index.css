@@ -10,3 +10,46 @@ body {
     min-height: 100vh;
     background-color: #f5f5f5;
 }
+
+.root {
+    width: 95%;
+}
+
+.item-mini {
+    display: flex;
+    margin-top: 2px;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    padding-bottom: 5px;
+}
+
+.item-mini:last-child {
+    border-bottom: none;
+}
+.item-mini-img {
+    width: 25px;
+    height: 25px;
+}
+
+.item-mini p {
+    margin: 0 5px;
+    font-size: 12px;
+
+}
+
+.btn-trade {
+    background-color: #7749f8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;    
+}
+
+.table {
+    width: 100% !important;
+}
+
+.table td {
+    vertical-align: middle !important;
+}

@@ -1,16 +1,34 @@
 import React from "react";
-import DB-Offer-simul from "../utils/DB-Offer-simul";
+import ItemMini from "./ItemMini";
 
-const Offer = (offer) => {
-    
+const Offer = ({ offer }) => {
+  const { Id, Offer, Request } = offer;
+
+  const Confirm = () => {
+    console.log(offer);
+  };
+
   return (
     <tr>
-      <td>{offer.id}</td>
-      <td>{offer.Offer}</td>
-      <td>{offer.Request}</td>
-      <td><button onClick={()=> Confirm()} >Confirm</button></td>
+      <td>{Id}</td>
+      <td>
+        {Offer.map((item, index) => (
+          <ItemMini key={index} item={item} />
+        ))}
+      </td>
+      <td>
+        {Request.map((item, index) => (
+          <ItemMini key={index} item={item} />
+        ))}
+      </td>
+      <td>
+        <button className="btn-trade" onClick={Confirm}>
+          Trade
+        </button>
+      </td>
     </tr>
   );
 };
 
 export default Offer;
+

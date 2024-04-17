@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import LoginForm from './pages/login/login.jsx'
+import OfferList from './components/OfferList'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <LoginForm />
+    <OfferList />
   </React.StrictMode>,
 )
