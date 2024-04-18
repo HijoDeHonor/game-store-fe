@@ -7,7 +7,6 @@ const CustomModal = ({
   show,
   handleClose,
   item,
-  quantity,
   handleUpdate,
   handleAdd,
   onQuantityChange,

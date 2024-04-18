@@ -1,0 +1,45 @@
+//importaciones de react
+import React, { useState, useEffect } from "react";
+import SearchBar from "../../components/SearchBar";
+import ToggleBtn from "./components/ToggleBtn";
+import ItemList from "../../components/Itemlist";
+//data fic de prueba
+import DBServerData from "../../services/DB-Server.json";
+import DBUserData from "../../services/DB-User.json";
+//styles
+import "./Inventory.css";
+
+const Inventory = () => {
+  const [toggle, setToggle] = useState(false);
+  const [query, setQuery] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    const filterData = () => {
+      const data = toggle ? DBServerData : DBUserData;
+      const filtered = data.filter((item) =>
+        item.Name.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredData(filtered);
+    };
+    filterData();
+  }, [toggle, query]);
+
+  const toggleButton = () => {
+    setToggle((prevToggle) => !prevToggle);
+  };
+
+  return (
+    <div className="inventory">
+      <div className="inventory-header">
+        <SearchBar filterKey={"Name"} setQuery={setQuery} placeholder={query} />
+        <ToggleBtn toggle={toggle} onClick={toggleButton} />
+      </div>
+      <div className="inventory-body">
+        <ItemList allTheItems={filteredData} />
+      </div>
+    </div>
+  );
+};
+
+export default Inventory;

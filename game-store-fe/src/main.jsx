@@ -1,14 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import ToggleButton from "./components/ToggleBtn.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Inventory from "./pages/Invetory/Inventory.jsx";
 
 
 const App = () => {
   return (
     <React.StrictMode>
-      <ToggleButton on="My items" off="All items" />
+      <Inventory />
     </React.StrictMode>
   );
 };
