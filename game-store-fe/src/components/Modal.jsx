@@ -49,12 +49,12 @@ function ModalItems({ item }) {
   return (
     <>
       {item.Quantity === 0 && (
-        <Button className="modal-open-btn" onClick={handleShow}>
+        <Button className="invisible-modal-button" onClick={handleShow}>
           Add Item
         </Button>
       )}
       {item.Quantity > 0 && (
-        <Button className="modal-open-btn" onClick={handleShow}>
+        <Button className="invisible-modal-button" onClick={handleShow}>
           Update Item
         </Button>
       )}

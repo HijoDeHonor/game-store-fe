@@ -13,7 +13,9 @@ const Inventory = () => {
   const [toggle, setToggle] = useState(false);
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [key, setKey] = useState(0);
 
+  
   useEffect(() => {
     const filterData = () => {
       const data = toggle ? DBServerData : DBUserData;
@@ -21,18 +23,21 @@ const Inventory = () => {
         item.Name.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredData(filtered);
+      
     };
     filterData();
   }, [toggle, query]);
 
   const toggleButton = () => {
     setToggle((prevToggle) => !prevToggle);
+    setKey(key + 1);
+    ;
   };
 
   return (
     <div className="inventory">
       <div className="inventory-header">
-        <SearchBar filterKey={"Name"} setQuery={setQuery} placeholder={query} />
+        <SearchBar key={key} filterKey={"Name"} setQuery={setQuery} placeholder={query} />
         <ToggleBtn toggle={toggle} onClick={toggleButton} />
       </div>
       <div className="inventory-body">

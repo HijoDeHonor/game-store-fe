@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Tooltip } from 'react-tooltip'
 import ModalItems from "./Modal";
 
 function Item({ item }) {
+  
+
   return (
-    <div className="item-container" key={item.id}>
-      <div className="item-card">
-        <img className="item-img" src={item.img} alt={item.Name} />
-        <div className="item-card-body">
-          <div className="item-name">{item.Name}</div>
-          {item.Quantity !== 0 ? (
-            <div className="item-quantity">{item.Quantity}</div>
-          ) : null}
-          <ModalItems item={item} />
-        </div>
-      </div>
+    <div className="item-card" key={item.id}>
+      <img
+        className="item-img"
+        src={item.img}
+        alt={item.Name}
+        data-tooltip-id="tooltip"
+        data-tooltip-content={item.Name}
+        data-tooltip-place="left"
+      />
+      <Tooltip id="tooltip" />
+    
+      {item.Quantity !== 0 ? (
+        <div className="item-quantity">{item.Quantity}</div>
+      ) : null}
     </div>
   );
 }
