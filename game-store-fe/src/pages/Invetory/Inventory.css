@@ -2,23 +2,22 @@
   width: 80% !important;
   padding: 0 0 0 0 !important;
   margin-top: 20px;
-  border-radius: 5px;
-  
+   
 }
 
 .inventory-header {
   display: flex;
   justify-content: flex-start;
-  padding: 5px;
+  padding: 10px;
   background-color: #7749f8;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .toggle-container {
   position: relative;
   width: 150px;
-  height: 25.6px;
+  height: 30px;
   background-color: #fff;
   cursor: pointer;
   user-select: none;
@@ -32,21 +31,22 @@
   align-items: center;
   box-sizing: border-box;
   width: 85px;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 14px;
   cursor: pointer;
   color: #fff;
-  background-color: #7749f8;
+  background-color: #5d27f3;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   padding: 2px 2px;
   border-radius: 15px;
   position: absolute;
   transition: all 0.3s ease;
   left: 5px;
+  height: 23px;
 }
 
 .disable {
-  background-color: #7749f8;
+  background-color: #5d27f3;
   left: 60px;
 }
 
