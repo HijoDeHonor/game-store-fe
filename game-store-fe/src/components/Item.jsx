@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Tooltip } from 'react-tooltip'
-import ModalItems from "./Modal";
+import { Tooltip } from "react-tooltip";
 
 function Item({ item }) {
-  
-
   return (
     <div className="item-card" key={item.id}>
       <img
@@ -13,10 +10,10 @@ function Item({ item }) {
         alt={item.Name}
         data-tooltip-id="tooltip"
         data-tooltip-content={item.Name}
-        data-tooltip-place="left"
+        data-tooltip-place="top"
       />
       <Tooltip id="tooltip" />
-    
+
       {item.Quantity !== 0 ? (
         <div className="item-quantity">{item.Quantity}</div>
       ) : null}

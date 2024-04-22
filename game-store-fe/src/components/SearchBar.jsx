@@ -7,7 +7,9 @@ const SearchBar = ({ setQuery }) => {
 
   return (
     <div className="search-bar">
-      <input id="search-input"
+      <input 
+        className="search-input"
+        id="search-input"
         type="text"
         placeholder="Search..."
         onChange={handleInputChange}

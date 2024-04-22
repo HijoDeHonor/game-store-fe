@@ -1,9 +1,9 @@
-//importaciones de react
+//settings
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar";
 import ToggleBtn from "./components/ToggleBtn";
 import ItemList from "../../components/Itemlist";
-//data fic de prueba
+// fake database
 import DBServerData from "../../services/DB-Server.json";
 import DBUserData from "../../services/DB-User.json";
 //styles
@@ -14,7 +14,6 @@ const Inventory = () => {
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [key, setKey] = useState(0);
-
   
   useEffect(() => {
     const filterData = () => {
@@ -23,7 +22,6 @@ const Inventory = () => {
         item.Name.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredData(filtered);
-      
     };
     filterData();
   }, [toggle, query]);
@@ -31,13 +29,17 @@ const Inventory = () => {
   const toggleButton = () => {
     setToggle((prevToggle) => !prevToggle);
     setKey(key + 1);
-    ;
   };
 
   return (
-    <div className="inventory">
+    <div className="container inventory">
       <div className="inventory-header">
-        <SearchBar key={key} filterKey={"Name"} setQuery={setQuery} placeholder={query} />
+        <SearchBar
+          key={key}
+          filterKey={"Name"}
+          setQuery={setQuery}
+          placeholder={query}
+        />
         <ToggleBtn toggle={toggle} onClick={toggleButton} />
       </div>
       <div className="inventory-body">
