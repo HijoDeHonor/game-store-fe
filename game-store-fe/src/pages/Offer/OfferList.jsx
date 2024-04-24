@@ -45,14 +45,14 @@ function OfferList() {
             ))}
           </tbody>
         </Table>
-        <div className="page-btn-container">
-          <div className="page-btn">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              goToPage={goToPage}
-            />
-          </div>
+      </div>
+      <div className="page-btn-container">
+        <div className="page-btn">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            goToPage={goToPage}
+          />
         </div>
       </div>
     </div>
