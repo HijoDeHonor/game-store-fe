@@ -30,10 +30,10 @@ body {
 
 .item-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); /* Ajusta el ancho de las columnas según sea necesario */
-  grid-gap: 3px; /* Espacio entre elementos */
-  grid-auto-flow: dense; /* Colocar elementos en espacios vacíos */
-  align-content: start; /* Alinear la última fila en la parte superior */
+  grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+  grid-gap: 3px;
+  grid-auto-flow: dense;
+  align-content: start;
   background-color: #fff;
   padding: 15px;
   min-height: 65vh;
@@ -42,7 +42,8 @@ body {
 }
 
 .item-card {
-  max-width: 60px;
+  width: 60px;
+  height: 60px;
   padding: 0px;
   box-sizing: content-box;
   display: flex;
@@ -161,4 +162,5 @@ body {
   width: 55px;
   border-radius: 5px;
   cursor: pointer;
-} 
+}
+

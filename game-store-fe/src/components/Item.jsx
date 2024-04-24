@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Tooltip } from "react-tooltip";
 
-function Item({ item }) {
+function Item({ item, index }) {
   return (
-    <div className="item-card" key={item.id}>
+    <div className="item-card" key={index}>
       <img
+        key={item.id}
         className="item-img"
         src={item.img}
         alt={item.Name}

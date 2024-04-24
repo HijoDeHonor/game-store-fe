@@ -1,0 +1,127 @@
+.offer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh;
+    max-height: 100vh;
+}
+
+.offer-list {
+  width: 80%;
+  max-height: 85vh;
+  min-height: 85vh;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #d4d4d4;
+}
+
+.table {
+  background-color: #fff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.th-id {
+  width: 60px !important;
+  font-size: 25px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+}
+
+.th-offer {
+  font-size: 25px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  width: calc(70% / 2) !important;
+}
+
+.th-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.td-id {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.item-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+  grid-gap: 15px;
+}
+
+.page-btn-container{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.page-btn {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.page-btn ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.btn-trade {
+  background-color: #5227cc;
+  color: #fdfcfe;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 130px;
+  height: 45px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination {
+  color: #fdfcfe;
+  border-radius: 5px;
+}
+
+.pagination li {
+  color: #5227cc !important;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 4px;
+}
+
+.page-link {
+  color: #fdfcfe !important;
+  background-color: #5227cc !important;
+  border-radius: 5px;
+}
+
+.pagination li a {
+  color: #fdfcfe;
+  background-color: #5227cc;
+  border-radius: 5px;
+}
+
+.pagination li a:active {
+  background-color: #5227cc;
+  color: #fdfcfe;
+}
