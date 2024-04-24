@@ -12,13 +12,23 @@
   margin: 0 auto;
   border-radius: 15px;
   overflow: auto;
-  height: 41em;
+  height: 34em;
+}
+
+.offer-list::-webkit-scrollbar {
+    width: 0; 
 }
 
 .table {
   background-color: #fff;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+.t-head {
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .th-id {
@@ -115,6 +125,7 @@
 .pagination li a {
   border-radius: 5px;
   border-color: #5227cc;
+  font-size: 20px;
 }
 
 .pagination li a:hover {
@@ -129,4 +140,9 @@
   border-color: #5227cc !important;
 }
 
+.pagination li span {
+  border-radius: 5px;
+  border-color: #5227cc !important;
+  font-size: 20px;
+}
 

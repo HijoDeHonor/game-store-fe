@@ -8,6 +8,6 @@ import Inventory from './pages/Invetory/Inventory';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Inventory />
+    <OfferList />
   </React.StrictMode>,
 )

@@ -8,7 +8,7 @@ import "./offer.css";
 
 function OfferList() {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 10;
 
   const totalPages = Math.ceil(json.length / itemsPerPage);
 
