@@ -30,7 +30,7 @@ function OfferList() {
   return (
     <div className="offer-container">
       <div className="offer-list">
-        <Table className="table" striped bordered hover>
+        <Table className="table" striped hover>
           <thead className="t-head">
             <tr>
               <th className="th-id">#</th>

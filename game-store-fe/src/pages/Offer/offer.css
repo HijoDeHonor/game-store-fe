@@ -12,7 +12,8 @@
   margin: 0 auto;
   border-radius: 15px;
   overflow: auto;
-  height: 34em;
+  height: 40em;
+  background-color: red;
 }
 
 .offer-list::-webkit-scrollbar {
@@ -21,13 +22,12 @@
 
 .table {
   background-color: #fff;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  height: 100%;
 }
 
 .t-head {
     position: sticky;
-    top: 0;
+    top: -1px;
     z-index: 100;
 }
 
@@ -59,10 +59,15 @@
   text-align: center;
 }
 
+.td-offer {
+  padding-left: 15px;
+}
+
 .item-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
-  grid-gap: 15px;
+  grid-gap: 5px;
+  padding-right: 50px;
 }
 
 .page-btn-container{
@@ -84,6 +89,22 @@
   margin-bottom: 0;
 }
 
+.td-btn { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
 .btn-trade {
   background-color: #5227cc;
   color: #fdfcfe;
@@ -96,12 +117,6 @@
   margin: 5px 0;
   cursor: pointer;
   border: none;
-}
-
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .pagination li {
@@ -129,9 +144,7 @@
 }
 
 .pagination li a:hover {
-  background-color: #5227cc;
-  color: transparent;
-  border-color: #5227cc;
+  border-color: #0d6efd;
 }
 
 .pagination li a:active {
@@ -142,7 +155,9 @@
 
 .pagination li span {
   border-radius: 5px;
-  border-color: #5227cc !important;
   font-size: 20px;
 }
 
+.react-tooltip {
+  z-index: 9999;
+}

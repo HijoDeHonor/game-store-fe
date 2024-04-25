@@ -26,7 +26,7 @@ const Offer = ({ offer }) => {
           ))}
         </div>
       </td>
-      <td>
+      <td className="td-btn">
         <div className="buttons-container">
           <button
             className="btn-trade"
