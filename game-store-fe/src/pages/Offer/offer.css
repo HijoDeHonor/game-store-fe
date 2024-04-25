@@ -12,8 +12,7 @@
   margin: 0 auto;
   border-radius: 15px;
   overflow: auto;
-  height: 40em;
-  background-color: red;
+  background-color: #fff;
 }
 
 .offer-list::-webkit-scrollbar {
