@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
-import json from "../../services/DB-Offer-simul.json";
+import { getOffers } from "../../services/getOffers";
 import Offer from "./components/Offer";
 import Pagination from "./components/Pagination";
 
@@ -9,7 +9,7 @@ import "./offer.css";
 function OfferList() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-
+  const json = getOffers();
   const totalPages = Math.ceil(json.length / itemsPerPage);
 
   const displayOffers = () => {

@@ -22,6 +22,7 @@
 .table {
   background-color: #fff;
   height: 100%;
+  margin : 0 !important;
 }
 
 .t-head {
@@ -50,8 +51,6 @@
   align-items: center;
 }
 
-
-
 .td-id {
   font-size: 30px;
   font-weight: bold;
@@ -62,11 +61,17 @@
   padding-left: 15px;
 }
 
-.item-container {
+.item-container-offer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
   grid-gap: 5px;
   padding-right: 50px;
+}
+.item-container-request {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+  grid-gap: 5px;
+  padding-left: 50px;
 }
 
 .page-btn-container{
