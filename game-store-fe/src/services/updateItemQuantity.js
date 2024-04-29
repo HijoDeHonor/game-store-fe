@@ -5,7 +5,9 @@ async function updateItemQuantity(UserName, item) {
   };
 
   //PATCH /Inventory/{IdUsuario}
-  const updateCollection = await fetch(URL + `/Inventory/${UserName}`, {
+  const updateCollection = await fetch(
+    URL + `/Inventory/${UserName}`,
+    {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +20,9 @@ async function updateItemQuantity(UserName, item) {
       }
       const updatedInventory = await res.json();
       // Verificar si la cantidad restante es 0 y eliminar el elemento si es así
-      const updatedItem = updatedInventory.find((item) => item.id === itemId);
+      const updatedItem = updatedInventory.find(
+        (item) => item.id === updateData.itemId
+      );
       if (updatedItem && updatedItem.quantity === 0) {
         await removeItem(UserName, item);
       }
