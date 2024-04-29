@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { getOffers } from "../../services/getOffers";
 import Offer from "./components/Offer";
@@ -25,6 +25,7 @@ function OfferList() {
       pageNumber = totalPages;
     }
     setCurrentPage(pageNumber);
+    document.querySelector(".offer-list").scrollTop = 0;
   };
 
   return (

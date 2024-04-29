@@ -1,16 +1,35 @@
-const GetAllItems = () => {
-  let items = [
-    { id: 1, nombre: "Espada", cantidad: 4, img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-    { id: 2, nombre: "Arco", cantidad: 7, img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-    { id: 3, nombre: "Daga", cantidad: 2, img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-    { id: 4, nombre: "Martillo", cantidad: 9, img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-    { id: 5, nombre: "Lanza", cantidad: 6 , img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-    { id: 6, nombre: "Hacha", cantidad: 3, img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-    { id: 7, nombre: "Ballesta", cantidad: 8, img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-    { id: 8, nombre: "Maza", cantidad: 5, img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-    { id: 9, nombre: "Escudo", cantidad: 10, img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-    { id: 10, nombre: "Cuchillo", cantidad: 1, img: "C:\Users\megat\OneDrive\Escritorio\descargar.png" },
-  ];
+import DBServer from "./DB-Server.json";
+import DBUser from "./DB-User.json";
+
+const GetAllItems = /*async*/ (userName) => {
+  const user = userName;
+
+  // descomentar cuando se ponga en uso la base de datos.
+
+  // try {
+  //   const res = await fetch(URL + userName ? `/Inventory/${user}`: null , {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   if (!res.ok) {
+  //     throw Error("Error en la peticion del servidor", Error);
+  //   }
+  //   const data = await res.json();
+  //   console.log("Data recivida: ", data);
+  //   return data;
+
+  // } catch (error) {
+  //   console.log("Error en la peticion: ", error);
+  // } 
+
+  // borrar el codigo de abajo cuando se ponga en uso la base de datos 
+  if (user) {
+    return DBUser;
+  } else {
+    return DBServer;
+  }
 };
 
 export default GetAllItems;
