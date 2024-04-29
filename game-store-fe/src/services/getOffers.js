@@ -1,4 +1,4 @@
-import json from "../services/DB-Offer-simul.json";
+import json from "../utils/DB-Offer-simul.json";
 //import constants from "../constants";
 export const getOffers = /*async*/ () => {
   // simular consulta a BD

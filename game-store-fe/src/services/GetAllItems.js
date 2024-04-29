@@ -1,5 +1,5 @@
-import DBServer from "./DB-Server.json";
-import DBUser from "./DB-User.json";
+import DBServer from "../utils/DB-Server.json";
+import DBUser from "../utils/DB-User.json";
 
 const GetAllItems = /*async*/ (userName) => {
   const user = userName;
