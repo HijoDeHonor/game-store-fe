@@ -33,8 +33,9 @@ function QuantitySelector({ item, onQuantityChange }) {
         -
       </button>
       <input
+        id="number-input"
         className="quantity-input"
-        type="number"
+        type="text"
         value={quantity}
         onChange={handleInputChange}
       />
