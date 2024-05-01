@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Tooltip } from "react-tooltip";
 import ModalItem from "./Modal";
-function Item({ item }) {
+function Item({ item, add }) {
   
   const [showModal, setShowModal] = useState(false);
   
@@ -30,7 +30,7 @@ function Item({ item }) {
         <div className="item-quantity">{item.Quantity}</div>
       ) : null}
 
-      {showModal && <ModalItem handleClose={handleClose} item={item} show={showModal} />}
+      {showModal && <ModalItem handleClose={handleClose} item={item} show={showModal} add={add} />}
 
     </div>
   );

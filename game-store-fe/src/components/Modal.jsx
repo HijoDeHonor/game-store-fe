@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // components
 import QuantitySelector from "./QuantitySelector";
 
-function ModalItem({ item, handleClose, show }) {
+function ModalItem({ item, handleClose, show, add }) {
   const [Quantity, setQuantity] = useState(item.Quantity);
 
   const handleQuantityChange = (newQuantity) => {
@@ -22,14 +22,11 @@ function ModalItem({ item, handleClose, show }) {
   const handleCloseClick = () => {
     handleClose();
     setShows(false);
-    console.log("cerrar");
-  }
+  };
   const handleAddOrUpdate = () => {
-    console.log(Quantity);
     handleClose();
     setShows(false);
-    console.log("cerrar");
-
+    add && add(item, Quantity);
   };
 
   return (
@@ -42,7 +39,7 @@ function ModalItem({ item, handleClose, show }) {
         id="modal-item"
       >
         <Modal.Header>
-        <CloseButton onClick={handleCloseClick} />
+          <CloseButton onClick={handleCloseClick} />
           <Modal.Title>
             <h1>{item.Name}</h1>
           </Modal.Title>
@@ -56,7 +53,7 @@ function ModalItem({ item, handleClose, show }) {
             onQuantityChange={handleQuantityChange}
           />
           <Button onClick={handleAddOrUpdate}>
-            {Quantity !== 0 ? "Update" : "Add"}
+            {item.Quantity !== 0 ? "Update" : "Add"}
           </Button>
         </Modal.Footer>
       </Modal>

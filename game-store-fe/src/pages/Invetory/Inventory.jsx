@@ -4,8 +4,8 @@ import SearchBar from "../../components/SearchBar";
 import ToggleBtn from "./components/ToggleBtn";
 import ItemList from "../../components/Itemlist";
 // fake database
-import DBServerData from "../../services/DB-Server.json";
-import DBUserData from "../../services/DB-User.json";
+import DBServerData from "../../utils/DB-Server.json";
+import DBUserData from "../../utils/DB-User.json";
 //styles
 import "./Inventory.css";
 
