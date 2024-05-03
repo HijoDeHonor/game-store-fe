@@ -3,17 +3,9 @@ async function addItem(UserName, offer, request, item) {
   let items = offer || request || item;
   let userName = UserName || localStorage.getItem("UserName");
 
-  // Verificar si item es un array y contiene al menos un elemento
-  if (Array.isArray(item) && items.length > 0 && typeof item[0] === "object") {
-    itemsToAdd = item;
-  } else if (typeof item === "object") {
-    // Si item es un solo objeto
-    itemsToAdd.push(item);
-  } else {
-    throw new Error(
-      'El parámetro "item" debe ser un objeto o un array de objetos.'
-    );
-  }
+  items.forEach((item) => {
+    itemsToAdd.push({ item });
+  });
 
   //POST/Inventory/{IdUsuario}
   const addToCollection = await fetch(URL + `/Inventory/${userName}`, {

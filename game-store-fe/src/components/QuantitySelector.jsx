@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function QuantitySelector({ item, onQuantityChange }) {
-  const [quantity, setQuantity] = useState(item.Quantity);
+  const [quantity, setQuantity] = useState(item.Quantity || 0);
 
   const quantityUp = () => {
    const newQuantity = quantity + 1;
