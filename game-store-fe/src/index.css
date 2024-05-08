@@ -43,7 +43,6 @@ body {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   overflow-y: scroll;
-  max-height: 70vh;
 }
 
 .item-list::-webkit-scrollbar {

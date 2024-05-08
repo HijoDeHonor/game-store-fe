@@ -11,10 +11,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import QuantitySelector from "./QuantitySelector";
 
 function ModalItem({ item, handleClose, show, add }) {
-  const [Quantity, setQuantity] = useState(item.Quantity);
+  const firstQuantity = item.Quantity;
+  const [quantity, setQuantity] = useState(item.Quantity);
 
-  const handleQuantityChange = (newQuantity) => {
+  const handleQuantityChange = (item, newQuantity) => {
     setQuantity(newQuantity);
+    console.log(newQuantity);
   };
 
   const [shows, setShows] = useState(show);
@@ -26,7 +28,37 @@ function ModalItem({ item, handleClose, show, add }) {
   const handleAddOrUpdate = () => {
     handleClose();
     setShows(false);
-    add && add(item, Quantity);
+    add && add(item, quantity);
+  };
+
+  const eraseItem = () => {
+    //deleteItem(item);
+    setShows(false);
+    console.log(item, "deleted");
+  };
+
+  const modalUpdatebtn = () => {
+    if (firstQuantity !== 0 && quantity === 0) {
+      return (
+        <Button variant="primary" onClick={eraseItem}>
+          Delete
+        </Button>
+      );
+    } else if (firstQuantity === 0) {
+      return (
+        <Button variant="primary" onClick={handleAddOrUpdate}>
+          Add
+        </Button>
+      );
+    }
+    
+    else if (firstQuantity !== 0 && quantity !== 0) {
+      return (
+        <Button variant="primary" onClick={handleAddOrUpdate}>
+          Update
+        </Button>
+      );
+    }
   };
 
   return (
@@ -45,16 +77,14 @@ function ModalItem({ item, handleClose, show, add }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <img src={item.img} alt={item.Name} />
+          <img src={item.Img} alt={item.Name} />
         </Modal.Body>
         <Modal.Footer>
           <QuantitySelector
             item={item}
             onQuantityChange={handleQuantityChange}
           />
-          <Button onClick={handleAddOrUpdate}>
-            {item.Quantity !== 0 ? "Update" : "Add"}
-          </Button>
+          {modalUpdatebtn()}
         </Modal.Footer>
       </Modal>
     </>

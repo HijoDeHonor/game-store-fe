@@ -1,29 +1,35 @@
 import React, { useState } from "react";
 
-function QuantitySelector({ item, onQuantityChange }) {
+function QuantitySelector({ item, onQuantityChange, maxQuantity }) {
   const [quantity, setQuantity] = useState(item.Quantity);
-
   const quantityUp = () => {
-   const newQuantity = quantity + 1;
-   setQuantity(newQuantity);
-   onQuantityChange(newQuantity);
+    if (maxQuantity && quantity < maxQuantity) {
+      const newQuantity = quantity + 1;
+      setQuantity(newQuantity);
+      onQuantityChange(newQuantity);
+    } else if (!maxQuantity) {
+      const newQuantity = quantity + 1;
+      setQuantity(newQuantity);
+      onQuantityChange(item, newQuantity);
+    }
   };
 
   const quantityDown = () => {
-    
-    if (quantity > 1) {
-        const newQuantity = quantity - 1;
-        setQuantity(newQuantity);
-        onQuantityChange(newQuantity);
-      };
-    
+    if (quantity === 0) {
+      return;
+    }
+    const newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+    onQuantityChange({ item }, newQuantity);
   };
 
   const handleInputChange = (event) => {
-    const value = parseInt(event.target.value);
-    if (!isNaN(value)) {
-      setQuantity(value);
-      onQuantityChange(value);
+    const newQuantity = parseInt(event.target.value);
+    if (!isNaN(newQuantity)) {
+      if (newQuantity >= 0 && (!maxQuantity || newQuantity <= maxQuantity)) {
+        setQuantity(newQuantity);
+        onQuantityChange(item, newQuantity);
+      }
     }
   };
 
@@ -33,7 +39,7 @@ function QuantitySelector({ item, onQuantityChange }) {
         -
       </button>
       <input
-        id="number-input"
+        id={`number-input ${item.Id}`}
         className="quantity-input"
         type="text"
         value={quantity}

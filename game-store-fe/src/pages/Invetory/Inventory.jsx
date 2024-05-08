@@ -15,6 +15,10 @@ const Inventory = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [key, setKey] = useState(0);
   
+  // use them in constants later
+  const mod = true;
+  const modnone = false;
+
   useEffect(() => {
     const filterData = () => {
       const data = toggle ? DBServerData : DBUserData;
@@ -43,7 +47,7 @@ const Inventory = () => {
         <ToggleBtn toggle={toggle} onClick={toggleButton} />
       </div>
       <div className="inventory-body">
-        <ItemList allTheItems={filteredData} />
+        <ItemList allTheItems={filteredData} modal={mod}/>
       </div>
     </div>
   );
