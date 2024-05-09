@@ -1,17 +1,41 @@
+// settings
 import React, { useState, useEffect } from "react";
+
+//tools
 import { Tooltip } from "react-tooltip";
+
+//my components
 import ModalItem from "./Modal";
+import ReciclerItem from "./ReciclerItem";
 function Item({ item, add, onClick, modal }) {
   const [showModal, setShowModal] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const handleDeleteClick = () => {
+    setShowDelete(!showDelete);
+  };
   const handleClose = () => {
     setShowModal(false);
+    setShowDelete(false);
   };
   const handleToggleModal = () => {
-    onClick? onClick({item}) : setShowModal(!showModal);
+    onClick ? onClick({ item }) : setShowModal(!showModal);
   };
-  
+  const modaldelete = () => {
+    if ((modal = true)) {
+      return (
+        showDelete && (
+          <ReciclerItem
+            handleClose={handleClose}
+            item={item}
+            show={showDelete}
+            
+          />
+        )
+      );
+    }
+  };
   const modalOn = () => {
-    if (modal= true) {
+    if ((modal = true)) {
       return (
         showModal && (
           <ModalItem
@@ -27,6 +51,13 @@ function Item({ item, add, onClick, modal }) {
 
   return (
     <div className="item-card" key={item.Id}>
+      <div className="recicler-Item">
+        <img
+          src="https://static-00.iconduck.com/assets.00/delete-icon-1864x2048-bp2i0gor.png"
+          alt="Delete"
+          onClick={handleDeleteClick}
+        />
+      </div>
       <img
         className="item-img"
         src={item.Img}
@@ -41,8 +72,9 @@ function Item({ item, add, onClick, modal }) {
       {item.Quantity !== 0 ? (
         <div className="item-quantity">{item.Quantity}</div>
       ) : null}
-      
+
       {modalOn()}
+      {modaldelete()}
     </div>
   );
 }
