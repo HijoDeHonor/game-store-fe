@@ -9,9 +9,6 @@ import ItemList from "../../components/Itemlist";
 // styles
 import "./Inventory.css";
 
-// services
-import GetAllItems from "../../services/GetAllItems";
-
 const Inventory = () => {
   const [toggle, setToggle] = useState(false);
   const [query, setQuery] = useState("");

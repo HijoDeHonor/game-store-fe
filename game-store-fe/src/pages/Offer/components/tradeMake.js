@@ -1,5 +1,3 @@
-import addItem from "../../../services/addItem";
-import deleteOffer from "../../../services/deleteOffer";
 function tradeMake(Id, Offer, Request, UserNamePoster) {
   const userNameTrader = localStorage.getItem("username")||"Admin";//borrar esta linea cuando se ponga en uso la base de datos
   const userNamePoster = UserNamePoster;
@@ -7,14 +5,14 @@ function tradeMake(Id, Offer, Request, UserNamePoster) {
   const request = Request;
   const id = Id;
   
-  // descomentar cuando se ponga en uso la base de datos.
+  // restore this comented code when the back end is ready
 
   // addItem(userNamePoster, request)
   // addItem(offer)
   // deleteOffer(id)
   
 
-  //borrar el codigo de abajo cuando se ponga en uso la base de datos
+  //delete this lines when the back end is ready or make a use of it
   console.log(
     userNamePoster,
     "obtuvo ",
