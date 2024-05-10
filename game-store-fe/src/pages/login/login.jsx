@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import logInService from "../../services/loginService";
 //import { useHistory } from 'react-router-dom';
 import "./login.css";
 function LoginForm() {
@@ -10,7 +10,7 @@ function LoginForm() {
     username: "",
     password: "",
   });
-  
+
   const handleOnChange = (event) => {
     const { id, value } = event.target;
     setUser((prevState) => ({
@@ -18,24 +18,9 @@ function LoginForm() {
       [id]: value,
     }));
   };
-  const logIn = async (User) => {
-    try {
-      const response = await fetch(`/api/users/${User.username}`);
-      const data = await response.json();
 
-      if (data.username === User.username && data.password === User.password) {
-        alert("Login exitoso");
-        setError("");
-      } else {
-        setError("Usuario o contraseña incorrectos");
-      }
-    } catch (error) {
-      console.error(error);
-      setError("Error al iniciar sesión");
-    }
-  };
   const goToRegister = () => {
-    history.push("/register");
+    //history.push("/register");
   };
 
   return (
@@ -65,7 +50,11 @@ function LoginForm() {
           </div>
         </div>
         <div className="buttons-login">
-          <button className="login" onClick={logIn} type="submit">
+          <button
+            className="login"
+            onClick={ () => logInService(User, setError)}
+            type="submit"
+          >
             Log In
           </button>
           <button className="signin" onClick={goToRegister}>
