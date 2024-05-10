@@ -1,5 +1,6 @@
 import "./register.css";
 import React, { useState } from "react";
+import handleSubmit from "../../services/registerService";
 
 function RegisterForm() {
   const [newUser, setNewUser] = useState({
@@ -8,41 +9,6 @@ function RegisterForm() {
     confirmPassword: "",
   });
   const [error, setError] = useState("");
-
-  const checkUsernameExists = async (newUsername) => {
-    try {
-      const response = await fetch(`/api/users/${newUsername}`);
-      const data = await response.json();
-
-      if (response.status === 404) {
-        return false; // El nombre de usuario no existe
-      } else if (response.ok) {
-        return true; // El nombre de usuario ya existe
-      } else {
-        throw new Error(
-          "Error al verificar el nombre de usuario: " + data.error
-        );
-      }
-    } catch (error) {
-      console.error("Error al verificar el nombre de usuario:", error);
-      return true;
-    }
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const exists = await checkUsernameExists(newUser.username);
-    if (exists) {
-      setError("Nombre de usuario no disponible");
-      return;
-    }
-    if (newUser.password !== newUser.confirmPassword) {
-      setError("Las contraseñas no coinciden.");
-      return;
-    }
-    //post del neuvo ususario
-    alert("Registro exitoso");
-  };
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -53,6 +19,15 @@ function RegisterForm() {
     setError("");
   };
 
+  const handleClickSubmit = (e) => {
+    e.preventDefault();
+    if (newUser.password !== newUser.confirmPassword) {
+      setError("Passwords do not match");
+    } else {
+      handleSubmit(newUser, setError);
+    }
+  };
+
   return (
     <div className="wrapper">
       <form>
@@ -61,7 +36,7 @@ function RegisterForm() {
         <div className="input-container">
           <div className="input-box">
             <input
-              id="newusername"
+              id="username"
               type="text"
               placeholder="User"
               value={newUser.username}
@@ -71,7 +46,7 @@ function RegisterForm() {
           </div>
           <div className="input-box">
             <input
-              id="newpassword"
+              id="password"
               type="password"
               placeholder="Password"
               value={newUser.password}
@@ -91,7 +66,7 @@ function RegisterForm() {
           </div>
         </div>
         <div className="buttons-register">
-          <button onClick={handleSubmit} className="register">
+          <button type="button" onClick={handleClickSubmit} className="register">
             Register
           </button>
         </div>
