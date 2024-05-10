@@ -51,13 +51,13 @@ function Item({ item, add, onClick, modal }) {
 
   return (
     <div className="item-card" key={item.Id}>
-      <div className="recicler-Item">
+      {item.Quantity!==0 ?(<div className="recicler-Item">
         <img
           src="https://static-00.iconduck.com/assets.00/delete-icon-1864x2048-bp2i0gor.png"
           alt="Delete"
           onClick={handleDeleteClick}
         />
-      </div>
+      </div>):null}
       <img
         className="item-img"
         src={item.Img}
