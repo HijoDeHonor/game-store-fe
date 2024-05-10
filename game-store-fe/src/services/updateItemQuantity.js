@@ -19,7 +19,7 @@ async function updateItemQuantity(UserName, item) {
         throw Error(res.statusText);
       }
       const updatedInventory = await res.json();
-      // Verificar si la cantidad restante es 0 y eliminar el elemento si es así
+      // verify if the Quantity is 0 and remove the item if it is
       const updatedItem = updatedInventory.find(
         (item) => item.id === updateData.itemId
       );

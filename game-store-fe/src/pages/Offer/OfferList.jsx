@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
-import { getOffers } from "../../services/getOffers";
+import { getOffers } from "../../services/offerService";
 import Offer from "./components/Offer";
 import Pagination from "./components/Pagination";
 
@@ -8,23 +8,33 @@ import "./offer.css";
 
 function OfferList() {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-  const json = getOffers();
-  const totalPages = Math.ceil(json.length / itemsPerPage);
-
-  const displayOffers = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return json.slice(startIndex, endIndex);
-  };
+  const totalPages = getOffers(null, true);
+  const [offers, setOffers] = useState([]);
+  
+  // restore this comented code when the back end is ready
+  // useEffect(() => {
+  //   const fetchdata = async() => {
+  //     try {
+  //       const offers = await getOffers(currentPage, false);
+  //       setOffers(offers);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchdata();
+  // }, [currentPage]);
 
   const goToPage = (pageNumber) => {
     if (pageNumber < 1) {
-      pageNumber = 1;
+      setCurrentPage(1);
+      getOffers(1,false)
+      
     } else if (pageNumber > totalPages) {
-      pageNumber = totalPages;
+      setCurrentPage(totalPages);
+      getOffers(totalPages, false);
     }
     setCurrentPage(pageNumber);
+    getOffers(pageNumber, false);
     document.querySelector(".offer-list").scrollTop = 0;
   };
 
@@ -41,7 +51,11 @@ function OfferList() {
             </tr>
           </thead>
           <tbody>
-            {displayOffers().map((offer) => (
+            {/*delete getOffers and restore this comented code*/}
+            {/* {offers.map((offer) => (
+              <Offer key={offer.Id} offer={offer} />
+            ))} */}
+            {getOffers(currentPage, false).map((offer) => (
               <Offer key={offer.Id} offer={offer} />
             ))}
           </tbody>
