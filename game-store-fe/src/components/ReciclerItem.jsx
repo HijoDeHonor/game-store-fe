@@ -25,8 +25,12 @@ const ReciclerItem = ({ item, show, handleClose }) => {
         <p>{item.Name}</p>
         <p>Are you sure you want to delete it?</p>
       </Modal.Body>
-      <Modal.Footer>
-        <button type="button" className="btn btn-danger" onClick={handleDelete}>
+      <Modal.Footer style={{ justifyContent: "space-evenly", flexDirection: "row" }}>
+        <button type="button" className="btn" onClick={handleClose}>
+          Cancel
+        </button>
+
+        <button type="button" className="btn" onClick={handleDelete}>
           Delete
         </button>
       </Modal.Footer>
