@@ -53,7 +53,7 @@ function LoginForm() {
           <button
             className="login"
             onClick={ () => logInService(User, setError)}
-            type="submit"
+            type="button"
           >
             Log In
           </button>

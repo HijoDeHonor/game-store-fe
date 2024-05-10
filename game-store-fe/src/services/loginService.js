@@ -9,6 +9,7 @@ const logInService = /*async*/ (User, setError) => {
   if (userFound) {
     localStorage.setItem("token", userFound.token);
     localStorage.setItem("username", userFound.username);
+    setError("");
     return alert("Login exitoso");
   } else {
 
