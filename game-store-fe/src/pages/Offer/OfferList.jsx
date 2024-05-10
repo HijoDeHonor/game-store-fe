@@ -12,6 +12,7 @@ function OfferList() {
   const [offers, setOffers] = useState([]);
   
   // restore this comented code when the back end is ready
+  
   // useEffect(() => {
   //   const fetchdata = async() => {
   //     try {
@@ -25,16 +26,20 @@ function OfferList() {
   // }, [currentPage]);
 
   const goToPage = (pageNumber) => {
+    let targetPage = pageNumber;
     if (pageNumber < 1) {
-      setCurrentPage(1);
-      getOffers(1,false)
-      
+      targetPage = 1;
     } else if (pageNumber > totalPages) {
-      setCurrentPage(totalPages);
-      getOffers(totalPages, false);
+      targetPage = totalPages;
     }
-    setCurrentPage(pageNumber);
-    getOffers(pageNumber, false);
+    
+    
+  
+    setTimeout(() => {
+      setCurrentPage(targetPage);
+      getOffers(targetPage, false);//delete this line when the back end is ready
+    }, 1500); // change this value to adjust the delay
+  
     document.querySelector(".offer-list").scrollTop = 0;
   };
 
