@@ -12,6 +12,7 @@
   margin: 0 auto;
   border-radius: 15px;
   overflow: auto;
+  height: 75vh;
   background-color: #fff;
 }
 
@@ -21,7 +22,6 @@
 
 .table {
   background-color: #fff;
-  height: 100%;
   margin : 0 !important;
 }
 

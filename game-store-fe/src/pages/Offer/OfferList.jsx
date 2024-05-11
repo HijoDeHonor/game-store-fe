@@ -8,38 +8,31 @@ import "./offer.css";
 
 function OfferList() {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = getOffers(null, true);
+  const [totalPages, setTotalPages] = useState(1); 
   const [offers, setOffers] = useState([]);
-  
-  // restore this comented code when the back end is ready
-  
-  // useEffect(() => {
-  //   const fetchdata = async() => {
-  //     try {
-  //       const offers = await getOffers(currentPage, false);
-  //       setOffers(offers);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchdata();
-  // }, [currentPage]);
 
-  const goToPage = (pageNumber) => {
-    let targetPage = pageNumber;
-    if (pageNumber < 1) {
+  useEffect(() => {
+    const fetchOffers = async () => {
+      try {
+        const offersData = await getOffers(currentPage);
+        setCurrentPage(offersData.currentPage);
+        setTotalPages(offersData.totalPages); 
+        setOffers(offersData.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchOffers();
+  }, [currentPage]);
+
+  const goToPage = (targetPage) => {
+    if (targetPage < 1) {
       targetPage = 1;
-    } else if (pageNumber > totalPages) {
+    } else if (targetPage > totalPages) {
       targetPage = totalPages;
     }
-    
-    
-  
-    setTimeout(() => {
-      setCurrentPage(targetPage);
-      getOffers(targetPage, false);//delete this line when the back end is ready
-    }, 1500); // change this value to adjust the delay
-  
+    setCurrentPage(targetPage); // Actualizar currentPage
     document.querySelector(".offer-list").scrollTop = 0;
   };
 
@@ -55,12 +48,8 @@ function OfferList() {
               <th></th>
             </tr>
           </thead>
-          <tbody>
-            {/*delete getOffers and restore this comented code*/}
-            {/* {offers.map((offer) => (
-              <Offer key={offer.Id} offer={offer} />
-            ))} */}
-            {getOffers(currentPage, false).map((offer) => (
+          <tbody className="tbody">
+            {offers.map((offer) => (
               <Offer key={offer.Id} offer={offer} />
             ))}
           </tbody>
@@ -80,3 +69,4 @@ function OfferList() {
 }
 
 export default OfferList;
+

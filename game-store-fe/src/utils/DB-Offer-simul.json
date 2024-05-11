@@ -434,5 +434,75 @@
       }
     ],
     "UserNamePoster": "NinjaNinja"
+  },{
+    "Id": 21,
+    "Offer": [
+      {
+        "Name": "Martillo de Thor",
+        "Quantity": 1,
+        "img": "https://cdn-icons-png.freepik.com/256/12092/12092522.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      }
+    ],
+    "Request": [
+      {
+        "Name": "Arco de cristal",
+        "Quantity": 1,
+        "img": "https://cdn-icons-png.freepik.com/256/12569/12569010.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      }
+    ],
+    "UserNamePoster": "SaturDon"
+  },
+  {
+    "Id": 22,
+    "Offer": [
+      {
+        "Name": "Escudo reflectante",
+        "Quantity": 1,
+        "img": "https://cdn-icons-png.freepik.com/256/2920/2920081.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      }
+    ],
+    "Request": [
+      {
+        "Name": "Escudo",
+        "Quantity": 5,
+        "img": "https://cdn-icons-png.freepik.com/256/861/861377.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      }
+    ],
+    "UserNamePoster": "ElYIyo"
+  },{
+    "Id": 23,
+    "Offer": [
+      {
+        "Name": "Martillo de Thor",
+        "Quantity": 1,
+        "img": "https://cdn-icons-png.freepik.com/256/12092/12092522.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      }
+    ],
+    "Request": [
+      {
+        "Name": "Arco de cristal",
+        "Quantity": 1,
+        "img": "https://cdn-icons-png.freepik.com/256/12569/12569010.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      }
+    ],
+    "UserNamePoster": "SaturDon"
+  },
+  {
+    "Id": 24,
+    "Offer": [
+      {
+        "Name": "Escudo reflectante",
+        "Quantity": 1,
+        "img": "https://cdn-icons-png.freepik.com/256/2920/2920081.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      }
+    ],
+    "Request": [
+      {
+        "Name": "Escudo",
+        "Quantity": 5,
+        "img": "https://cdn-icons-png.freepik.com/256/861/861377.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      }
+    ],
+    "UserNamePoster": "ElYIyo"
   }
 ]
