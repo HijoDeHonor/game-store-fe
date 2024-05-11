@@ -38,6 +38,10 @@
   text-align: center !important;
 }
 
+.tr-table {
+  height: 100% !important;
+}
+
 .th-offer {
   font-size: 25px !important;
   font-weight: bold !important;
@@ -93,23 +97,16 @@
   margin-bottom: 0;
 }
 
-.td-btn { 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
+.td-btn {
+  display: table-cell;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
 
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
 }
 
 .btn-trade {
+  
   background-color: #5227cc;
   color: #fdfcfe;
   border-radius: 12px;
