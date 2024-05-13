@@ -1,4 +1,4 @@
-import users from "../assets/utils/users.json";
+import users from "../utils/users.json";
 const checkUsernameExists =(newUsername) => {
   const exists = users.find((user) => user.username === newUsername);
   if (exists) {
