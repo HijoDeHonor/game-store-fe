@@ -48,7 +48,7 @@ function OfferList() {
   return (
     <div className="offer-container">
       <div className="offer-list">
-      <Table className={isLoading? "table" : "table striped hover"}>
+      <Table className="table" {...(!isLoading && { striped: true, hover: true })}>
           <thead className="t-head">
             <tr>
               <th className="th-id">#</th>
