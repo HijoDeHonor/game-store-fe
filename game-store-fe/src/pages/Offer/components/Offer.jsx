@@ -27,15 +27,13 @@ const Offer = ({ offer }) => {
         </div>
       </td>
       <td className="td-btn">
-        <div className="td-btn-container">
-          <div className="buttons-container">
-            <button
-              className="btn-trade"
-              onClick={() => Confirm(Id, Offer, Request, UserNamePoster)}
-            >
-              TRADE
-            </button>
-          </div>
+        <div className="buttons-container">
+          <button
+            className="btn-trade"
+            onClick={() => Confirm(Id, Offer, Request, UserNamePoster)}
+          >
+            TRADE
+          </button>
         </div>
       </td>
     </tr>

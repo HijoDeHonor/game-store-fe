@@ -48,7 +48,7 @@ function OfferList() {
   return (
     <div className="offer-container">
       <div className="offer-list">
-        <Table className="table" striped hover>
+      <Table className={isLoading? "table" : "table striped hover"}>
           <thead className="t-head">
             <tr>
               <th className="th-id">#</th>
@@ -58,7 +58,15 @@ function OfferList() {
             </tr>
           </thead>
           {isLoading ? (
-            <LoadingSpinner />
+            <tbody className="tbody">
+              <tr className="tr-spinner">
+                <td>
+                  <span>
+                    <LoadingSpinner />
+                  </span>
+                </td>
+              </tr>
+            </tbody>
           ) : (
             <tbody className="tbody">
               {offers.map((offer) => (
