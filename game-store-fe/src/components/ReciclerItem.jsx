@@ -3,7 +3,7 @@ import CloseButton from "react-bootstrap/esm/CloseButton";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 
-const ReciclerItem = ({ item, show, handleClose }) => {
+const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
   const handleXClose = () => {
     handleClose();
 
@@ -11,6 +11,7 @@ const ReciclerItem = ({ item, show, handleClose }) => {
 
   const handleDelete = () => {
     handleClose();
+    deleteAdd && deleteAdd(item)
     console.log(item, "deleted");
     // deleteItem(item);
   };

@@ -17,6 +17,8 @@ const Inventory = () => {
   
   // use them in constants later
   const mod = true;
+  const recicler = true;
+
   const modnone = false;
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const Inventory = () => {
         <ToggleBtn toggle={toggle} onClick={toggleButton} />
       </div>
       <div className="inventory-body">
-        <ItemList allTheItems={filteredData} modal={mod}/>
+        <ItemList allTheItems={filteredData} modal={mod} recicler={recicler}/>
       </div>
     </div>
   );

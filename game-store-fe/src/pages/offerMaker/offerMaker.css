@@ -1,0 +1,30 @@
+.om {
+    height: 100vh;
+    width: 70vw;
+    padding-top: 10vh;
+    margin: 0 auto;
+}
+
+.om h1 {
+    text-align: center;
+    color: #7749f8;
+}
+
+.om-Body {
+    margin-top: 10px;
+    
+}
+
+.om-Body .item-list {
+    margin-bottom: 10px;
+    max-height: 300px !important;
+    max-width: 100% !important;
+    min-height: 100px !important;
+    border-radius: none !important; /* pasar a 15px si se requiere despues */
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+.content-row h2 {
+    color: #7749f8 !important;
+}

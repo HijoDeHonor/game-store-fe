@@ -1,15 +1,19 @@
-import React from 'react';
-import Item from './Item';
+import React from "react";
+import Item from "./Item";
 
-function ItemList({ allTheItems, onClick, add, modal }) {
-    const ItemList = allTheItems.map((item) => (
-      <Item key={item.Id} item={item} onClick={onClick} add={add} modal={modal}/>
-    ));
-  
-    return (
-      
-        <div className="item-list">{ItemList}</div>
-      
-    );
-  }
+function ItemList({ allTheItems, onClick, add, modal, recicler, deleteAdd }) {
+  const ItemList = allTheItems.map((item) => (
+    <Item
+      key={item.Id}
+      item={item}
+      onClick={onClick}
+      add={add}
+      modal={modal}
+      recicler={recicler}
+      deleteAdd={deleteAdd}
+    />
+  ));
+
+  return <div className="item-list">{ItemList}</div>;
+}
 export default ItemList;

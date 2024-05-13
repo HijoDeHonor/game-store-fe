@@ -3,12 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Inventory from "./pages/Invetory/Inventory.jsx";
-
+import OfferMaker2 from "./pages/offerMaker/OfferMaker2.jsx";
 
 const App = () => {
   return (
     <React.StrictMode>
-      <Inventory />
+      <OfferMaker2 />
     </React.StrictMode>
   );
 };

@@ -7,7 +7,11 @@ import { Tooltip } from "react-tooltip";
 //my components
 import ModalItem from "./Modal";
 import ReciclerItem from "./ReciclerItem";
-function Item({ item, add, onClick, modal }) {
+
+
+function Item({ item, add, onClick, modal, recicler, deleteAdd}) {
+  const mod=true;
+  const modnone= false;
   const [showModal, setShowModal] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const handleDeleteClick = () => {
@@ -21,13 +25,14 @@ function Item({ item, add, onClick, modal }) {
     onClick ? onClick({ item }) : setShowModal(!showModal);
   };
   const modaldelete = () => {
-    if ((modal = true)) {
+    if (recicler === true) {
       return (
         showDelete && (
           <ReciclerItem
             handleClose={handleClose}
             item={item}
             show={showDelete}
+            deleteAdd={deleteAdd}
             
           />
         )
@@ -35,7 +40,7 @@ function Item({ item, add, onClick, modal }) {
     }
   };
   const modalOn = () => {
-    if ((modal = true)) {
+    if ((modal === true)) {
       return (
         showModal && (
           <ModalItem
@@ -51,7 +56,7 @@ function Item({ item, add, onClick, modal }) {
 
   return (
     <div className="item-card" key={item.Id}>
-      {item.Quantity!==0 ?(<div className="recicler-Item">
+      {(recicler) && item.Quantity!==0 ?(<div className="recicler-Item">
         <img
           src="https://static-00.iconduck.com/assets.00/delete-icon-1864x2048-bp2i0gor.png"
           alt="Delete"
