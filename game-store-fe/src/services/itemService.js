@@ -1,3 +1,6 @@
+import DBServer from "../utils/DB-Server.json";
+import DBUser from "../utils/DB-User.json";
+
 async function addItem(UserName, offer, request, item) {
   let itemsToAdd = [];// this is the array that will be sent to the backend
   let items = offer || request || item; // base on the parameters recieved in the function (offer, request or item) determines which items will be added
@@ -57,36 +60,11 @@ async function removeItem(UserName, item) {
   return removeFromCollection;
 }
 
-// fake database for testing purposes, delete this when the back end is ready
-import DBServer from "../utils/DB-Server.json";
-import DBUser from "../utils/DB-User.json";
 
 
 
-const GetAllItems = /*async*/ (userName) => {
+const GetAllItems = (userName) => {
   const user = userName;
-
-  // restore this comented code when the back end is ready
-
-  // try {
-  //   const res = await fetch(URL + userName ? `/Inventory/${user}`: null , {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   if (!res.ok) {
-  //     throw Error("Error en la peticion del servidor", Error);
-  //   }
-  //   const data = await res.json();
-  //   console.log("Data recivida: ", data);
-  //   return data;
-
-  // } catch (error) {
-  //   console.log("Error en la peticion: ", error);
-  // } 
-
-  // delete the code below when the back end is ready 
   if (user) {
     return DBUser;
   } else {
