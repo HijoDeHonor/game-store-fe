@@ -14,9 +14,8 @@ function ModalItem({ item, handleClose, show, add }) {
   const firstQuantity = item.Quantity;
   const [quantity, setQuantity] = useState(item.Quantity);
 
-  const handleQuantityChange = (item, newQuantity) => {
+  const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
-    console.log(newQuantity);
   };
 
   const [shows, setShows] = useState(show);
@@ -32,7 +31,6 @@ function ModalItem({ item, handleClose, show, add }) {
   };
 
   const eraseItem = () => {
-    //deleteItem(item);
     setShows(false);
     console.log(item, "deleted");
   };

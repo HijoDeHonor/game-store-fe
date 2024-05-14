@@ -10,7 +10,7 @@ function QuantitySelector({ item, onQuantityChange, maxQuantity }) {
     } else if (!maxQuantity) {
       const newQuantity = quantity + 1;
       setQuantity(newQuantity);
-      onQuantityChange(item, newQuantity);
+      onQuantityChange(newQuantity);
     }
   };
 
@@ -20,7 +20,7 @@ function QuantitySelector({ item, onQuantityChange, maxQuantity }) {
     }
     const newQuantity = quantity - 1;
     setQuantity(newQuantity);
-    onQuantityChange({ item }, newQuantity);
+    onQuantityChange(newQuantity);
   };
 
   const handleInputChange = (event) => {

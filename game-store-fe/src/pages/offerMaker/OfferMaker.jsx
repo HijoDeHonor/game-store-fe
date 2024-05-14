@@ -1,50 +1,38 @@
-// react
-import React, { useEffect, useState } from "react";
-
-// my components
+import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar";
 import Item from "../../components/Item";
 import ItemList from "../../components/Itemlist";
 import QuantitySelector from "../../components/QuantitySelector";
 
-// fake database
 import DBServerData from "../../utils/DB-Server.json";
 import DBUserData from "../../utils/DB-User.json";
 
-//styles
 import "./offerMaker.css";
 
 const OfferMaker = () => {
-  // states--------------------------------------------------------------------
   const [query, setQuery] = useState("");
   const [stage, setStage] = useState(0);
   const [filteredData, setFilteredData] = useState([]);
 
-  //dropdown settings
-  const [dropdVisible, setDropdVisible] = useState(false);
-
-  // data
   const [offer, setOffer] = useState([]);
   const [preOffer, setPreOffer] = useState([]);
   const [request, setRequest] = useState([]);
   const [preRequest, setPreRequest] = useState([]);
-
   const [prevItems, setPrevItems] = useState([]);
 
-  // Variables-----------------------------------------------------------------
+  const [dropdVisible, setDropdVisible] = useState(false);
+
+  const mod = true;
+  const modnone = false;
+  const reciclerOff = false;
+  const reciclerOn = true;
+
   const finalOffer = {
     Offer: offer,
     Request: request,
     UserNamePoster: localStorage.getItem("UserName") || "Guest",
   };
-  // move to constant
-  const recicler = false;
-  const mod = true;
-  const modnone = false;
 
-  // functions-----------------------------------------------------------------
-
-  //filter data
   useEffect(() => {
     const filterData = () => {
       const data = stage === 0 ? DBUserData : DBServerData; // change DBUserData to getItems(user) and DBServerData to getItems()
@@ -62,29 +50,159 @@ const OfferMaker = () => {
     filterData();
   }, [stage, query]);
 
-  //go to next stage
-  const nextStage = () => {
-    setStage((prevStage) => prevStage + 1);
-    setPrevItems([]);
+  const addToPrevItems = ({ item }) => {
+    const maxQuantity = item.Quantity;
+    const { Name, Img, Id } = item;
+
+    const itemExists = prevItems.some((prevItem) => prevItem.Name === Name);
+
+    if (!itemExists) {
+      setPrevItems((prevItems) => [
+        ...prevItems,
+        { Id, Name, Quantity: 0, Img, maxQuantity }, //set default quantity to 0
+      ]);
+      if (stage === 0) {
+        setPreOffer((preOffer) => [
+          ...preOffer,
+          { Id, Name, Quantity: 0, Img },
+        ]);
+        setQuery("");
+        document.getElementById("search-input").value = "";
+      } else if (stage === 1) {
+        setPreRequest((preRequest) => [
+          ...preRequest,
+          { Id, Name, Quantity: 0, Img },
+        ]);
+        setQuery("");
+        document.getElementById("search-input").value = "";
+      }
+      setQuery("");
+    }
   };
 
-  //go to previous stage
-  const backStage = () => {
-    if (stage === 1) {
-      setRequest([]);
-      setPrevItems(offer);
+  const preItemsQuantitySelector = (prevItems) => {
+    if (stage !== 2) {
+      return prevItems.map((item) => (
+        <div className="content" key={item.Id}>
+          <Item item={item} modal={modnone} recicler={reciclerOff} />
+          <QuantitySelector
+            item={item}
+            onQuantityChange={(newQuantity) =>
+              onQuantityChange(item, newQuantity)
+            }
+            maxQuantity={item.maxQuantity}
+          />
+          <button className="add-btn" onClick={() => addToOfferRequest(item)}>
+            ADD ITEM
+          </button>
+        </div>
+      ));
     }
     if (stage === 2) {
-      setPrevItems(request);
+      return null;
     }
-    setStage((prevStage) => prevStage - 1);
   };
 
-  //create the offer
-  const Confirm = () => {
+  const onQuantityChange = (item, newQuantity) => {
+    if (stage === 0) {
+   
+      setPreOffer((prevOffer) =>
+        prevOffer.map((prevItem) => {
+          if (prevItem.Name === item.Name) {
+            return { ...prevItem, Quantity: newQuantity };
+          }
+          return prevItem;
+        })
+      );
+    }
+    if (stage === 1) {
+     
+      setPreRequest((prevRequest) =>
+        prevRequest.map((prevItem) => {
+          if (prevItem.Name === item.Name) {
+            return { ...prevItem, Quantity: newQuantity };
+          }
+          return prevItem;
+        })
+      );
+    }
+  };
+
+  const addToOfferRequest = (item) => {
+    if (stage === 0) {
+      const exist = offer.some((offer) => offer.Name === item.Name);
+      if (!exist) {
+        let index = preOffer.findIndex(
+          (preOffer) => preOffer.Name === item.Name
+        );
+        if (index !== -1) {
+          setOffer((prevOffer) => [...prevOffer, preOffer[index]]);
+        }
+      }
+    }
+
+    if (stage === 1) {
+      const exist = request.some((request) => request.Name === item.Name);
+      if (!exist) {
+        let index = preRequest.findIndex(
+          (preRequest) => preRequest.Name === item.Name
+        );
+        if (index !== -1) {
+          setRequest((prevRequest) => [...prevRequest, preRequest[index]]);
+        }
+      }
+    }
+  };
+
+  const deleteAdd = (item) => {
+    if (stage === 0) {
+      let index = offer.findIndex(
+        (itemToRemove) => itemToRemove.Name === item.Name
+      );
+      if (index !== -1) {
+        setOffer((prevOffer) => {
+          const list = [...prevOffer];
+          list.splice(index, 1);
+          return list;
+        });
+      }
+      let index2 = preOffer.findIndex(
+        (itemToRemove) => itemToRemove.Name === item.Name
+      );
+      if (index2 !== -1) {
+        setPreOffer((prevPreOffer) => {
+          const list = [...prevPreOffer];
+          list.splice(index, 1);
+          return list;
+        });
+      }
+    }
+    if (stage === 1) {
+      let index = request.findIndex(
+        (itemToRemove) => itemToRemove.Name === item.Name
+      );
+      if (index !== -1) {
+        setRequest((prevRequest) => {
+          const list = [...prevRequest];
+          list.splice(index, 1);
+          return list;
+        });
+      }
+      let index2 = preRequest.findIndex(
+        (itemToRemove) => itemToRemove.Name === item.Name
+      );
+      if (index2 !== -1) {
+        setPreRequest((prevPreRequest) => {
+          const list = [...prevPreRequest];
+          list.splice(index, 1);
+          return list;
+        });
+      }
+    }
+  };
+
+  const confirm = () => {
     alert(finalOffer.UserNamePoster + " Your offer has been created");
-    console.log(offer, "offer");
-    console.log(request, "request");
     setStage(0);
     setOffer([]);
     setPreOffer([]);
@@ -92,74 +210,38 @@ const OfferMaker = () => {
     setRequest([]);
   };
 
-  //add item to select the quantity
-  const prevAdd = ({ item }) => {
-    const { Id, Name, Img } = item;
-    const maxQuantity = item.Quantity;
-    // Verify if the item already exists
-    const itemExists = prevItems.some((prevItem) => prevItem.Name === Name);
-
-    if (!itemExists) {
-      // If the item does not exist, add it to the prevItems array
-      setPrevItems((prevItems) => [
-        ...prevItems,
-        { Id, Name, Quantity: 0, Img, maxQuantity }, //set default quantity to 0
-      ]);
-      // Add the item to the offer or request array based on the stage
-      if (stage === 0) {
-        
-        setPreOffer((preOffer) => [
-          ...preOffer,
-          { Id, Name, Quantity: 0, Img },
-        ]);
-      } else if (stage === 1) {
-        setPreRequest((preRequest) => [
-          ...preRequest,
-          { Id, Name, Quantity: 0, Img },
-        ]);
-      }
-      setQuery("");
-    }
-  };
-
-  const quantityOnChange = (changedItem, newQuantity) => {
-    //modify quantity of an item in preOffer or preRequest based on the stage
-    const updateItem = { ...changedItem, Quantity: newQuantity };
-    console.log(updateItem, "updateItem");
+  const visualizeOfferRequest = () => {
     if (stage === 0) {
-        console.log(updateItem, "updateItem stage 0");
-      setPreOffer((preOffer) =>
-        preOffer.map((item) =>
-          item.Name === updateItem.Name ? updateItem : item
-        )
+      return (
+        <ItemList
+          allTheItems={offer}
+          modal={modnone}
+          recicler={reciclerOn}
+          deleteAdd={deleteAdd}
+        />
       );
-      console.log(preOffer, "preOffer");
     }
     if (stage === 1) {
-      console.log(updateItem, "updateItem stage 1");
-      setPreRequest((prevRequest) =>
-        prevRequest.map((item) =>
-          item.Name === updateItem.Name ? updateItem : item
-        )
+      return (
+        <ItemList
+          allTheItems={request}
+          modal={modnone}
+          recicler={reciclerOn}
+          deleteAdd={deleteAdd}
+        />
       );
-      console.log(preRequest, "preRequest");
+    }
+    {
+      return (
+        <div className="final-content">
+          <p>this are your Offers</p>
+          <ItemList key={1} allTheItems={offer} modal={modnone} />
+          <p>in exchange for this item...</p>
+          <ItemList key={2} allTheItems={request} modal={modnone} />
+        </div>
+      );
     }
   };
-
-  //add item to offer or request
-  const add = (item) => {
-    console.log(item, "item asd");
-    // Add the item to the offer or request array based on the stage
-    if (stage === 0) {
-      setOffer((prevOffer) => [...prevOffer, item]);
-      console.log(offer, "offer");
-    }
-    if (stage === 1) {
-      setRequest((prevRequest) => [...prevRequest, item]);
-    }
-  };
-
-  //render-----------------------------------------------------------------------------
 
   const stageButton = () => {
     if (stage === 0) {
@@ -188,7 +270,7 @@ const OfferMaker = () => {
           <button className="stage-back" onClick={backStage}>
             Back
           </button>
-          <button className="stage-btn" onClick={Confirm}>
+          <button className="stage-btn" onClick={confirm}>
             Create Offer
           </button>
         </div>
@@ -196,59 +278,27 @@ const OfferMaker = () => {
     }
   };
 
-  const stageContentsection = () => {
+  const nextStage = () => {
     if (stage !== 2) {
-      let content = prevItems;
-      return content.map((item) => (
-        <div className="content" key={item.Id}>
-            <h2>prevItems</h2>
-          <Item item={item} modal={modnone} />
-          <QuantitySelector
-            item={item}
-            onQuantityChange={(newQuantity) =>
-              quantityOnChange(item, newQuantity)
-            }
-            maxQuantity={item.maxQuantity}
-          />
-          <button className="add-btn" onClick={() => add(item)}>
-            ADD ITEM
-          </button>
-        </div>
-      ));
-    }
-    if (stage === 2) {
-      return (
-        <div className="content">
-          <div className="content-row">
-            <h2>offer</h2>
-            <ItemList allTheItems={offer} modal={modnone} />
-          </div>
-          <div className="content-row">
-            <h2>request</h2>
-            <ItemList allTheItems={request} modal={modnone} />
-          </div>
-        </div>
-      );
+      setStage((prevStage) => prevStage + 1);
+      setPrevItems([]);
+      setQuery("");
     }
   };
 
-  const stageContent = () => {
-    if (stage === 0) {
-      return (
-        <div className="content2">
-          <ItemList allTheItems={offer} modal={modnone} />
-        </div>
-      );
-    }
-    if (stage === 1) {
-      return (
-        <div className="content">
-          <ItemList allTheItems={request} modal={modnone} />
-        </div>
-      );
-    }
-    {
-      return null;
+  const backStage = () => {
+    if (stage !== 0) {
+      if (stage === 1) {
+        setPrevItems(offer);
+        setPreRequest([]);
+        setStage((prevStage) => prevStage - 1);
+        setQuery("");
+      }
+      if (stage === 2) {
+        setPrevItems(request);
+        setStage((prevStage) => prevStage - 1);
+        setQuery("");
+      }
     }
   };
 
@@ -258,28 +308,27 @@ const OfferMaker = () => {
       <div className="om-Head">
         <SearchBar filterKey={"Name"} setQuery={setQuery} placeholder={query} />
         {dropdVisible && (
-          <div
-            className="drop"
-            style={{
-              position: "absolute",
-              margin: "5px 20px",
-              zIndex: "999",
-              borderTopLeftRadius: "10px",
-              borderTopRightRadius: "10px",
-              overflow: "hidden",
-            }}
-          >
-            <ItemList allTheItems={filteredData} onClick={prevAdd} recicler={recicler}/>
+          <div className="drop">
+            <ItemList
+              allTheItems={filteredData}
+              onClick={addToPrevItems}
+              recicler={reciclerOff}
+            />
           </div>
         )}
       </div>
       <div className="om-Body">
-        {stageContentsection()}
-        {stageContent()}
+        <div className={stage !== 2 && "om-body-selector"}>
+          {preItemsQuantitySelector(prevItems)}
+        </div>
+
+        {visualizeOfferRequest()}
       </div>
-      <div className="om-foot">{stageButton()}</div>
+      <div className="om-Footer">{stageButton()}</div>
     </div>
   );
+
+  ///////////////////////////////////////////////////////////////////////////////
 };
 
 export default OfferMaker;
