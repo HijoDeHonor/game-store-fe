@@ -72,7 +72,7 @@ function Item({ item, add, onClick, modal, recicler, deleteAdd}) {
         data-tooltip-content={item.Name}
         data-tooltip-place="top"
       />
-      <Tooltip id="tooltip" style={{zIndex: 10}} />
+      <Tooltip id="tooltip" style={{zIndex: 1000}} />
 
       {item.Quantity !== 0 ? (
         <div className="item-quantity">{item.Quantity}</div>

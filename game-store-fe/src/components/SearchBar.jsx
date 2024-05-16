@@ -12,6 +12,7 @@ const SearchBar = ({ setQuery }) => {
         id="search-input"
         type="text"
         placeholder="Search..."
+        autoComplete="off"
         onChange={handleInputChange}
       />
     </div>
