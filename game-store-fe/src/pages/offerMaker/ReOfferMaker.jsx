@@ -8,16 +8,24 @@ import DBUserData from "../../utils/DB-User.json";
 import "./offerMaker.css";
 
 const ReOfferMaker = () => {
-  // State
+  // States
   const [filteredData, setFilteredData] = useState([]);
   const [query, setQuery] = useState("");
+
   const [stage, setStage] = useState(0);
   const [dropdVisible, setDropdVisible] = useState(false);
+
   const [prevItem, setPrevItem] = useState([]);
   const [preOffer, setPreOffer] = useState([]);
   const [offer, setOffer] = useState([]);
   const [preRequest, setPreRequest] = useState([]);
   const [request, setRequest] = useState([]);
+
+  const finalOffer = {
+    Offer: offer,
+    Request: request,
+    UserNamePoster: localStorage.getItem("UserName") || "Guest",
+  };
 
   // Constants
   const mod = true;
@@ -96,15 +104,11 @@ const ReOfferMaker = () => {
 
   const onQuantityChange = (item, newQuantity) => {
     if (stage === 0) {
-        console.log(item,"item", newQuantity)
       const exist = preOffer.some((olditem) => olditem.Name === item.Name);
       if (!exist) {
-        const newItem={...item, Quantity:newQuantity}
-        console.log(newItem, "newItem")
-        setPreOffer((prevPreOffer) => [...prevPreOffer, newItem]), () => {
-            console.log("preOffer after adding new item:", preOffer);}
-      }
-      {
+        const newItem = { ...item, Quantity: newQuantity };
+        setPreOffer((prevPreOffer) => [...prevPreOffer, newItem]);
+      } else {
         const updatedPreOffer = preOffer.map((oldItem) => {
           if (oldItem.Name === item.Name) {
             return { ...oldItem, Quantity: newQuantity };
@@ -117,9 +121,9 @@ const ReOfferMaker = () => {
     if (stage === 1) {
       const exist = preRequest.some((olditem) => olditem.Name === item.Name);
       if (!exist) {
-        setPreRequest((prevPreRequest) => [...prevPreRequest, item]);
-      }
-      {
+        const newItem = { ...item, Quantity: newQuantity };
+        setPreRequest((prevPreRequest) => [...prevPreRequest, newItem]);
+      } else {
         const updatedPreRequest = preRequest.map((oldItem) => {
           if (oldItem.Name === item.Name) {
             return { ...oldItem, Quantity: newQuantity };
@@ -140,6 +144,8 @@ const ReOfferMaker = () => {
         );
         if (index !== -1) {
           setOffer((prevOffer) => [...prevOffer, preOffer[index]]);
+          document.getElementById("search-input").value = "";
+          setQuery("");
         }
       }
     } else if (stage === 1) {
@@ -150,6 +156,8 @@ const ReOfferMaker = () => {
         );
         if (index !== -1) {
           setRequest((prevRequest) => [...prevRequest, preRequest[index]]);
+          document.getElementById("search-input").value = "";
+          setQuery("");
         }
       }
     }
@@ -275,7 +283,12 @@ const ReOfferMaker = () => {
   };
 
   const confirm = () => {
-    // Do something when confirming
+    alert(finalOffer.UserNamePoster + " Your exchange request has been created successfully")
+    setStage(0);
+    setOffer([]);
+    setPreOffer([]);
+    setPreRequest([]);
+    setRequest([]);
   };
 
   return (
