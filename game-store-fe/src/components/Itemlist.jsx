@@ -3,7 +3,7 @@ import Item from './Item';
 
 function ItemList({ allTheItems, onClick, add, modal }) {
     const ItemList = allTheItems.map((item) => (
-      <Item key={item.Id} item={item} onClick={onClick} add={add} modal={modal}/>
+      <Item key={item.Id} item={item} onClick={onClick} add={add} modal={modal} top={"84%"} imageWidth={"60px"}/>
     ));
   
     return (

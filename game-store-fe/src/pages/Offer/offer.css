@@ -1,0 +1,169 @@
+.offer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7vh;
+    height: 100vh;
+}
+
+.offer-list {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: auto;
+  height: 75vh;
+  background-color: #fff;
+}
+
+.offer-list::-webkit-scrollbar {
+    width: 0; 
+}
+
+.table {
+  background-color: #fff;
+  margin : 0 !important;
+}
+
+.t-head {
+    position: sticky;
+    top: -1px;
+    z-index: 100;
+}
+
+.th-id {
+  width: 60px !important;
+  font-size: 25px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+}
+
+.tr-table {
+  height: 100% !important;
+}
+
+.tr-spinner {
+  border-color: transparent !important;
+}
+
+.th-offer {
+  font-size: 25px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  width: calc(70% / 2) !important;
+}
+
+.th-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.td-id {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.td-offer {
+  padding-left: 15px;
+}
+
+.item-container-offer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+  grid-gap: 5px;
+  padding-right: 50px;
+}
+.item-container-request {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+  grid-gap: 5px;
+  padding-left: 50px;
+}
+
+.page-btn-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.page-btn {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.page-btn ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.td-btn {
+  display: table-cell;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+.btn-trade {
+  
+  background-color: #5227cc;
+  color: #fdfcfe;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 110px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 5px 0;
+  cursor: pointer;
+  border: none;
+}
+
+.pagination li {
+  color: transparent;
+  font-weight: bold;
+  font-size: 30px;
+  cursor: pointer;
+  margin: 4px;
+}
+
+.page-link {
+  color: #fdfcfe !important;
+  background-color: transparent !important;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.page-item .active {
+  border-color: #5227cc !important;
+}
+.pagination li a {
+  border-radius: 5px;
+  border-color: #5227cc;
+  font-size: 20px;
+}
+
+.pagination li a:hover {
+  border-color: #0d6efd;
+}
+
+.pagination li a:active {
+  background-color: #5227cc;
+  color: transparent;
+  border-color: #5227cc !important;
+}
+
+.pagination li span {
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.react-tooltip {
+  z-index: 9999;
+}

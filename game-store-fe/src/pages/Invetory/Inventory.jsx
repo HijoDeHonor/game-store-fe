@@ -1,12 +1,12 @@
-//settings
+// settings
 import React, { useState, useEffect } from "react";
+
+// components
 import SearchBar from "../../components/SearchBar";
 import ToggleBtn from "./components/ToggleBtn";
 import ItemList from "../../components/Itemlist";
-// fake database
-import DBServerData from "../../utils/DB-Server.json";
-import DBUserData from "../../utils/DB-User.json";
-//styles
+
+// styles
 import "./Inventory.css";
 
 const Inventory = () => {
@@ -14,13 +14,13 @@ const Inventory = () => {
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [key, setKey] = useState(0);
-  
-  // use them in constants later
-  const mod = true;
-  const modnone = false;
+
+  let userName = localStorage.getItem("UserName") || "Admin"; // borrar  cuando se ponga en uso la base de datos
 
   useEffect(() => {
-    const filterData = () => {
+    const filterData = /*async*/ () => {
+      let DBServerData = /*await*/ GetAllItems();
+      let DBUserData = /*await*/ GetAllItems(userName);
       const data = toggle ? DBServerData : DBUserData;
       const filtered = data.filter((item) =>
         item.Name.toLowerCase().includes(query.toLowerCase())
@@ -33,6 +33,7 @@ const Inventory = () => {
   const toggleButton = () => {
     setToggle((prevToggle) => !prevToggle);
     setKey(key + 1);
+    setQuery("");
   };
 
   return (

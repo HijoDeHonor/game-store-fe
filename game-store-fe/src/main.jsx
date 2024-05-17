@@ -1,16 +1,13 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Inventory from "./pages/Invetory/Inventory.jsx";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import OfferList from './pages/Offer/OfferList'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Inventory from './pages/Invetory/Inventory'; 
 
 
-const App = () => {
-  return (
-    <React.StrictMode>
-      <Inventory />
-    </React.StrictMode>
-  );
-};
-
-createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <OfferList />
+  </React.StrictMode>,
+)
