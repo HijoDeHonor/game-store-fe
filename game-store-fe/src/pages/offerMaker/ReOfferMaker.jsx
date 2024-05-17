@@ -3,17 +3,22 @@ import SearchBar from "../../components/SearchBar";
 import Item from "../../components/Item";
 import ItemList from "../../components/Itemlist";
 import QuantitySelector from "../../components/QuantitySelector";
-import DBServerData from "../../utils/DB-Server.json";
-import DBUserData from "../../utils/DB-User.json";
+
 import "./offerMaker.css";
+import GetAllItems from "../../services/GetAllItems";
+import {
+  MOD_NONE,
+  MOD,
+  RECICLER_OFF,
+  RECICLER_ON,
+} from "../../utils/constants";
 
 const ReOfferMaker = () => {
   // States
   const [filteredData, setFilteredData] = useState([]);
-  const [query, setQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const [stage, setStage] = useState(0);
-  const [dropdVisible, setDropdVisible] = useState(false);
 
   const [prevItem, setPrevItem] = useState([]);
   const [preOffer, setPreOffer] = useState([]);
@@ -21,22 +26,18 @@ const ReOfferMaker = () => {
   const [preRequest, setPreRequest] = useState([]);
   const [request, setRequest] = useState([]);
 
+  const userName = localStorage.getItem("UserName") || "Guest";
+
   const finalOffer = {
     Offer: offer,
     Request: request,
-    UserNamePoster: localStorage.getItem("UserName") || "Guest",
+    UserNamePoster: userName,
   };
-
-  // Constants
-  const mod = true;
-  const modnone = false;
-  const reciclerOn = true;
-  const reciclerOff = false;
 
   // Effects
   useEffect(() => {
     if (stage === 0) {
-      const data = DBUserData;
+      const data = GetAllItems(userName);
       setPrevItem(
         data.map((item) => ({
           ...item,
@@ -45,7 +46,7 @@ const ReOfferMaker = () => {
         }))
       );
     } else if (stage === 1) {
-      const data = DBServerData;
+      const data = GetAllItems();
       setPrevItem(
         data.map((item) => ({
           ...item,
@@ -55,25 +56,25 @@ const ReOfferMaker = () => {
     }
   }, [stage]);
 
-  useEffect(() => {
-    const filterData = () => {
-      const data = prevItem;
-      if (query.trim() === "") {
+  const filterData = () => {
+    const data = prevItem;
+    if (searchQuery.trim() === "") {
+      setFilteredData(data);
+    } else {
+      const filtered = data.filter((item) =>
+        item.Name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      if (filtered.length === 0) {
         setFilteredData([]);
-        setDropdVisible(false);
-      } else if (query.trim() === "*") {
-        setFilteredData(data);
-        setDropdVisible(true);
       } else {
-        const filtered = data.filter((item) =>
-          item.Name.toLowerCase().includes(query.toLowerCase())
-        );
         setFilteredData(filtered);
-        setDropdVisible(true);
       }
-    };
+    }
+  };
+
+  useEffect(() => {
     filterData();
-  }, [stage, query]);
+  }, [stage, searchQuery]);
 
   useEffect(() => {
     console.log(preOffer, "preOffer");
@@ -82,10 +83,17 @@ const ReOfferMaker = () => {
   // Functions
   const dropContent = () => {
     let data = filteredData;
-    if (stage !== 2) {
+    if (stage === 1 || stage === 0) {
+      if (data.length === 0) {
+        return (
+          <div className="content">
+            <p>There is no match for that item name.</p>
+          </div>
+        );
+      }
       return data.map((item) => (
         <div className="content" key={item.Id}>
-          <Item item={item} modal={modnone} recicler={reciclerOff} />
+          <Item item={item} modal={MOD_NONE} recicler={RECICLER_OFF} />
           <QuantitySelector
             item={item}
             onQuantityChange={(newQuantity) =>
@@ -145,7 +153,7 @@ const ReOfferMaker = () => {
         if (index !== -1) {
           setOffer((prevOffer) => [...prevOffer, preOffer[index]]);
           document.getElementById("search-input").value = "";
-          setQuery("");
+          setSearchQuery("");
         }
       }
     } else if (stage === 1) {
@@ -157,7 +165,7 @@ const ReOfferMaker = () => {
         if (index !== -1) {
           setRequest((prevRequest) => [...prevRequest, preRequest[index]]);
           document.getElementById("search-input").value = "";
-          setQuery("");
+          setSearchQuery("");
         }
       }
     }
@@ -202,8 +210,8 @@ const ReOfferMaker = () => {
       return (
         <ItemList
           allTheItems={offer}
-          modal={modnone}
-          recicler={reciclerOn}
+          modal={MOD_NONE}
+          recicler={RECICLER_ON}
           deleteAdd={deleteAdd}
         />
       );
@@ -211,8 +219,8 @@ const ReOfferMaker = () => {
       return (
         <ItemList
           allTheItems={request}
-          modal={modnone}
-          recicler={reciclerOn}
+          modal={MOD_NONE}
+          recicler={RECICLER_ON}
           deleteAdd={deleteAdd}
         />
       );
@@ -220,9 +228,9 @@ const ReOfferMaker = () => {
       return (
         <div className="final-content">
           <p>This are your Offers</p>
-          <ItemList key={1} allTheItems={offer} modal={modnone} />
+          <ItemList key={1} allTheItems={offer} modal={MOD_NONE} />
           <p>In exchange for this item...</p>
-          <ItemList key={2} allTheItems={request} modal={modnone} />
+          <ItemList key={2} allTheItems={request} modal={MOD_NONE} />
         </div>
       );
     }
@@ -266,7 +274,7 @@ const ReOfferMaker = () => {
     if (stage !== 2) {
       setStage((prevStage) => prevStage + 1);
       document.getElementById("search-input").value = "";
-      setQuery("");
+      setSearchQuery("");
     }
   };
 
@@ -278,12 +286,15 @@ const ReOfferMaker = () => {
         setStage((prevStage) => prevStage - 1);
       }
       document.getElementById("search-input").value = "";
-      setQuery("");
+      setSearchQuery("");
     }
   };
 
   const confirm = () => {
-    alert(finalOffer.UserNamePoster + " Your exchange request has been created successfully")
+    alert(
+      finalOffer.UserNamePoster +
+        " Your exchange request has been created successfully"
+    );
     setStage(0);
     setOffer([]);
     setPreOffer([]);
@@ -295,8 +306,12 @@ const ReOfferMaker = () => {
     <div className="om">
       <h1>Offer Maker</h1>
       <div className="om-Head">
-        <SearchBar filterKey={"Name"} setQuery={setQuery} placeholder={query} />
-        {dropdVisible && <div className="drop">{dropContent()}</div>}
+        <SearchBar
+          filterKey={"Name"}
+          setQuery={setSearchQuery}
+          placeholder={searchQuery}
+        />
+        <div className="drop">{dropContent()}</div>
       </div>
       <div className="om-Body">
         <div className={stage !== 2 ? "om-body-selector" : "asd"}>

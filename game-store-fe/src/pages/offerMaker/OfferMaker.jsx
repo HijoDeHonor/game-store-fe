@@ -22,11 +22,6 @@ const OfferMaker = () => {
 
   const [dropdVisible, setDropdVisible] = useState(false);
 
-  const mod = true;
-  const modnone = false;
-  const reciclerOff = false;
-  const reciclerOn = true;
-
   const finalOffer = {
     Offer: offer,
     Request: request,

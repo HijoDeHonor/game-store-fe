@@ -8,18 +8,13 @@ import DBServerData from "../../utils/DB-Server.json";
 import DBUserData from "../../utils/DB-User.json";
 //styles
 import "./Inventory.css";
+import {MOD, MOD_NONE, RECICLER_OFF, RECICLER_ON} from "../../utils/constants"
 
 const Inventory = () => {
   const [toggle, setToggle] = useState(false);
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [key, setKey] = useState(0);
-  
-  // use them in constants later
-  const mod = true;
-  const recicler = true;
-
-  const modnone = false;
 
   useEffect(() => {
     const filterData = () => {
@@ -49,7 +44,7 @@ const Inventory = () => {
         <ToggleBtn toggle={toggle} onClick={toggleButton} />
       </div>
       <div className="inventory-body">
-        <ItemList allTheItems={filteredData} modal={mod} recicler={recicler}/>
+        <ItemList allTheItems={filteredData} modal={MOD} recicler={ toggle? RECICLER_ON : RECICLER_OFF }/>
       </div>
     </div>
   );

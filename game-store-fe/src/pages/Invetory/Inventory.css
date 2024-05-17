@@ -48,3 +48,20 @@
   background-color: #5d27f3;
   left: 60px;
 }
+
+.search-bar {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 40px;
+  padding-left: 10px;
+}
+
+.search-input{
+  border-radius: 5px;
+  border-top: 2px solid #000;
+  padding-left: 10px;
+  margin-left: 10px;
+  height: 30px;
+}

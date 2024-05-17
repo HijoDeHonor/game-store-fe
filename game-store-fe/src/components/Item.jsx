@@ -7,11 +7,10 @@ import { Tooltip } from "react-tooltip";
 //my components
 import ModalItem from "./Modal";
 import ReciclerItem from "./ReciclerItem";
-
+import {MOD, MOD_NONE, RECICLER_OFF, RECICLER_ON} from "../utils/constants"
 
 function Item({ item, add, onClick, modal, recicler, deleteAdd}) {
-  const mod=true;
-  const modnone= false;
+
   const [showModal, setShowModal] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const handleDeleteClick = () => {
