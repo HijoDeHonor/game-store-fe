@@ -1,11 +1,12 @@
 // settings
 import React, { useState, useEffect } from "react";
-
+import {getAllItems}  from "../../services/itemService"
+import { MOD, MODNONE,RECICLER_ON, RECICLER_OFF } from "../../utils/constants";
 // components
 import SearchBar from "../../components/SearchBar";
 import ToggleBtn from "./components/ToggleBtn";
 import ItemList from "../../components/Itemlist";
-
+import LoadingSpinner from "../../components/Spinner";
 // styles
 import "./Inventory.css";
 
@@ -14,24 +15,27 @@ const Inventory = () => {
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [key, setKey] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   let userName = localStorage.getItem("UserName") || "Admin"; // borrar  cuando se ponga en uso la base de datos
+  
+  const getData = async() => {
+    try{
+      const data = toggle? getAllItems(): getAllItems(userName);
+      setIsLoading(false)
+      return data
+    }catch(error){
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
-    const filterData = /*async*/ () => {
-      let DBServerData = /*await*/ GetAllItems();
-      let DBUserData = /*await*/ GetAllItems(userName);
-      const data = toggle ? DBServerData : DBUserData;
-      const filtered = data.filter((item) =>
-        item.Name.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredData(filtered);
-    };
-    filterData();
+    getData()
   }, [toggle, query]);
 
   const toggleButton = () => {
     setToggle((prevToggle) => !prevToggle);
+    setIsLoading(true)
     setKey(key + 1);
     setQuery("");
   };
@@ -48,7 +52,7 @@ const Inventory = () => {
         <ToggleBtn toggle={toggle} onClick={toggleButton} />
       </div>
       <div className="inventory-body">
-        <ItemList allTheItems={filteredData} />
+       {isLoading? <LoadingSpinner /> : <ItemList allTheItems={filteredData} mod={MOD} recicler={RECICLER_ON} /> }
       </div>
     </div>
   );

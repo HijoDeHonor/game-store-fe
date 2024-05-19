@@ -169,5 +169,6 @@ body {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  z-index: 10;
 }
 

@@ -5,9 +5,9 @@ function Item({ item, index, imageWidth, top }) {
   return (
     <div className="item-card" key={index} style={{ width: imageWidth }}>
       <img
-        key={item.id}
+        key={item.Id}
         className="item-img"
-        src={item.img}
+        src={item.Img}
         alt={item.Name}
         style={{ width: imageWidth }} 
         data-tooltip-id="tooltip"

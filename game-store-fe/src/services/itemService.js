@@ -1,5 +1,5 @@
-import DBServer from "../utils/DB-Server.json";
-import DBUser from "../utils/DB-User.json";
+import DBServerData from "../utils/DB-Server.json";
+import DBUserData from "../utils/DB-User.json";
 
 async function addItem(UserName, offer, request, item) {
   let itemsToAdd = [];// this is the array that will be sent to the backend
@@ -60,16 +60,17 @@ async function removeItem(UserName, item) {
   return removeFromCollection;
 }
 
-
-
-
-const GetAllItems = (userName) => {
-  const user = userName;
-  if (user) {
-    return DBUser;
-  } else {
-    return DBServer;
-  }
+const getAllItems = async (userName) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const user = userName;
+      if (user) {
+        resolve(DBUserData);
+      } else {
+        resolve(DBServerData);
+      }
+    }, 1500);
+  });
 };
 
-export { removeItem, addItem, GetAllItems };
+export { removeItem, addItem, getAllItems };

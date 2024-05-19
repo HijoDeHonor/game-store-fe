@@ -13,19 +13,19 @@ function OfferList() {
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchOffers = async () => {
-      try {
-        const offersData = await getOffers(currentPage);
-        setCurrentPage(offersData.currentPage);
-        setTotalPages(offersData.totalPages);
-        setOffers(offersData.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const fetchOffers = async () => {
+    try {
+      const offersData = await getOffers(currentPage);
+      setCurrentPage(offersData.currentPage);
+      setTotalPages(offersData.totalPages);
+      setOffers(offersData.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  useEffect(() => {
     fetchOffers();
   }, [currentPage]);
 
