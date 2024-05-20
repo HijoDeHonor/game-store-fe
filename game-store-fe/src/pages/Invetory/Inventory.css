@@ -48,3 +48,19 @@
   background-color: #5d27f3;
   left: 60px;
 }
+
+.inventory-body {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  min-height: 65vh;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

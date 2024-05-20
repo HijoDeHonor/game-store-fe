@@ -1,13 +1,13 @@
 import React from "react";
 
-const SearchBar = ({ setQuery }) => {
+const SearchBar = ({ setSearchQuery }) => {
   const handleInputChange = (event) => {
-    setQuery(event.target.value);
+    setSearchQuery(event.target.value);
   };
 
   return (
     <div className="search-bar">
-      <input 
+      <input
         className="search-input"
         id="search-input"
         type="text"
