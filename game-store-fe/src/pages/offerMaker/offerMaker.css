@@ -11,10 +11,10 @@
 }
 
 .search-bar {
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
-.drop {
+.FilterContent {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
@@ -26,11 +26,11 @@
   overflow-y: auto;
 }
 
-.drop::-webkit-scrollbar {
+.FilterContent::-webkit-scrollbar {
   display: none;
 }
 
-.drop:last-child{
+.FilterContent:last-child{
     padding-bottom: 10px;
 }
 

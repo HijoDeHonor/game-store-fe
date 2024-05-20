@@ -1,32 +1,24 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar";
-import Item from "../../components/Item";
-import ItemList from "../../components/Itemlist";
-import QuantitySelector from "../../components/QuantitySelector";
+import OfferList from "./components/OfferList";
+import StageButtons from "./components/StageButtons";
+import FilterContent from "./components/FilterContent";
+import GetAllItems from "../../services/GetAllItems";
+import { MOD_NONE, RECICLER_OFF, RECICLER_ON } from "../../utils/constants";
 
 import "./offerMaker.css";
-import GetAllItems from "../../services/GetAllItems";
-import {
-  MOD_NONE,
-  MOD,
-  RECICLER_OFF,
-  RECICLER_ON,
-} from "../../utils/constants";
 
 const ReOfferMaker = () => {
-  // States
+  const userName = localStorage.getItem("UserName") || "Guest";
+
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
   const [stage, setStage] = useState(0);
-
   const [prevItem, setPrevItem] = useState([]);
   const [preOffer, setPreOffer] = useState([]);
   const [offer, setOffer] = useState([]);
   const [preRequest, setPreRequest] = useState([]);
   const [request, setRequest] = useState([]);
-
-  const userName = localStorage.getItem("UserName") || "Guest";
 
   const finalOffer = {
     Offer: offer,
@@ -36,24 +28,19 @@ const ReOfferMaker = () => {
 
   // Effects
   useEffect(() => {
-    if (stage === 0) {
-      const data = GetAllItems(userName);
-      setPrevItem(
-        data.map((item) => ({
-          ...item,
-          maxQuantity: item.Quantity,
-          Quantity: 0,
-        }))
-      );
-    } else if (stage === 1) {
-      const data = GetAllItems();
+    const fetchData = async () => {
+      const data =
+        stage === 0 ? await GetAllItems(userName) : await GetAllItems();
       setPrevItem(
         data.map((item) => ({
           ...item,
           Quantity: 0,
+          ...(stage === 0 && { maxQuantity: item.Quantity }),
         }))
       );
-    }
+    };
+
+    fetchData();
   }, [stage]);
 
   const filterData = () => {
@@ -74,42 +61,13 @@ const ReOfferMaker = () => {
 
   useEffect(() => {
     filterData();
-  }, [stage, searchQuery]);
+  }, [stage, searchQuery, prevItem]);
 
   useEffect(() => {
     console.log(preOffer, "preOffer");
   }, [preOffer]);
 
   // Functions
-  const dropContent = () => {
-    let data = filteredData;
-    if (stage === 1 || stage === 0) {
-      if (data.length === 0) {
-        return (
-          <div className="content">
-            <p>There is no match for that item name.</p>
-          </div>
-        );
-      }
-      return data.map((item) => (
-        <div className="content" key={item.Id}>
-          <Item item={item} modal={MOD_NONE} recicler={RECICLER_OFF} />
-          <QuantitySelector
-            item={item}
-            onQuantityChange={(newQuantity) =>
-              onQuantityChange(item, newQuantity)
-            }
-            maxQuantity={item.maxQuantity}
-          />
-          <button className="add-btn" onClick={() => addToOfferRequest(item)}>
-            ADD ITEM
-          </button>
-        </div>
-      ));
-    }
-    return null;
-  };
-
   const onQuantityChange = (item, newQuantity) => {
     if (stage === 0) {
       const exist = preOffer.some((olditem) => olditem.Name === item.Name);
@@ -205,71 +163,6 @@ const ReOfferMaker = () => {
     }
   };
 
-  const visualizeOfferRequest = () => {
-    if (stage === 0) {
-      return (
-        <ItemList
-          allTheItems={offer}
-          modal={MOD_NONE}
-          recicler={RECICLER_ON}
-          deleteAdd={deleteAdd}
-        />
-      );
-    } else if (stage === 1) {
-      return (
-        <ItemList
-          allTheItems={request}
-          modal={MOD_NONE}
-          recicler={RECICLER_ON}
-          deleteAdd={deleteAdd}
-        />
-      );
-    } else {
-      return (
-        <div className="final-content">
-          <p>This are your Offers</p>
-          <ItemList key={1} allTheItems={offer} modal={MOD_NONE} />
-          <p>In exchange for this item...</p>
-          <ItemList key={2} allTheItems={request} modal={MOD_NONE} />
-        </div>
-      );
-    }
-  };
-
-  const stageButton = () => {
-    if (stage === 0) {
-      return (
-        <div className="stage1-btn">
-          <button className="stage-btn" onClick={nextStage}>
-            Next
-          </button>
-        </div>
-      );
-    } else if (stage === 1) {
-      return (
-        <div className="stage2-btn">
-          <button className="stage-btn" onClick={backStage}>
-            Back
-          </button>
-          <button className="stage-btn" onClick={nextStage}>
-            Next
-          </button>
-        </div>
-      );
-    } else {
-      return (
-        <div className="stage2-btn">
-          <button className="stage-back" onClick={backStage}>
-            Back
-          </button>
-          <button className="stage-btn" onClick={confirm}>
-            Create Offer
-          </button>
-        </div>
-      );
-    }
-  };
-
   const nextStage = () => {
     if (stage !== 2) {
       setStage((prevStage) => prevStage + 1);
@@ -280,11 +173,7 @@ const ReOfferMaker = () => {
 
   const backStage = () => {
     if (stage !== 0) {
-      if (stage === 1) {
-        setStage((prevStage) => prevStage - 1);
-      } else if (stage === 2) {
-        setStage((prevStage) => prevStage - 1);
-      }
+      setStage((prevStage) => prevStage - 1);
       document.getElementById("search-input").value = "";
       setSearchQuery("");
     }
@@ -292,8 +181,7 @@ const ReOfferMaker = () => {
 
   const confirm = () => {
     alert(
-      finalOffer.UserNamePoster +
-        " Your exchange request has been created successfully"
+      `${finalOffer.UserNamePoster}, Your exchange request has been created successfully`
     );
     setStage(0);
     setOffer([]);
@@ -311,13 +199,33 @@ const ReOfferMaker = () => {
           setQuery={setSearchQuery}
           placeholder={searchQuery}
         />
-        <div className="drop">{dropContent()}</div>
+        {stage === 2 ? null : (
+          <div className="FilterContent">
+            <FilterContent
+              data={filteredData}
+              stage={stage}
+              onQuantityChange={onQuantityChange}
+              addToOfferRequest={addToOfferRequest}
+            />
+          </div>
+        )}
       </div>
       <div className="om-Body">
         <div className={stage !== 2 ? "om-body-selector" : "asd"}>
-          {visualizeOfferRequest()}
+          <OfferList
+            items={{ offer, request }}
+            stage={stage}
+            deleteAdd={deleteAdd}
+          />
         </div>
-        <div className="om-Footer">{stageButton()}</div>
+        <div className="om-Footer">
+          <StageButtons
+            stage={stage}
+            nextStage={nextStage}
+            backStage={backStage}
+            confirm={confirm}
+          />
+        </div>
       </div>
     </div>
   );
