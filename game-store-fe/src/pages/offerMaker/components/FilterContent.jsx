@@ -1,26 +1,29 @@
-import Item from "../../../components/Item";
 import QuantitySelector from "../../../components/QuantitySelector";
-import { MOD_NONE, RECICLER_OFF } from "../../../utils/constants";
 
-const FilterContent = ({ data, stage, onQuantityChange, addToOfferRequest}) => {
-  if (stage === 1 || stage === 0) {
+const FilterContent = ({ data, onQuantityChange, add}) => {
+    if (data.length === 0) {
+      return (
+        <div className="content">
+          <p>There is no match for that item name.</p>
+        </div>
+      );
+    }
     return data.map((item) => (
       <div className="content" key={item.Id}>
-        <Item item={item} modal={MOD_NONE} recicler={RECICLER_OFF} />
+        <img src={item.Img} alt= {item.Name} />
         <QuantitySelector
           item={item}
+          shouldShowquantity={true}
           onQuantityChange={(newQuantity) =>
             onQuantityChange(item, newQuantity)
           }
-          maxQuantity={item.maxQuantity}
+          maxQuantity={item.Quantity}
         />
-        <button className="add-btn" onClick={() => addToOfferRequest(item)}>
+        <button className="add-btn" onClick={() => add(item)}>
           ADD ITEM
         </button>
       </div>
     ));
-  }
-  return null;
 };
 
 export default FilterContent;

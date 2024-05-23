@@ -7,7 +7,6 @@ import { Tooltip } from "react-tooltip";
 //my components
 import ModalItem from "./Modal";
 import ReciclerItem from "./ReciclerItem";
-import {MOD, MOD_NONE, RECICLER_OFF, RECICLER_ON} from "../utils/constants"
 
 function Item({ item, add, onClick, modal, recicler, deleteAdd}) {
 

@@ -1,18 +1,19 @@
 import React from "react";
+import { SEARCH } from "../utils/textConstants";
 
-const SearchBar = ({ setQuery }) => {
+const SearchBar = ({ setSearchQuery }) => {
   const handleInputChange = (event) => {
-    setQuery(event.target.value);
+    setSearchQuery(event.target.value);
   };
 
   return (
     <div className="search-bar">
-      <input 
+      <input
         className="search-input"
         id="search-input"
         type="text"
-        placeholder="Search..."
         autoComplete="off"
+        placeholder={SEARCH}
         onChange={handleInputChange}
       />
     </div>

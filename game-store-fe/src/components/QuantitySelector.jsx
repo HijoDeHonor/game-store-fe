@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 
-function QuantitySelector({ item, onQuantityChange, maxQuantity }) {
+function QuantitySelector({ item, onQuantityChange, maxQuantity, shouldShowquantity }) {
   const [quantity, setQuantity] = useState(item.Quantity);
   const quantityUp = () => {
+    console.log(item, quantity)
     if (maxQuantity && quantity < maxQuantity) {
       const newQuantity = quantity + 1;
       setQuantity(newQuantity);
-      onQuantityChange(newQuantity);
+      onQuantityChange && onQuantityChange(newQuantity);
     } else if (!maxQuantity) {
       const newQuantity = quantity + 1;
       setQuantity(newQuantity);
-      onQuantityChange(newQuantity);
+      onQuantityChange && onQuantityChange(newQuantity);
     }
   };
 
@@ -20,7 +21,7 @@ function QuantitySelector({ item, onQuantityChange, maxQuantity }) {
     }
     const newQuantity = quantity - 1;
     setQuantity(newQuantity);
-    onQuantityChange(newQuantity);
+    onQuantityChange && onQuantityChange(newQuantity);
   };
 
   const handleInputChange = (event) => {
@@ -28,7 +29,7 @@ function QuantitySelector({ item, onQuantityChange, maxQuantity }) {
     if (!isNaN(newQuantity)) {
       if (newQuantity >= 0 && (!maxQuantity || newQuantity <= maxQuantity)) {
         setQuantity(newQuantity);
-        onQuantityChange(item, newQuantity);
+        onQuantityChange && onQuantityChange(item, newQuantity);
       }
     }
   };
@@ -42,7 +43,7 @@ function QuantitySelector({ item, onQuantityChange, maxQuantity }) {
         id={`number-input ${item.Id}`}
         className="quantity-input"
         type="text"
-        value={quantity}
+        value={shouldShowquantity ? quantity : 0}
         onChange={handleInputChange}
       />
       <button className="quantity-btn" onClick={quantityUp}>
