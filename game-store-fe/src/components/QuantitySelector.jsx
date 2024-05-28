@@ -45,7 +45,7 @@ function QuantitySelector({
   return (
     <div className="quantity-selector">
       {hasReset && (
-        <button onClick={() => setQuantity(resetValue)}>Reset</button>
+        <button className="quantity-reset-btn" onClick={() => setQuantity(resetValue)}>Reset</button>
       )}
       <button className="quantity-btn" onClick={quantityDown}>
         -

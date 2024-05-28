@@ -5,9 +5,11 @@ export const x = "x"
 export const NEXT = "Next"
 export const BACK = "Back"
 
-
+export const RESET_ALL = "Reset All"
+export const ADD_TO_OFFER= "Add to Offer"
+export const ADD_TO_REQUEST= "Add to Request"
 export const ITEMS_TO_OFFER = "Choose your items for the Offer."
-export const ITEMS_TO_REQUEST = "xChoose the items that you want."
+export const ITEMS_TO_REQUEST = "Choose the items that you want."
 
 export const FINAL_OFFER = "This is your OFFER"
 export const FINAL_REQUEST = "In exchange for these items."

@@ -5,7 +5,7 @@
   margin: 0 auto;
 }
 
-.om h1 {
+.om h1, h3{
   text-align: center;
   color: #7749f8;
 }
@@ -33,6 +33,24 @@
   overflow: hidden;
   background-color: blue;
   overflow-y: auto;
+
+}
+
+.content {
+  display: flex;
+  padding-top: 10px;
+  padding-left: 15%;
+  padding-right: 15%;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.content img {
+  margin-right: 30%;
+  padding: 2px;
+  width: 50px;
+  border: 1px solid black;
+  background-color: #fdfcfe;
 }
 
 .FilterContent::-webkit-scrollbar {
@@ -40,10 +58,11 @@
 }
 
 .FilterContent:last-child{
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .om-Body {
+  background-color: aqua;
   margin-top: 10px;
 }
 
@@ -53,32 +72,31 @@
   border-radius: 10px !important;
   overflow: hidden;
 }
-.content {
-  display: flex;
-  padding-top: 10px;
-  padding-left: 10px;
-  width: 100%;
-  justify-content: space-between;
-}
 
+.om-body p {
+  color: #7749f8;
+}
 
 
 .quantity-selector {
   transform: translateY(-8%);
+  display: flex;
+  width: 40%;
 }
 
 .quantity-input {
-  margin-bottom: 13px;
+  margin-bottom: auto;
+  height: 30px;
 }
 
-.om-Body .item-list {
+.item-list {
   margin-bottom: 10px;
   max-height: 100% !important;
   min-height: 150px !important;
   max-width: 100% !important;
-  border-radius: 15px !important; /* pasar a 15px si se requiere despues */
-  border-bottom-left-radius: 15px !important;
-  border-bottom-right-radius: 15px !important;
+  border-radius: 15px !important;
+
+
 }
 
 
@@ -103,6 +121,14 @@
   color: #7749f8;
 }
 
+.addToLists { 
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+
+}
+
 .add-btn {
   background-color: #5227cc;
   color: #fdfcfe;
@@ -115,6 +141,8 @@
   margin: auto 0;
   cursor: pointer;
   border: none;
+  margin-left: auto;
+  text-align: center;
 }
 
 .quantity-btn {
@@ -122,6 +150,17 @@
   color: #ffffff;
   font-weight: bold;
   border: 1px solid black;
+  height: 30px;
+  margin: auto;
+}
+
+.quantity-reset-btn {
+  background-color: #7749f8;
+  color: #ffffff ;
+  font-weight: bold;
+  border: 1px solid black;
+  height: 30px;
+  border-radius: 5px;
   padding: 2px;
 }
 
