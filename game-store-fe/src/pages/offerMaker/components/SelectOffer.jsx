@@ -27,24 +27,19 @@ const SelectOffer = () => {
 
   const filterData = () => {
     setIsLoading(true);
-    let listToFilter = userItems.filter(item => item.Quantity !== 0);
-    if (searchQuery.trim() === "") {
-      setFilteredData(listToFilter);
-      setIsLoading(false);
-      return;
-    }
-    const filteredData = listToFilter.filter(item =>
+    let listToFilter = userItems.filter((item) => item.Quantity !== 0);
+    const filteredData = listToFilter.filter((item) =>
       item.Name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredData(
-      filteredData.map(item => ({
+      filteredData.map((item) => ({
         ...item,
         Quantity: 0,
       }))
     );
     setIsLoading(false);
   };
-  
+
   useEffect(() => {
     filterData();
   }, [searchQuery, currentStage, prevItems]);

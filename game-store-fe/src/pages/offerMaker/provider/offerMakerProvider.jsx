@@ -66,7 +66,6 @@ export const OfferMakerProvider = ({ children }) => {
 
   const nextStage = () => {
     if (state.currentStage !== 2) {
-      console.log(state.request.length);
       const newData =
         state.currentStage === 0 && state.request.length > 0
           ? state.request
