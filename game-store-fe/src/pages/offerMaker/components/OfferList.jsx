@@ -1,13 +1,12 @@
-import { MOD_NONE, RECICLER_ON } from "../../../utils/constants";
 import ItemList from "../../../components/Itemlist";
 
-const OfferList = ({ items, deleteAdd }) => {
+const OfferList = ({ items, deleteAdd, recicler, modal }) => {
 
   return (
     <ItemList
       allTheItems={items}
-      modal={MOD_NONE}
-      recicler={RECICLER_ON}
+      modal={modal}
+      recicler={recicler}
       deleteAdd={deleteAdd ? deleteAdd : null}
     />
   );

@@ -8,9 +8,10 @@ export const Stage1 = ({
   setSearchQuery,
   filteredData,
   offer,
-  setCurrentStage,
-  addAndUpdate,
+  addToOfferAndUpdate,
   deleteAndUpdate,
+  onQuantityChange,
+  nextStage
 }) => (
   <>
     <div>
@@ -20,13 +21,16 @@ export const Stage1 = ({
       <SearchBar setSearchQuery={setSearchQuery}  />
     </div>
     <div>
-      <FilterContent data={filteredData} onQuantityChange={addAndUpdate} add={addAndUpdate} />
+      <FilterContent data={filteredData} onQuantityChange={onQuantityChange} />
+    </div>
+    <div>
+      <button onClick={addToOfferAndUpdate}>add to offer</button>
     </div>
     <div>
       <OfferList items={offer} deleteAdd={deleteAndUpdate} />
     </div>
     <div>
-      <button onClick={() => setCurrentStage((prevState) => prevState + 1)}>
+      <button onClick={nextStage}>
         {NEXT}
       </button>
     </div>
@@ -37,9 +41,11 @@ export const Stage2 = ({
   setSearchQuery,
   filteredData,
   request,
-  setCurrentStage,
   addToRequest,
   deleteItemFromRequest,
+  nextStage,
+  backStage,
+  onQuantityChange,
 }) => (
   <>
     <div>
@@ -49,39 +55,41 @@ export const Stage2 = ({
       <SearchBar setSearchQuery={setSearchQuery}  />
     </div>
     <div>
-      <FilterContent data={filteredData} onQuantityChange={addToRequest} add={addToRequest} />
+      <FilterContent data={filteredData} onQuantityChange={onQuantityChange} />
     </div>
     <div>
-      <OfferList items={request} deleteAdd={deleteItemFromRequest} />
+      <button onClick={addToRequest}>add to Request</button>
     </div>
     <div>
-      <button onClick={() => setCurrentStage((prevState) => prevState - 1)}>
+      <OfferList items={request} deleteAdd={deleteItemFromRequest}  />
+    </div>
+    <div>
+      <button onClick={backStage}>
         {BACK}
       </button>
-      <button onClick={() => setCurrentStage((prevState) => prevState + 1)}>
+      <button onClick={nextStage}>
         {NEXT}
       </button>
     </div>
   </>
 );
 
-export const FinalStage = ({ offer, request, setCurrentStage, confirmCreateOffer }) => (
+export const FinalStage = ({ offer, request, backStage, confirmCreateOffer }) => (
   <>
     <div>
       <p>{FINAL_OFFER}</p>
-      <OfferList items={offer} />
+      <OfferList items={offer} recicler={false} />
     </div>
     <div>
       <p>{FINAL_REQUEST}</p>
-      <OfferList items={request} />
+      <OfferList items={request} recicler={false} />
     </div>
     <div>
-      <button onClick={() => setCurrentStage((prevState) => prevState - 1)}>
+      <button onClick={backStage}>
         {BACK}
       </button>
       <button onClick={confirmCreateOffer}>{CREATE_OFFER}</button>
     </div>
   </>
 );
-
 

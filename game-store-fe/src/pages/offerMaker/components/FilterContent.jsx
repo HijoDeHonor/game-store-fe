@@ -1,6 +1,6 @@
 import QuantitySelector from "../../../components/QuantitySelector";
 
-const FilterContent = ({ data, onQuantityChange, add}) => {
+const FilterContent = ({ data, onQuantityChange}) => {
     if (data.length === 0) {
       return (
         <div className="content">
@@ -13,15 +13,13 @@ const FilterContent = ({ data, onQuantityChange, add}) => {
         <img src={item.Img} alt= {item.Name} />
         <QuantitySelector
           item={item}
+          hasReset={true}
           shouldShowquantity={true}
           onQuantityChange={(newQuantity) =>
             onQuantityChange(item, newQuantity)
           }
-          maxQuantity={item.Quantity}
+          maxQuantity={item.maxQuantity}
         />
-        <button className="add-btn" onClick={() => add(item)}>
-          ADD ITEM
-        </button>
       </div>
     ));
 };

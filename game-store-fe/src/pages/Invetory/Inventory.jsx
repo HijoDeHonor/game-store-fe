@@ -12,7 +12,7 @@ import {MOD, MOD_NONE, RECICLER_OFF, RECICLER_ON} from "../../utils/constants"
 
 const Inventory = () => {
   const [toggle, setToggle] = useState(false);
-  const [query, setQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [key, setKey] = useState(0);
 
@@ -20,12 +20,12 @@ const Inventory = () => {
     const filterData = () => {
       const data = toggle ? DBServerData : DBUserData;
       const filtered = data.filter((item) =>
-        item.Name.toLowerCase().includes(query.toLowerCase())
+        item.Name.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setFilteredData(filtered);
     };
     filterData();
-  }, [toggle, query]);
+  }, [toggle, searchQuery]);
 
   const toggleButton = () => {
     setToggle((prevToggle) => !prevToggle);
@@ -38,13 +38,13 @@ const Inventory = () => {
         <SearchBar
           key={key}
           filterKey={"Name"}
-          setQuery={setQuery}
-          placeholder={query}
+          setSearchQuery={setSearchQuery}
+          placeholder={searchQuery}
         />
         <ToggleBtn toggle={toggle} onClick={toggleButton} />
       </div>
       <div className="inventory-body">
-        <ItemList allTheItems={filteredData} modal={MOD} recicler={ toggle? RECICLER_ON : RECICLER_OFF }/>
+        <ItemList allTheItems={filteredData} modal={MOD} recicler={ toggle? RECICLER_OFF: RECICLER_ON }/>
       </div>
     </div>
   );
