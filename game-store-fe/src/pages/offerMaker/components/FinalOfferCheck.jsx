@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  OfferMakerProvider,
   useOfferMaker,
 } from "../provider/offerMakerProvider";
 import {
@@ -8,14 +7,27 @@ import {
   FINAL_REQUEST,
   BACK,
   CREATE_OFFER,
+  SET_CURRENT_STAGE,
 } from "../../../utils/textConstants";
 
 import OfferList from "./OfferList";
 
 const FinalOfferCheck = () => {
-  const { state, backStage, confirmCreateOffer } = useOfferMaker();
+  const { state,dispatch, confirmCreateOffer } = useOfferMaker();
 
-  const { offer, request } = state;
+  const { offer, request, currentStage } = state;
+
+  const backStage = () => {
+    if (currentStage !== 0) {
+      const newStage = currentStage - 1;
+      dispatch({
+        type: SET_CURRENT_STAGE,
+        data: newStage,
+      });
+    }
+  };
+
+
   return (
     <>
       <div className="om-body">
@@ -26,9 +38,9 @@ const FinalOfferCheck = () => {
         <p>{FINAL_REQUEST}</p>
         <OfferList items={request} recicler={false} />
       </div>
-      <div>
-        <button onClick={backStage}>{BACK}</button>
-        <button onClick={confirmCreateOffer}>{CREATE_OFFER}</button>
+      <div className="stage2">
+        <button className="stage-btn" onClick={backStage}>{BACK}</button>
+        <button className="confirm-btn" onClick={confirmCreateOffer}>{CREATE_OFFER}</button>
       </div>
     </>
   );

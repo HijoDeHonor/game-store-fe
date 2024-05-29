@@ -57,7 +57,7 @@
   display: none;
 }
 
-.FilterContent:last-child{
+.content:last-child{
   padding-bottom: 10px;
 }
 
@@ -94,38 +94,50 @@
   max-height: 100% !important;
   min-height: 150px !important;
   max-width: 100% !important;
-  border-radius: 15px !important;
-
-
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
-
-.content-row h2 {
-  color: #7749f8 !important;
-}
-
-.stage1-btn {
-  margin: 20px;
+.stage1 {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.stage2-btn {
-  margin: 20px;
+.stage2{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
+.stage-btn {
+  padding: 2px;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #5227cc;
+  border-radius: 10px;
+  width: 50px;
+}
+
+.confirm-btn {
+  padding: 2px;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #5227cc;
+  border-radius: 10px;
+  width: 120px;
+}
+
+
 .final-content p {
   color: #7749f8;
 }
 
-.addToLists { 
+.add-and-rest-Lists { 
   margin-top: 5px;
   margin-bottom: 5px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 
 }
 
@@ -141,7 +153,21 @@
   margin: auto 0;
   cursor: pointer;
   border: none;
-  margin-left: auto;
+  text-align: center;
+}
+
+.add-btn-request {
+  background-color: #5227cc;
+  color: #fdfcfe;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 150px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  margin: auto 0;
+  cursor: pointer;
+  border: none;
   text-align: center;
 }
 

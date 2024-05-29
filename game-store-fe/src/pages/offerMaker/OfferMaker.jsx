@@ -22,7 +22,7 @@ const OfferMaker = () => {
 
   return (
     <>
-      <div className="om">{stage}</div>
+      <div>{stage}</div>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function QuantitySelector({
   item,
@@ -7,9 +7,19 @@ function QuantitySelector({
   shouldShowquantity,
   hasReset,
   valueForReset,
+  shouldReset,
+  setShouldReset,
 }) {
   const [quantity, setQuantity] = useState(item.Quantity);
-  const [resetValue, setResetValue] = useState(valueForReset || 0);
+  const resetValue = valueForReset ? valueForReset : 0;
+ 
+
+  useEffect(() => {
+    if (shouldReset) {
+      handleReset();
+      setShouldReset(false);
+    }
+  }, [shouldReset, setShouldReset]);
 
   const quantityUp = () => {
     if (maxQuantity && quantity < maxQuantity) {
@@ -42,10 +52,18 @@ function QuantitySelector({
     }
   };
 
+  const handleReset = () => {
+    const newQuantity = resetValue;
+    setQuantity(newQuantity);
+    onQuantityChange && onQuantityChange(newQuantity);
+  };
+
   return (
     <div className="quantity-selector">
       {hasReset && (
-        <button className="quantity-reset-btn" onClick={() => setQuantity(resetValue)}>Reset</button>
+        <button className="quantity-reset-btn" onClick={handleReset}>
+          Reset
+        </button>
       )}
       <button className="quantity-btn" onClick={quantityDown}>
         -
@@ -63,5 +81,4 @@ function QuantitySelector({
     </div>
   );
 }
-
 export default QuantitySelector;

@@ -1,51 +1,66 @@
 import React, { useEffect, useState } from "react";
-import {
-  OfferMakerProvider,
-  useOfferMaker,
-} from "../provider/offerMakerProvider";
+import { useOfferMaker } from "../provider/offerMakerProvider";
 import {
   ADD_TO_OFFER,
   ITEMS_TO_OFFER,
   NEXT,
   RESET_ALL,
+  SET_CURRENT_STAGE,
   SET_OFFER,
   SET_USER_ITEMS,
 } from "../../../utils/textConstants";
 
+import { getUserItems } from "../../../services/GetAllItems";
 import SearchBar from "../../../components/SearchBar";
 import FilterContent from "./FilterContent";
 import OfferList from "./OfferList";
 
 const SelectOffer = () => {
-  const { state, dispatch, nextStage, resetAllCounts } = useOfferMaker();
+  const { state, dispatch } = useOfferMaker();
   const { userItems, currentStage, offer } = state;
 
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [prevItems, setPrevItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [shouldReset, setShouldReset] = useState(false);
+
+  const fetchItems = async () => {
+    try {
+      const userItem = await getUserItems();
+      dispatch({
+        type: SET_USER_ITEMS,
+        data: userItem.map((item) => ({
+          ...item,
+          maxQuantity: item.Quantity,
+          Quantity: 0,
+        })),
+      });
+    } catch (error) {
+      console.error("Error fetching items: ", error);
+    }
+  };
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
   const filterData = () => {
     setIsLoading(true);
-    let listToFilter = userItems.filter((item) => item.Quantity !== 0);
+    let listToFilter = userItems.filter((item) => item.maxQuantity !== 0);
     const filteredData = listToFilter.filter((item) =>
       item.Name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setFilteredData(
-      filteredData.map((item) => ({
-        ...item,
-        Quantity: 0,
-      }))
-    );
+    setFilteredData(filteredData);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    filterData();
-  }, [searchQuery, currentStage, prevItems]);
+    console.log(shouldReset);
+  }, [shouldReset]);
+
   useEffect(() => {
-    console.log(prevItems, "prevItems");
-  }, [prevItems]);
+    filterData();
+  }, [searchQuery, currentStage, prevItems, userItems]);
 
   const onQuantityChange = (item, newQuantity) => {
     const existInPrevItems = prevItems.some(
@@ -65,7 +80,7 @@ const SelectOffer = () => {
         { ...item, Quantity: newQuantity },
       ]);
     }
-  
+
     const existInFilteredData = filteredData.some(
       (filteredItem) => filteredItem.Name === item.Name
     );
@@ -125,7 +140,7 @@ const SelectOffer = () => {
     } else {
       alert("there is no items selected");
     }
-    setPrevItems([]);
+    resetAllCounts()
   };
 
   const deleteAndUpdate = (item) => {
@@ -141,47 +156,66 @@ const SelectOffer = () => {
       type: SET_USER_ITEMS,
       data: state.userItems.map((userItem) =>
         userItem.Name === item.Name
-          ? { ...userItem, Quantity: userItem.Quantity + item.Quantity }
+          ? {
+              ...userItem,
+              Quantity: userItem.Quantity + item.Quantity,
+              maxQuantity: item.maxQuantity,
+            }
           : userItem
       ),
     });
   };
 
+  const resetAllCounts = () => {
+    filteredData.forEach((item) => {
+      onQuantityChange(item, 0);
+    });
+    setPrevItems([]);
+    setShouldReset(true);
+  };
+
+  const nextStage = () => {
+    if (currentStage !== 2) {
+      dispatch({
+        type: SET_CURRENT_STAGE,
+        data: currentStage + 1,
+      });
+    }
+  };
+
   return (
-    <OfferMakerProvider>
-      <div className="om">
-        <h3>{ITEMS_TO_OFFER}</h3>
-        <div>
-          <SearchBar setSearchQuery={setSearchQuery} />
-        </div>
-        <div className="FilterContent">
-          {isLoading ? null : (
-            <FilterContent
-              data={filteredData}
-              onQuantityChange={onQuantityChange}
-            />
-          )}
-        </div>
-        <div className="add-and-rest-Lists">
-          <button className="add-btn" onClick={resetAllCounts}>
-            {RESET_ALL}
-          </button>
-          <button className="add-btn" onClick={addToOfferAndUpdate}>
-            {ADD_TO_OFFER}
-          </button>
-        </div>
-        <div className="om-body">
-          <OfferList
-            items={offer}
-            deleteAdd={deleteAndUpdate}
-            recicler={true}
-          />
-        </div>
-        <div>
-          <button onClick={nextStage}>{NEXT}</button>
-        </div>
+    <div className="om">
+      <h3>{ITEMS_TO_OFFER}</h3>
+      <div>
+        <SearchBar setSearchQuery={setSearchQuery} />
       </div>
-    </OfferMakerProvider>
+      <div className="FilterContent">
+        {isLoading ? null : (
+          <FilterContent
+            data={filteredData}
+            onQuantityChange={onQuantityChange}
+            shouldReset={shouldReset}
+            setShouldReset={setShouldReset}
+          />
+        )}
+      </div>
+      <div className="add-and-rest-Lists">
+        <button className="add-btn" onClick={resetAllCounts}>
+          {RESET_ALL}
+        </button>
+        <button className="add-btn" onClick={addToOfferAndUpdate}>
+          {ADD_TO_OFFER}
+        </button>
+      </div>
+      <div className="om-body">
+        <OfferList items={offer} deleteAdd={deleteAndUpdate} recicler={true} />
+      </div>
+      <div className="stage1">
+        <button className="stage-btn" onClick={nextStage}>
+          {NEXT}
+        </button>
+      </div>
+    </div>
   );
 };
 

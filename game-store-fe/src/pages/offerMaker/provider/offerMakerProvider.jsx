@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import {
   SET_CURRENT_STAGE,
   SET_OFFER,
@@ -6,7 +6,6 @@ import {
   SET_SERVER_ITEMS,
   SET_USER_ITEMS,
 } from "../../../utils/textConstants";
-import { getAllItems, getUserItems } from "../../../services/GetAllItems";
 
 const OfferMakerContext = createContext();
 
@@ -41,62 +40,12 @@ const reducer = (state, action) => {
 export const OfferMakerProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const fetchItems = async () => {
-    try {
-      const userItem = await getUserItems();
-      const serverItems = await getAllItems();
-      dispatch({
-        type: SET_USER_ITEMS,
-        data: userItem.map((item) => ({
-          ...item,
-          maxQuantity: item.Quantity,
-        })),
-      });
-      dispatch({
-        type: SET_SERVER_ITEMS,
-        data: serverItems,
-      });
-    } catch (error) {
-      console.error("Error fetching items: ", error);
-    }
-  };
-  useEffect(() => {
-    fetchItems();
-  }, []);
-
-  const nextStage = () => {
-    if (state.currentStage !== 2) {
-      const newData =
-        state.currentStage === 0 && state.request.length > 0
-          ? state.request
-          : [];
-      dispatch({
-        type: SET_CURRENT_STAGE,
-        data: state.currentStage + 1,
-      });
-    }
-  };
-
-  const backStage = () => {
-    if (state.currentStage !== 0) {
-      const newStage = state.currentStage - 1;
-      dispatch({
-        type: SET_CURRENT_STAGE,
-        data: newStage,
-      });
-    }
-  };
-
   const reset = () => {
     dispatch({ type: SET_CURRENT_STAGE, data: 0 });
     dispatch({ type: SET_SERVER_ITEMS, data: [] });
     dispatch({ type: SET_USER_ITEMS, data: [] });
     dispatch({ type: SET_OFFER, data: [] });
     dispatch({ type: SET_REQUEST, data: [] });
-  };
-
-  const resetAllCounts = () => {
-    console.log("todo va a cero");
   };
 
   const confirmCreateOffer = () => {
@@ -109,9 +58,6 @@ export const OfferMakerProvider = ({ children }) => {
       value={{
         state,
         dispatch,
-        nextStage,
-        backStage,
-        resetAllCounts,
         confirmCreateOffer,
       }}
     >

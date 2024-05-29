@@ -1,6 +1,6 @@
 import QuantitySelector from "../../../components/QuantitySelector";
 
-const FilterContent = ({ data, onQuantityChange}) => {
+const FilterContent = ({ data, onQuantityChange, shouldReset, setShouldReset}) => {
     if (data.length === 0) {
       return (
         <div className="content">
@@ -8,6 +8,7 @@ const FilterContent = ({ data, onQuantityChange}) => {
         </div>
       );
     }
+
     return data.map((item) => (
       <div className="content" key={item.Id}>
         <img src={item.Img} alt= {item.Name} />
@@ -19,6 +20,8 @@ const FilterContent = ({ data, onQuantityChange}) => {
             onQuantityChange(item, newQuantity)
           }
           maxQuantity={item.maxQuantity}
+          shouldReset={shouldReset}
+          setShouldReset={setShouldReset}
         />
       </div>
     ));
