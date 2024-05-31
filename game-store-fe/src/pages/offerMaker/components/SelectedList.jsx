@@ -1,7 +1,6 @@
 import ItemList from "../../../components/Itemlist";
 
-const OfferList = ({ items, deleteAdd, recicler, modal }) => {
-
+const SelectedList = ({ items, deleteAdd, recicler, modal }) => {
   return (
     <ItemList
       allTheItems={items}
@@ -12,4 +11,4 @@ const OfferList = ({ items, deleteAdd, recicler, modal }) => {
   );
 };
 
-export default OfferList;
+export default SelectedList;

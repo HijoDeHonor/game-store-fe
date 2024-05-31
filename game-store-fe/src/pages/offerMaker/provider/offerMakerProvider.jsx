@@ -40,25 +40,13 @@ const reducer = (state, action) => {
 export const OfferMakerProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const reset = () => {
-    dispatch({ type: SET_CURRENT_STAGE, data: 0 });
-    dispatch({ type: SET_SERVER_ITEMS, data: [] });
-    dispatch({ type: SET_USER_ITEMS, data: [] });
-    dispatch({ type: SET_OFFER, data: [] });
-    dispatch({ type: SET_REQUEST, data: [] });
-  };
-
-  const confirmCreateOffer = () => {
-    alert("genio de la vida ya tenes creada tu oferta papa");
-    reset();
-  };
+ 
 
   return (
     <OfferMakerContext.Provider
       value={{
         state,
         dispatch,
-        confirmCreateOffer,
       }}
     >
       {children}

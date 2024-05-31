@@ -7,15 +7,14 @@ import { createBrowserRouter, RouterProvider} from "react-router-dom";
 //main components
 import LoginForm from "./pages/login/login.jsx";
 import Inventory from "./pages/Invetory/Inventory.jsx";
-import OfferMaker from "./pages/offerMaker/OfferMaker.jsx";
-
+import OfferMakerWithProvider from "./pages/offerMaker/OfferMaker.jsx";
 
 const router = createBrowserRouter([
   {
     path: '',
     element: <App />,
     children: [
-      { path: '', element: <OfferMaker /> },
+      { path: '', element: <OfferMakerWithProvider /> },
       {
         path: 'inventory',
         element: <Inventory />,

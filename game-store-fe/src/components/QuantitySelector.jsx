@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function QuantitySelector({
   item,
-  onQuantityChange,
+  onChangeQuantity,
   maxQuantity,
   shouldShowquantity,
   hasReset,
@@ -25,11 +25,11 @@ function QuantitySelector({
     if (maxQuantity && quantity < maxQuantity) {
       const newQuantity = quantity + 1;
       setQuantity(newQuantity);
-      onQuantityChange && onQuantityChange(newQuantity);
+      onChangeQuantity && onChangeQuantity(newQuantity);
     } else if (!maxQuantity) {
       const newQuantity = quantity + 1;
       setQuantity(newQuantity);
-      onQuantityChange && onQuantityChange(newQuantity);
+      onChangeQuantity && onChangeQuantity(newQuantity);
     }
   };
 
@@ -39,7 +39,7 @@ function QuantitySelector({
     }
     const newQuantity = quantity - 1;
     setQuantity(newQuantity);
-    onQuantityChange && onQuantityChange(newQuantity);
+    onChangeQuantity && onChangeQuantity(newQuantity);
   };
 
   const handleInputChange = (event) => {
@@ -47,7 +47,7 @@ function QuantitySelector({
     if (!isNaN(newQuantity)) {
       if (newQuantity >= 0 && (!maxQuantity || newQuantity <= maxQuantity)) {
         setQuantity(newQuantity);
-        onQuantityChange && onQuantityChange(newQuantity);
+        onChangeQuantity && onChangeQuantity(newQuantity);
       }
     }
   };
@@ -55,7 +55,7 @@ function QuantitySelector({
   const handleReset = () => {
     const newQuantity = resetValue;
     setQuantity(newQuantity);
-    onQuantityChange && onQuantityChange(newQuantity);
+    onChangeQuantity && onChangeQuantity(newQuantity);
   };
 
   return (

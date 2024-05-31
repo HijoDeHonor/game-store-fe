@@ -10,22 +10,14 @@ import {
   SET_CURRENT_STAGE,
 } from "../../../utils/textConstants";
 
-import OfferList from "./OfferList";
+import OfferList from "./SelectedList";
 
 const FinalOfferCheck = () => {
-  const { state,dispatch, confirmCreateOffer } = useOfferMaker();
+  const { state, } = useOfferMaker();
 
-  const { offer, request, currentStage } = state;
+  const { offer, request, } = state;
 
-  const backStage = () => {
-    if (currentStage !== 0) {
-      const newStage = currentStage - 1;
-      dispatch({
-        type: SET_CURRENT_STAGE,
-        data: newStage,
-      });
-    }
-  };
+
 
 
   return (
@@ -37,10 +29,6 @@ const FinalOfferCheck = () => {
       <div className="om-body">
         <p>{FINAL_REQUEST}</p>
         <OfferList items={request} recicler={false} />
-      </div>
-      <div className="stage2">
-        <button className="stage-btn" onClick={backStage}>{BACK}</button>
-        <button className="confirm-btn" onClick={confirmCreateOffer}>{CREATE_OFFER}</button>
       </div>
     </>
   );
