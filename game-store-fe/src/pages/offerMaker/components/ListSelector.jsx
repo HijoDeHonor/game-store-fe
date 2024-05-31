@@ -15,8 +15,8 @@ const ListSelector = ({
   resetAllCounts,
   onChangeQuantity,
   setShouldReset,
-  shouldReset,
-}) => {
+  shouldReset}
+) => {
   return (
     <>
       <div className="om">

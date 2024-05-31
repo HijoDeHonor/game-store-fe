@@ -26,11 +26,11 @@ const OfferMaker = () => {
 
   const [newOfferItems, setNewOfferItems] = useState([]);
   const [newRequestItems, setNewRequestItems] = useState([]);
+  const [allLoad, setAllLoad] = useState(false);
 
   // 'fetch' to get the userItems and the serverItems then set in the context
   useEffect(() => {
     getUserItems().then((result) => {
-      console.log(result,"result user")
       const items = result.map((item) => {
         const maxQuantity = item.Quantity;
         item.Quantity = 0;
@@ -42,12 +42,14 @@ const OfferMaker = () => {
       });
     });
     getAllItems().then((result) => {
-      console.log(result,"result server")
       dispatch({
         type: SET_SERVER_ITEMS,
         data: result,
       });
+      setAllLoad(true);
     });
+    if (allLoad) {
+    }
   }, [dispatch]);
 
   // dispatch for offer
@@ -92,40 +94,40 @@ const OfferMaker = () => {
     alert("genio de la vida ya tenes creada tu oferta papa");
     reset();
   };
-  useEffect(() => {
-    console.log(userItems, "userItems");
-    console.log(serverItems, "serverItems");
-  }, [userItems, serverItems]);
 
-  const Stages = [
-    <SelectStage
-      key={"SelectOffer"}
-      listOfItems={userItems}
-      listKey={offer}
-      titleReference={ITEMS_TO_OFFER}
-      btnReference={ADD_TO_OFFER}
-      UpdateList={setNewOfferItems}
-    />,
-    <SelectStage
-      key={"SelectRequest"}
-      listOfItems={serverItems}
-      listKey={request}
-      titleReference={ITEMS_TO_REQUEST}
-      btnReference={ADD_TO_REQUEST}
-      UpdateList={setNewRequestItems}
-    />,
-    <FinalOfferCheck key={"FinalOfferCheck"} />,
-  ];
 
-  return (
-    <Stepper
-      steps={Stages}
-      currentStep={currentStage}
-      nextStep={nextStage}
-      prevStep={backStage}
-      onSubmit={confirmCreateOffer}
-    />
-  );
+
+    return (
+      <>
+        {allLoad && userItems.length > 0 && (
+          <Stepper
+            steps={[
+              <SelectStage
+                key={"SelectOffer"}
+                listOfItems={userItems||[]}
+                listKey={offer}
+                titleReference={ITEMS_TO_OFFER}
+                btnReference={ADD_TO_OFFER}
+                UpdateList={setNewOfferItems}
+              />,
+              <SelectStage
+                key={"SelectRequest"}
+                listOfItems={serverItems||[]}
+                listKey={request}
+                titleReference={ITEMS_TO_REQUEST}
+                btnReference={ADD_TO_REQUEST}
+                UpdateList={setNewRequestItems}
+              />,
+              <FinalOfferCheck key={"FinalOfferCheck"} />,
+            ]}
+            currentStep={currentStage}
+            nextStep={nextStage}
+            prevStep={backStage}
+            onSubmit={confirmCreateOffer}
+          />
+        )}
+      </>
+    );
 };
 
 const OfferMakerWithProvider = () => {

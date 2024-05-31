@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useOfferMaker } from "../provider/offerMakerProvider";
 import ListSelector from "./ListSelector";
 
 const SelectStage = ({
-  listOfitems, // list of items from user or the server
+  listOfItems, // list of items from user or the server
   listKey, // either 'offer' or 'request'
   updateList, //update offer or request
   titleReference,
   btnReference, //  add to offer o add to request
 }) => {
   //context
-  const { state, dispatch } = useOfferMaker();
+  
   //states
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const [itemsToFilter, setItemsToFilter] = useState(listOfitems);
+  const [itemsToFilter, setItemsToFilter] = useState(listOfItems);
   const [prevItems, setPrevItems] = useState([]);
-  
   const [shouldReset, setShouldReset] = useState(false);
+
+  
 
   const filterData = () => {
     const filteredData = itemsToFilter.filter(
@@ -31,16 +31,8 @@ const SelectStage = ({
     filterData();
   }, [searchQuery, itemsToFilter]);
 
-  // const updateItemsToFilter = (listOfItems) => {
-  //   dispatch({
-  //     type: SET_USER_ITEMS,
-  //     data: itemsToFilter,
-  //   });
-  // };
 
-  // useEffect(() => {
-  //   updateItemsToFilter(itemsToFilter); // reemplaza el dispatch de abajo
-  // }, [itemsToFilter]);
+  
 
   const addAndUpdate = () => {
     // Filter out items with a quantity of 0
@@ -176,7 +168,7 @@ const SelectStage = ({
       setSearchQuery={setSearchQuery}
       selectedItems={listKey} //offer o request
       addToList={addAndUpdate}
-      deleteAndUpdate={deleteAndUpdate}
+      deleteFromList={deleteAndUpdate}
       resetAllCounts={resetAllCounts}
       onChangeQuantity={onChangeQuantity}
       shouldReset={shouldReset}
