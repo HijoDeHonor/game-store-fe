@@ -19,7 +19,7 @@ import FinalOfferCheck from "./components/FinalOfferCheck";
 
 const OfferMaker = () => {
   const { state, dispatch } = useOfferMaker();
-  const { currentStage, userItems, serverItems } = state;
+  const { currentStage, userItems, serverItems, offer, request } = state;
 
   const [allLoad, setAllLoad] = useState(false);
 
@@ -45,17 +45,23 @@ const OfferMaker = () => {
     });
     if (allLoad) {
     }
-  }, [dispatch]);
-
-
+  }, []);
 
   // Stage controls
   const nextStage = () => {
-    const newStage = currentStage + 1;
-    dispatch({
-      type: SET_CURRENT_STAGE,
-      data: newStage,
-    });
+    if (offer.length > 0 && currentStage === 0) {
+      const newStage = currentStage + 1;
+      dispatch({
+        type: SET_CURRENT_STAGE,
+        data: newStage,
+      });
+    } else if (request.length > 0 && currentStage === 1) {
+      const newStage = currentStage + 1;
+      dispatch({
+        type: SET_CURRENT_STAGE,
+        data: newStage,
+      });
+    }
   };
   const backStage = () => {
     const newStage = currentStage - 1;
@@ -67,8 +73,6 @@ const OfferMaker = () => {
 
   const reset = () => {
     dispatch({ type: SET_CURRENT_STAGE, data: 0 });
-    dispatch({ type: SET_SERVER_ITEMS, data: [] });
-    dispatch({ type: SET_USER_ITEMS, data: [] });
     dispatch({ type: SET_OFFER, data: [] });
     dispatch({ type: SET_REQUEST, data: [] });
   };

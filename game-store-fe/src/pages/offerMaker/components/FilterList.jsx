@@ -16,7 +16,7 @@ const FilterList = ({ data, onChangeQuantity, shouldReset, setShouldReset}) => {
         <QuantitySelector
           item={item}
           hasReset={true}
-          shouldShowquantity={true}
+          shouldShowQuantity={true}
           onChangeQuantity={(newQuantity) =>
             onChangeQuantity(item, newQuantity)
           }

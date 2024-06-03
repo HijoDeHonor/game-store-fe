@@ -4,7 +4,7 @@ function QuantitySelector({
   item,
   onChangeQuantity,
   maxQuantity,
-  shouldShowquantity,
+  shouldShowQuantity,
   hasReset,
   valueForReset,
   shouldReset,
@@ -67,7 +67,7 @@ function QuantitySelector({
           id={`number-input ${item.Id}`}
           className="quantity-input"
           type="text"
-          value={shouldShowquantity ? quantity : 0}
+          value={shouldShowQuantity ? quantity : 0}
           onChange={handleInputChange}
         />
         <button className="quantity-btn" onClick={quantityUp}>

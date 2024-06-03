@@ -60,6 +60,7 @@
   padding-left: 10px;
   justify-content: center !important;
   text-align: center !important;
+  font-weight: bold;
 }
 
 .FilterContent::-webkit-scrollbar {

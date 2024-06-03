@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
 import {  ADD_TO_REQUEST, ITEMS_TO_REQUEST, SET_REQUEST } from "../../../utils/textConstants";
 import { useOfferMaker } from "../provider/offerMakerProvider";
 import SelectStage from "./ListSelector";
 
 const SelectRequest = () => {
-    const {state} = useOfferMaker
+    const {state, dispatch} = useOfferMaker();
     const {request, serverItems} = state 
   const [newRequestItems, setNewRequestItems] = useState([]);
 
