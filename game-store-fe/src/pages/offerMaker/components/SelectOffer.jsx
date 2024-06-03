@@ -7,7 +7,7 @@ const SelectOffer = () => {
   const { state, dispatch } = useOfferMaker();
   const { offer, userItems } = state;
   const [newOfferItems, setNewOfferItems] = useState([]);
-
+  
   useEffect(() => {
     dispatch({
       type: SET_OFFER,

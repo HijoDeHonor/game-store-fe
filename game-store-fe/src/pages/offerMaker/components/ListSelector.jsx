@@ -11,7 +11,6 @@ const ListSelector = ({
   titleReference,
   btnReference, //  add to offer o add to request
 }) => {
-
   //states
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -147,7 +146,6 @@ const ListSelector = ({
     );
   };
 
-
   const resetAllCounts = () => {
     filteredData.forEach((item) => {
       onChangeQuantity(item, 0);
@@ -159,34 +157,35 @@ const ListSelector = ({
   return (
     <div className="om">
       <h3>{titleReference}</h3>
-      <div>
-        <SearchBar setSearchQuery={setSearchQuery} />
-      </div>
-      <div className="FilterContent">
-        <FilterList
-          data={filteredData}
-          onChangeQuantity={onChangeQuantity}
-          shouldReset={shouldReset}
-          setShouldReset={setShouldReset}
-        />
-      </div>
-      <div className="add-and-rest-Lists">
-        <button className="add-btn" onClick={resetAllCounts}>
-          {RESET_ALL}
-        </button>
-        <button className="add-btn-request" onClick={addAndUpdate}>
-          {btnReference}
-        </button>
-      </div>
       <div className="om-body">
-        <SelectedList
-          items={listKey}
-          deleteAdd={deleteAndUpdate}
-          recicler={true}
-        />
+        <div className="select-body">
+          <SearchBar setSearchQuery={setSearchQuery} />
+          <div className="FilterContent">
+            <FilterList
+              data={filteredData}
+              onChangeQuantity={onChangeQuantity}
+              shouldReset={shouldReset}
+              setShouldReset={setShouldReset}
+            />
+          </div>
+          <div className="add-and-rest-Lists">
+            <button className="add-btn" onClick={resetAllCounts}>
+              {RESET_ALL}
+            </button>
+            <button className="add-btn-request" onClick={addAndUpdate}>
+              {btnReference}
+            </button>
+          </div>
+        </div>
+        <div className="om-List">
+          <SelectedList
+            items={listKey}
+            deleteAdd={deleteAndUpdate}
+            recicler={true}
+          />
+        </div>
       </div>
     </div>
   );
 };
-
 export default ListSelector;
