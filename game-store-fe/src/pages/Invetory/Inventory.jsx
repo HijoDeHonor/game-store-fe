@@ -5,7 +5,7 @@ import ToggleBtn from "./components/ToggleBtn";
 import ItemList from "../../components/Itemlist";
 import LoadingSpinner from "../../components/Spinner";
 // fake database
-import { getAllItems } from "../../services/GetAllItems";
+import { getAllItems, getUserItems } from "../../services/GetAllItems";
 //styles
 import "./Inventory.css";
 import { MOD, RECICLER_OFF, RECICLER_ON } from "../../utils/constants";
@@ -17,14 +17,14 @@ const Inventory = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [key, setKey] = useState(0);
-  const [data, setData] = useState(getAllItems(userName));
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
     const data = await new Promise((resolve) => {
       setTimeout(() => {
-        resolve(toggle ? getAllItems(userName) : getAllItems());
-      }, 2500);
+        resolve(toggle ? getAllItems(): getUserItems());
+      }, 1000);
     });
     setData(data);
     setIsLoading(false);
@@ -37,7 +37,7 @@ const Inventory = () => {
 
   useEffect(() => {
     filterData();
-  }, [toggle, searchQuery]);
+  }, [toggle, searchQuery, isLoading]);
 
   const filterData = () => {
     const filtered = data.filter((item) =>
