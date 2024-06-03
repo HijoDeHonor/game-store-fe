@@ -1,5 +1,5 @@
 .om {
-  height: 100vh;
+  height: 90vh;
   width: 70vw;
   padding-top: 10vh;
   margin: 0 auto;
@@ -46,11 +46,20 @@
 }
 
 .content img {
-  margin-right: 30%;
   padding: 2px;
   width: 50px;
   border: 1px solid black;
   background-color: #fdfcfe;
+}
+
+.content p {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  justify-content: center !important;
+  text-align: center !important;
 }
 
 .FilterContent::-webkit-scrollbar {

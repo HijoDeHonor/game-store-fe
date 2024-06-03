@@ -4,14 +4,8 @@ import {
   useOfferMaker,
 } from "./provider/offerMakerProvider";
 import "./offerMaker.css";
-import FinalOfferCheck from "./components/FinalOfferCheck";
-import SelectStage from "./components/SelectStage";
 import { getAllItems, getUserItems } from "../../services/GetAllItems";
 import {
-  ADD_TO_OFFER,
-  ADD_TO_REQUEST,
-  ITEMS_TO_OFFER,
-  ITEMS_TO_REQUEST,
   SET_CURRENT_STAGE,
   SET_OFFER,
   SET_REQUEST,
@@ -19,13 +13,14 @@ import {
   SET_USER_ITEMS,
 } from "../../utils/textConstants";
 import Stepper from "./components/stepper";
+import SelectOffer from "./components/SelectOffer";
+import SelectRequest from "./components/SelectRequest";
+import FinalOfferCheck from "./components/FinalOfferCheck";
 
 const OfferMaker = () => {
   const { state, dispatch } = useOfferMaker();
-  const { currentStage, offer, request, userItems, serverItems } = state;
+  const { currentStage, userItems, serverItems } = state;
 
-  const [newOfferItems, setNewOfferItems] = useState([]);
-  const [newRequestItems, setNewRequestItems] = useState([]);
   const [allLoad, setAllLoad] = useState(false);
 
   // 'fetch' to get the userItems and the serverItems then set in the context
@@ -52,33 +47,21 @@ const OfferMaker = () => {
     }
   }, [dispatch]);
 
-  // dispatch for offer
-  useEffect(() => {
-    dispatch({
-      type: SET_OFFER,
-      data: newOfferItems,
-    });
-  }, [newOfferItems]);
 
-  // dispatch for request
-  useEffect(() => {
-    dispatch({
-      type: SET_REQUEST,
-      data: newRequestItems,
-    });
-  }, [newRequestItems]);
 
   // Stage controls
-  const nextStage = (currentStage) => {
+  const nextStage = () => {
+    const newStage = currentStage + 1;
     dispatch({
       type: SET_CURRENT_STAGE,
-      data: currentStage + 1,
+      data: newStage,
     });
   };
-  const backStage = (currentStage) => {
+  const backStage = () => {
+    const newStage = currentStage - 1;
     dispatch({
       type: SET_CURRENT_STAGE,
-      data: currentStage - 1,
+      data: newStage,
     });
   };
 
@@ -95,39 +78,23 @@ const OfferMaker = () => {
     reset();
   };
 
-
-
-    return (
-      <>
-        {allLoad && userItems.length > 0 && (
-          <Stepper
-            steps={[
-              <SelectStage
-                key={"SelectOffer"}
-                listOfItems={userItems||[]}
-                listKey={offer}
-                titleReference={ITEMS_TO_OFFER}
-                btnReference={ADD_TO_OFFER}
-                UpdateList={setNewOfferItems}
-              />,
-              <SelectStage
-                key={"SelectRequest"}
-                listOfItems={serverItems||[]}
-                listKey={request}
-                titleReference={ITEMS_TO_REQUEST}
-                btnReference={ADD_TO_REQUEST}
-                UpdateList={setNewRequestItems}
-              />,
-              <FinalOfferCheck key={"FinalOfferCheck"} />,
-            ]}
-            currentStep={currentStage}
-            nextStep={nextStage}
-            prevStep={backStage}
-            onSubmit={confirmCreateOffer}
-          />
-        )}
-      </>
-    );
+  return (
+    <>
+      {allLoad && userItems.length > 0 && serverItems.length > 0 && (
+        <Stepper
+          steps={[
+            <SelectOffer key={"SelectOffer"} />,
+            <SelectRequest key={"SelectReuest"} />,
+            <FinalOfferCheck key={"FinalOfferCheck"} />,
+          ]}
+          currentStep={currentStage}
+          nextStep={nextStage}
+          prevStep={backStage}
+          onSubmit={confirmCreateOffer}
+        />
+      )}
+    </>
+  );
 };
 
 const OfferMakerWithProvider = () => {

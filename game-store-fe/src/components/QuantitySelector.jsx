@@ -60,11 +60,7 @@ function QuantitySelector({
 
   return (
     <div className="quantity-selector">
-      {hasReset && (
-        <button className="quantity-reset-btn" onClick={handleReset}>
-          Reset
-        </button>
-      )}
+      
       <button className="quantity-btn" onClick={quantityDown}>
         -
       </button>
@@ -78,6 +74,11 @@ function QuantitySelector({
       <button className="quantity-btn" onClick={quantityUp}>
         +
       </button>
+      {hasReset && (
+        <button className="quantity-reset-btn" onClick={handleReset}>
+          Reset
+        </button>
+      )}
     </div>
   );
 }

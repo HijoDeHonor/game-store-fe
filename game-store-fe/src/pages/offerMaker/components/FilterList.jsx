@@ -12,6 +12,7 @@ const FilterList = ({ data, onChangeQuantity, shouldReset, setShouldReset}) => {
     return data.map((item) => (
       <div className="content" key={item.Id}>
         <img src={item.Img} alt= {item.Name} />
+        <p>{item.Name}</p>
         <QuantitySelector
           item={item}
           hasReset={true}

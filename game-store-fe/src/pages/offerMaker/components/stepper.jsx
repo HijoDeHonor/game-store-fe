@@ -1,9 +1,8 @@
-import React from 'react';
-import { BACK, CREATE_OFFER, NEXT } from '../../../utils/textConstants';
+import React from "react";
+import { BACK, CREATE_OFFER, NEXT } from "../../../utils/textConstants";
 
 const Stepper = ({ steps, currentStep, nextStep, prevStep, onSubmit }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (currentStep < steps.length - 1) {
       nextStep();
     } else {
@@ -12,25 +11,25 @@ const Stepper = ({ steps, currentStep, nextStep, prevStep, onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {steps[currentStep]}
-      <div className='stage1'>
+    <>
+      <div className="steps">{steps[currentStep]}</div>
+      <div className="stage1">
+        {currentStep < steps.length - 1 ? (
+          <button className="stage-btn" onClick={handleSubmit}>
+            {NEXT}
+          </button>
+        ) : (
+          <button className="confirm-btn" onClick={handleSubmit}>
+            {CREATE_OFFER}
+          </button>
+        )}
         {currentStep > 0 && (
           <button className="stage-btn" type="button" onClick={prevStep}>
             {BACK}
           </button>
         )}
-        {currentStep < steps.length - 1 ? (
-          <button className="stage-btn" type="submit">
-            {NEXT}
-          </button>
-        ) : (
-          <button className="confirm-btn" type="submit">
-            {CREATE_OFFER}
-          </button>
-        )}
       </div>
-    </form>
+    </>
   );
 };
 
