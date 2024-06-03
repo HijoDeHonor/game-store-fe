@@ -11,7 +11,6 @@ const ListSelector = ({
   titleReference,
   btnReference, //  add to offer o add to request
 }) => {
-  //context
 
   //states
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,17 +31,14 @@ const ListSelector = ({
     filterData();
   }, [searchQuery, itemsToFilter]);
 
-  useEffect(()=>{
-    console.log(itemsToFilter)
-
-  },[itemsToFilter])
+  useEffect(() => {
+    console.log(itemsToFilter);
+  }, [itemsToFilter]);
 
   const addAndUpdate = () => {
-    // Filter out items with a quantity of 0
     const itemsToAdd = prevItems.filter((item) => item.Quantity !== 0);
 
     if (itemsToAdd.length > 0) {
-      // Map over the existing list and update quantities
       const updatedList = listKey.map((prevListItem) => {
         const sameItem = itemsToAdd.find(
           (item) => item.Name === prevListItem.Name
@@ -56,17 +52,13 @@ const ListSelector = ({
           return prevListItem;
         }
       });
-
-      // Add new items that were not in the previous list
       const newListOfItems = itemsToAdd.filter(
         (item) => !updatedList.some((listItem) => listItem.Name === item.Name)
       );
       const finalUpdatedList = [...updatedList, ...newListOfItems];
 
-      // Update the list
       updateList(finalUpdatedList);
 
-      // Update items to filter
       setItemsToFilter(
         itemsToFilter.map((itemInPrevList) => {
           const sameItem = itemsToAdd.find(
@@ -86,7 +78,6 @@ const ListSelector = ({
     } else {
       alert("There are no items selected.");
     }
-    // Reset all counts
     resetAllCounts();
   };
 
@@ -95,7 +86,7 @@ const ListSelector = ({
     setPrevItems((prevItems) =>
       prevItems.filter((prevItem) => prevItem.Name !== item.Name)
     );
-  
+
     const exist = itemsToFilter.some((i) => i.Name === item.Name);
     if (exist) {
       setItemsToFilter((itemsToFilter) =>
@@ -113,15 +104,10 @@ const ListSelector = ({
         )
       );
     } else {
-      setItemsToFilter((prevItemsToFilter) => [
-        ...prevItemsToFilter,
-        item,
-      ]);
+      setItemsToFilter((prevItemsToFilter) => [...prevItemsToFilter, item]);
     }
   };
-  
 
-  // check //
   const onChangeQuantity = (item, newQuantity) => {
     const existInPrevItems = prevItems.some(
       (prevItem) => prevItem.Name === item.Name
@@ -161,7 +147,7 @@ const ListSelector = ({
     );
   };
 
-  // check //
+
   const resetAllCounts = () => {
     filteredData.forEach((item) => {
       onChangeQuantity(item, 0);

@@ -89,12 +89,19 @@ body {
 .quantity-selector{
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   margin-top: 5px;
   border-radius: 5px;
   justify-content: space-around;
   width: 125px;
+
+}
+
+.normal-quantity-selector{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 130px;
 
 }
 

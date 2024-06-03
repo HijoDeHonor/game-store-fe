@@ -14,7 +14,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
 }
 
 .search-input {
@@ -197,5 +197,6 @@
   height: 30px;
   border-radius: 5px;
   padding: 2px;
+  text-align: center;
 }
 

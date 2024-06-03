@@ -12,7 +12,6 @@ function QuantitySelector({
 }) {
   const [quantity, setQuantity] = useState(item.Quantity);
   const resetValue = valueForReset ? valueForReset : 0;
- 
 
   useEffect(() => {
     if (shouldReset) {
@@ -60,24 +59,28 @@ function QuantitySelector({
 
   return (
     <div className="quantity-selector">
-      
-      <button className="quantity-btn" onClick={quantityDown}>
-        -
-      </button>
-      <input
-        id={`number-input ${item.Id}`}
-        className="quantity-input"
-        type="text"
-        value={shouldShowquantity ? quantity : 0}
-        onChange={handleInputChange}
-      />
-      <button className="quantity-btn" onClick={quantityUp}>
-        +
-      </button>
-      {hasReset && (
-        <button className="quantity-reset-btn" onClick={handleReset}>
-          Reset
+      <div className="normal-quantity-selector" >
+        <button className="quantity-btn" onClick={quantityDown}>
+          -
         </button>
+        <input
+          id={`number-input ${item.Id}`}
+          className="quantity-input"
+          type="text"
+          value={shouldShowquantity ? quantity : 0}
+          onChange={handleInputChange}
+        />
+        <button className="quantity-btn" onClick={quantityUp}>
+          +
+        </button>
+      </div>
+
+      {hasReset && (
+        <div className="hasReset">
+          <button className="quantity-reset-btn" onClick={handleReset}>
+            Reset
+          </button>
+        </div>
       )}
     </div>
   );
