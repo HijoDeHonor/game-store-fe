@@ -1,9 +1,6 @@
 import React from "react";
 import { useOfferMaker } from "../provider/offerMakerProvider";
-import {
-  FINAL_OFFER,
-  FINAL_REQUEST,
-} from "../../../utils/textConstants";
+import { FINAL_OFFER, FINAL_REQUEST } from "../../../utils/textConstants";
 
 import OfferList from "./SelectedList";
 
@@ -14,13 +11,15 @@ const FinalOfferCheck = () => {
 
   return (
     <>
-      <div className="om-body">
-        <p>{FINAL_OFFER}</p>
-        <OfferList items={offer} recicler={false} />
-      </div>
-      <div className="om-body">
-        <p>{FINAL_REQUEST}</p>
-        <OfferList items={request} recicler={false} />
+      <div className="om-final-check">
+          <p>{FINAL_OFFER}</p>
+        <div className="offercheck">
+          <OfferList items={offer} recicler={false} />
+        </div>
+          <p>{FINAL_REQUEST}</p>
+        <div className="offercheck">
+          <OfferList items={request} recicler={false} />
+        </div>
       </div>
     </>
   );

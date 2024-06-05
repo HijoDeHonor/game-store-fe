@@ -17,6 +17,8 @@ import SelectOffer from "./components/SelectOffer";
 import SelectRequest from "./components/SelectRequest";
 import FinalOfferCheck from "./components/FinalOfferCheck";
 
+
+
 const OfferMaker = () => {
   const { state, dispatch } = useOfferMaker();
   const { currentStage, userItems, serverItems, offer, request } = state;

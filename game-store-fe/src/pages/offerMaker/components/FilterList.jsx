@@ -21,11 +21,9 @@ const FilterList = ({
           <tr className="tr-content" key={item.Id}>
             <td className="content">
               <img src={item.Img} alt={item.Name} />
-            </td>
-            <td className="content">
               <p>{item.Name}</p>
             </td>
-            <td className="content">
+            <td className="quantity-content">
               <QuantitySelector
                 item={item}
                 hasReset={true}

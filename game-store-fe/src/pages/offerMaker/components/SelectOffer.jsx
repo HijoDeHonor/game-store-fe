@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { ADD_TO_OFFER, ITEMS_TO_OFFER, SET_OFFER } from "../../../utils/textConstants";
+import { ITEMS_TO_OFFER, SET_OFFER } from "../../../utils/textConstants";
 import { useOfferMaker } from "../provider/offerMakerProvider";
 import ListSelector from "./ListSelector";
 
 const SelectOffer = () => {
   const { state, dispatch } = useOfferMaker();
   const { offer, userItems } = state;
-  const [newOfferItems, setNewOfferItems] = useState([]);
+  const [newOfferItems, setNewOfferItems] = useState(offer);
   
   useEffect(() => {
     dispatch({
@@ -25,8 +25,7 @@ const SelectOffer = () => {
         titleReference={ITEMS_TO_OFFER}
         updateList={updateOfferList} //update offer or request
         listOfItems={userItems} // list of items from user or the server
-        listKey={offer} // either 'offer' or 'request'
-        btnReference={ADD_TO_OFFER}
+        listKey={newOfferItems} // either 'offer' or 'request'
       />
     </>
   );

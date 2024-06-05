@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import resetIcon from "../assets/resetIcon.png"
+import resetIcon from "../assets/resetIcon.png";
 function QuantitySelector({
   item,
   onChangeQuantity,
@@ -73,16 +73,8 @@ function QuantitySelector({
         <button className="quantity-btn" onClick={quantityUp}>
           +
         </button>
+        {hasReset && <img className="hasReset" src={resetIcon} alt="Reset" onClick={handleReset} />}
       </div>
-      {hasReset && (
-        <div className="hasReset">
-          <img
-            src={resetIcon}
-            alt="Reset"
-            onClick={handleReset}
-          />
-        </div>
-      )}
     </div>
   );
 }

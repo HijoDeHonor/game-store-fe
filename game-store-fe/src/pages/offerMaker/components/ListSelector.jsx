@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../../../components/SearchBar";
 import FilterList from "./FilterList";
 import SelectedList from "./SelectedList";
-import { RESET_ALL } from "../../../utils/textConstants";
+import { ADD } from "../../../utils/textConstants";
+import resetIcon from "../../../assets/resetIcon.png";
 
 const ListSelector = ({
   listOfItems, // list of items from user or the server
   listKey, // either 'offer' or 'request'
   updateList, //update offer or request
   titleReference,
-  btnReference, //  add to offer o add to request
 }) => {
   //states
   const [searchQuery, setSearchQuery] = useState("");
@@ -29,10 +29,6 @@ const ListSelector = ({
   useEffect(() => {
     filterData();
   }, [searchQuery, itemsToFilter]);
-
-  useEffect(() => {
-    console.log(itemsToFilter);
-  }, [itemsToFilter]);
 
   const addAndUpdate = () => {
     const itemsToAdd = prevItems.filter((item) => item.Quantity !== 0);
@@ -85,7 +81,6 @@ const ListSelector = ({
     setPrevItems((prevItems) =>
       prevItems.filter((prevItem) => prevItem.Name !== item.Name)
     );
-
     const exist = itemsToFilter.some((i) => i.Name === item.Name);
     if (exist) {
       setItemsToFilter((itemsToFilter) =>
@@ -96,7 +91,7 @@ const ListSelector = ({
                 Quantity: 0,
                 maxQuantity:
                   itemToFilter.maxQuantity !== undefined
-                    ? item.Quantity
+                    ? itemToFilter.Quantity + item.maxQuantity
                     : undefined,
               }
             : itemToFilter
@@ -154,6 +149,15 @@ const ListSelector = ({
     setShouldReset(true);
   };
 
+  const deleteAllCounts = () => {
+    let clonelist = JSON.parse(JSON.stringify(listKey));
+    clonelist.forEach((item) => {
+      deleteAndUpdate(item);
+    });
+    setPrevItems([]);
+    updateList([]);
+  };
+
   return (
     <div className="om">
       <h3>{titleReference}</h3>
@@ -169,20 +173,33 @@ const ListSelector = ({
             />
           </div>
           <div className="add-and-rest-Lists">
-            <button className="add-btn" onClick={resetAllCounts}>
-              {RESET_ALL}
-            </button>
-            <button className="add-btn-request" onClick={addAndUpdate}>
-              {btnReference}
+            <button className="reset-all">
+              <img src={resetIcon} onClick={resetAllCounts}></img>
             </button>
           </div>
         </div>
+        <div className="om-button-add">
+          <button className="add-btn-request" onClick={addAndUpdate}>
+            {ADD}
+          </button>
+        </div>
         <div className="om-List">
+          <div className="om-List-header"></div>
           <SelectedList
             items={listKey}
             deleteAdd={deleteAndUpdate}
             recicler={true}
           />
+          <div className="recicler-all">
+            <button className="recicler-all-btn">
+              <img
+                className="recicler-BIN"
+                src="https://static-00.iconduck.com/assets.00/delete-icon-1864x2048-bp2i0gor.png"
+                alt="recicler BIN"
+                onClick={deleteAllCounts}
+              />
+            </button>
+          </div>
         </div>
       </div>
     </div>

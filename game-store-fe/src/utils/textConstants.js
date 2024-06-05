@@ -2,8 +2,8 @@ export const SEARCH = "Search...";
 export const x = "x"
 
 
-export const NEXT = "Next"
-export const BACK = "Back"
+export const NEXT = "NEXT"
+export const BACK = "BACK"
 
 export const RESET_ALL = "Reset All"
 export const ADD_TO_OFFER= "Add to Offer"
@@ -14,6 +14,9 @@ export const ITEMS_TO_REQUEST = "Choose the items that you want."
 export const FINAL_OFFER = "This is your OFFER"
 export const FINAL_REQUEST = "In exchange for these items."
 export const CREATE_OFFER = "Create Offer"
+
+export const ADD = "Add →"
+
 
 
 export const SET_USER_ITEMS = "SET_USER_ITEMS"

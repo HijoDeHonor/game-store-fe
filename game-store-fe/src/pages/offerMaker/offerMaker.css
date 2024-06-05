@@ -1,7 +1,4 @@
 .om {
-  height: 90vh;
-  width: 80vw;
-  padding-top: 5vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -14,40 +11,56 @@ h3 {
 }
 
 .search-bar {
+  background-color: #d0d0d0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px !important;
+  padding: 20px 10px !important;
   margin: 0 !important;
 }
 
-
 .search-input {
-  width: 100%;
+  width: 95%;
   border-radius: 5px;
+  padding: 0 10px !important;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  border: 2px solid darkgray;
 }
 
 .FilterContent {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
   border-radius: 10px;
-  height: 55vh;
-  min-width: 30vw;
   overflow: hidden;
-  background-color: #221a37;
+  background-color: #fdfcfe;
   overflow-y: auto;
 }
 
-.table{
-  width: 100%;
+/* Estilos para la scrollbar en navegadores Webkit (Chrome, Safari) */
+.FilterContent::-webkit-scrollbar {
+  width: 8px; /* Ancho de la scrollbar */
 }
 
-.content {
-  display: flex;
+.FilterContent::-webkit-scrollbar-track {
+  background: transparent; /* Fondo de la track */
+}
+
+.FilterContent::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.425); /* Color de la barrita */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Eliminar las flechas de desplazamiento en Webkit */
+.FilterContent::-webkit-scrollbar-button {
+  display: none;
+}
+/* Estilos de la tabla */
+.table {
   width: 100%;
-  flex-direction: row;
 }
 
 .tr-content {
@@ -55,8 +68,16 @@ h3 {
   flex-direction: row;
 }
 
+.content {
+  width: 50%;
+  flex-direction: row;
+  display: flex;
+}
+
 .content img {
+  margin-left: 15px;
   padding: 2px;
+  margin-right: 5px;
   width: 50px;
   border: 1px solid black;
   background-color: #fdfcfe;
@@ -69,47 +90,54 @@ h3 {
   margin-right: auto;
   padding-left: 10px;
   justify-content: center !important;
-  text-align: center !important;
   font-weight: bold;
 }
 
-.FilterContent::-webkit-scrollbar {
-  display: none;
+.quantity-content {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
 }
 
-.content:last-child {
-  padding-bottom: 10px;
+.om-button-add {
+  display: flex;
+  justify-content: center;
 }
 
-.om-body{
+.om-body {
+  height: 80vh;
   display: flex;
   flex-direction: row;
+  align-content: center;
   justify-content: space-evenly;
   width: 100%;
-  height: 100%;
   padding: 5px;
 }
 
-.select-body{
+.select-body {
   display: flex;
-  width: 45%;
-  height: 100%;
+  width: 40%;
+  height: auto;
   flex-direction: column;
   border: #5227cc 4px solid;
   border-radius: 15px;
-  padding: 15px;
+  background-color: #fdfcfe;
 }
 
-.om-List{
+.om-List {
   display: flex;
-  width: 45%;
+  flex-direction: column;
+  width: 40%;
   height: 100%;
-  border:#5227cc 4px solid;
+  border: #5227cc 4px solid;
   border-radius: 15px;
-  overflow:hidden;
+  overflow: hidden;
   background-color: #fdfcfe;
-  
+}
 
+.om-List-header {
+  background-color: #d0d0d0;
+  height: 70px;
 }
 
 .om-body p {
@@ -117,45 +145,49 @@ h3 {
 }
 
 .quantity-selector {
-  transform: translateY(-8%);
+  margin-top: 0px !important;
   display: flex;
-  width: 40%;
+  width: 50%;
+  min-width: 150px;
+  flex-direction: row-reverse;
+  justify-content: space-between !important;
 }
 
 .normal-quantity-selector {
   display: flex;
   flex-direction: row;
   justify-content: space-between !important;
+  width: auto;
 }
 
 .quantity-input {
   margin-bottom: auto;
-  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.hasReset img {
+.hasReset {
   background-color: transparent;
   border: none;
   width: 25px;
   cursor: pointer;
+  margin-left: 5px;
 }
 
 .item-list {
   max-height: 100% !important;
   min-height: 150px !important;
-  max-width: 100% !important;
+  width: 100% !important;
   border-radius: 0 !important;
-
 }
 
 .stage1 {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  margin-top: 15px;
   padding: 0 10%;
 }
-
-
 
 .stage-btn {
   padding: 2px;
@@ -163,7 +195,8 @@ h3 {
   font-weight: bold;
   background-color: #5227cc;
   border-radius: 10px;
-  width: 50px;
+  width: 70px;
+  border: 3px solid #311b92;
 }
 
 .confirm-btn {
@@ -180,26 +213,47 @@ h3 {
 }
 
 .add-and-rest-Lists {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  padding: 5px 20px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-top: auto;
+  background-color: #d0d0d0;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
-.add-btn {
+.reset-all {
+  width: 40px;
+  height: 40px;
   background-color: #5227cc;
-  color: #fdfcfe;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 110px;
-  height: 35px;
-  font-size: 18px;
-  font-weight: bold;
-  margin: auto 0;
-  cursor: pointer;
-  border: none;
-  text-align: center;
+  border-radius: 10px;
+}
+
+.reset-all img {
+  width: 30px;
+  filter: invert(1);
+}
+
+.recicler-all {
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: auto;
+  background-color: #d0d0d0;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.recicler-all-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #5227cc;
+  border-radius: 10px;
+}
+
+.recicler-all img {
+  width: 30px;
+  filter: invert(1);
 }
 
 .add-btn-request {
@@ -215,6 +269,7 @@ h3 {
   cursor: pointer;
   border: none;
   text-align: center;
+  padding: 0 10px;
 }
 
 .quantity-btn {
@@ -224,6 +279,9 @@ h3 {
   border: 1px solid black;
   height: 30px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .quantity-reset-btn {
@@ -235,4 +293,26 @@ h3 {
   border-radius: 5px;
   padding: 2px;
   text-align: center;
+}
+
+.om-final-check{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-content: center;
+ text-align: center;
+ width: 65%;
+ margin: 0 auto;
+}
+
+.om-final-check p {
+  color: #5227cc;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.offercheck {
+ border-radius: 10px;
+ border: 5px solid #5227cc;
+ overflow: hidden;
 }
