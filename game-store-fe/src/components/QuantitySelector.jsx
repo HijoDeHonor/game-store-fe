@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import resetIcon from "../assets/resetIcon.png";
+import "./QuantitySelector.css";
+
 function QuantitySelector({
   item,
   onChangeQuantity,

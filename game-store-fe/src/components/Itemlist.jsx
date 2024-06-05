@@ -1,5 +1,6 @@
 import React from "react";
 import Item from "./Item";
+import "./ItemList.css"
 
 function ItemList({ allTheItems, onClick, add, modal, recicler, deleteAdd }) {
   const ItemList = allTheItems.map((item) => (

@@ -1,0 +1,53 @@
+.item-container {
+  .item-card {
+    max-width: 60px;
+    padding: 0px;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .recicler-Item {
+    position: absolute;
+    display: flex;
+    width: 60px;
+    height: 60px;
+  }
+
+  .recicler-Item img {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 4px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .item-img {
+    background-color: #d5d5d5;
+    margin-top: 2px;
+    max-width: 60px;
+    padding: 2px;
+    border: 1px solid #000;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .item-quantity {
+    width: 20px;
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    justify-self: center;
+    margin-top: 42px;
+    background-color: #fff;
+    border: 1px solid #7749f8;
+    color: #7749f8;
+    cursor: pointer;
+    z-index: 2;
+  }
+}

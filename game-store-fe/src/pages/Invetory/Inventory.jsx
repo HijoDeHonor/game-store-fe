@@ -8,7 +8,11 @@ import DBServerData from "../../utils/DB-Server.json";
 import DBUserData from "../../utils/DB-User.json";
 //styles
 import "./Inventory.css";
-import {MOD, MOD_NONE, RECICLER_OFF, RECICLER_ON} from "../../utils/constants"
+import {
+  MOD,
+  RECICLER_OFF,
+  RECICLER_ON,
+} from "../../utils/constants";
 
 const Inventory = () => {
   const [toggle, setToggle] = useState(false);
@@ -33,18 +37,24 @@ const Inventory = () => {
   };
 
   return (
-    <div className="container inventory">
-      <div className="inventory-header">
-        <SearchBar
-          key={key}
-          filterKey={"Name"}
-          setSearchQuery={setSearchQuery}
-          placeholder={searchQuery}
-        />
-        <ToggleBtn toggle={toggle} onClick={toggleButton} />
-      </div>
-      <div className="inventory-body">
-        <ItemList allTheItems={filteredData} modal={MOD} recicler={ toggle? RECICLER_OFF: RECICLER_ON }/>
+    <div className="inventory-container">
+      <div className="inventory">
+        <div className="inventory-header">
+          <SearchBar
+            key={key}
+            filterKey={"Name"}
+            setSearchQuery={setSearchQuery}
+            placeholder={searchQuery}
+          />
+          <ToggleBtn toggle={toggle} onClick={toggleButton} />
+        </div>
+        <div className="inventory-body">
+          <ItemList
+            allTheItems={filteredData}
+            modal={MOD}
+            recicler={toggle ? RECICLER_OFF : RECICLER_ON}
+          />
+        </div>
       </div>
     </div>
   );

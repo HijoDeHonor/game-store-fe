@@ -17,8 +17,6 @@ import SelectOffer from "./components/SelectOffer";
 import SelectRequest from "./components/SelectRequest";
 import FinalOfferCheck from "./components/FinalOfferCheck";
 
-
-
 const OfferMaker = () => {
   const { state, dispatch } = useOfferMaker();
   const { currentStage, userItems, serverItems, offer, request } = state;
@@ -87,17 +85,19 @@ const OfferMaker = () => {
   return (
     <>
       {allLoad && userItems.length > 0 && serverItems.length > 0 && (
-        <Stepper
-          steps={[
-            <SelectOffer key={"SelectOffer"} />,
-            <SelectRequest key={"SelectReuest"} />,
-            <FinalOfferCheck key={"FinalOfferCheck"} />,
-          ]}
-          currentStep={currentStage}
-          nextStep={nextStage}
-          prevStep={backStage}
-          onSubmit={confirmCreateOffer}
-        />
+        <div className="offerMaker-container">
+          <Stepper
+            steps={[
+              <SelectOffer key={"SelectOffer"} />,
+              <SelectRequest key={"SelectReuest"} />,
+              <FinalOfferCheck key={"FinalOfferCheck"} />,
+            ]}
+            currentStep={currentStage}
+            nextStep={nextStage}
+            prevStep={backStage}
+            onSubmit={confirmCreateOffer}
+          />
+        </div>
       )}
     </>
   );
