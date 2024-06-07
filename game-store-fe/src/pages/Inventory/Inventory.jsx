@@ -10,11 +10,7 @@ import ItemList from "../../components/ItemList/Itemlist";
 import { getAllItems, getUserItems } from "../../services/GetAllItems";
 //styles
 import "./Inventory.css";
-import {
-  MOD,
-  RECICLER_OFF,
-  RECICLER_ON,
-} from "../../utils/constants";
+import { MOD, RECICLER_OFF, RECICLER_ON } from "../../utils/constants";
 
 const Inventory = () => {
   const [toggle, setToggle] = useState(false);
@@ -27,7 +23,7 @@ const Inventory = () => {
   const fetchData = async () => {
     const data = await new Promise((resolve) => {
       setTimeout(() => {
-        resolve(toggle ? getAllItems(): getUserItems());
+        resolve(toggle ? getAllItems() : getUserItems());
       }, 1000);
     });
     setData(data);
@@ -56,30 +52,31 @@ const Inventory = () => {
     }
     setToggle((prevToggle) => !prevToggle);
     setKey(key + 1);
-    resetSearch();
   };
 
   return (
-    <div className="container inventory">
-      <div className="inventory-header">
-        <SearchBar
-          key={key}
-          filterKey={"Name"}
-          setSearchQuery={setSearchQuery}
-          placeholder={searchQuery}
-        />
-        <ToggleBtn toggle={toggle} onClick={toggleButton} />
-      </div>
-      <div className="inventory-body">
-        {isLoading ? (
-          <LoadingSpinner />
-        ) : (
-          <ItemList
-            allTheItems={filteredData}
-            modal={MOD}
-            recicler={toggle ? RECICLER_OFF : RECICLER_ON}
+    <div className="inventory-container">
+      <div className="container inventory">
+        <div className="inventory-header">
+          <SearchBar
+            key={key}
+            filterKey={"Name"}
+            setSearchQuery={setSearchQuery}
+            placeholder={searchQuery}
           />
-        )}
+          <ToggleBtn toggle={toggle} onClick={toggleButton} />
+        </div>
+        <div className="inventory-body">
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <ItemList
+              allTheItems={filteredData}
+              modal={MOD}
+              recicler={toggle ? RECICLER_OFF : RECICLER_ON}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
