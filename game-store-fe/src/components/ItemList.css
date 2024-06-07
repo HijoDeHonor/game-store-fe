@@ -9,7 +9,7 @@
   align-content: start; /* Alinear la última fila en la parte superior */
   background-color: #fff;
   padding: 15px;
-  min-height: 65vh;
+  height: 69vh;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   overflow-y: scroll;

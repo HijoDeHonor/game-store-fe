@@ -7,7 +7,7 @@ import resetIcon from "../../../assets/resetIcon.png";
 
 const ListSelector = ({
   listOfItems, // list of items from user or the server
-  listKey, // either 'offer' or 'request'
+  finalList, // either 'offer' or 'request'
   updateList, //update offer or request
   titleReference,
 }) => {
@@ -34,7 +34,7 @@ const ListSelector = ({
     const itemsToAdd = prevItems.filter((item) => item.Quantity !== 0);
 
     if (itemsToAdd.length > 0) {
-      const updatedList = listKey.map((prevListItem) => {
+      const updatedList = finalList.map((prevListItem) => {
         const sameItem = itemsToAdd.find(
           (item) => item.Name === prevListItem.Name
         );
@@ -77,7 +77,7 @@ const ListSelector = ({
   };
 
   const deleteAndUpdate = (item) => {
-    updateList(listKey.filter((listItem) => listItem.Name !== item.Name));
+    updateList(finalList.filter((listItem) => listItem.Name !== item.Name));
     setPrevItems((prevItems) =>
       prevItems.filter((prevItem) => prevItem.Name !== item.Name)
     );
@@ -150,7 +150,7 @@ const ListSelector = ({
   };
 
   const deleteAllCounts = () => {
-    let clonelist = JSON.parse(JSON.stringify(listKey));
+    let clonelist = JSON.parse(JSON.stringify(finalList));
     clonelist.forEach((item) => {
       deleteAndUpdate(item);
     });
@@ -186,7 +186,7 @@ const ListSelector = ({
         <div className="om-List">
           <div className="om-List-header"></div>
           <SelectedList
-            items={listKey}
+            items={finalList}
             deleteAdd={deleteAndUpdate}
             recicler={true}
           />

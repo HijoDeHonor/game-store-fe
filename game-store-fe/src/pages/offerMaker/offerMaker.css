@@ -1,4 +1,6 @@
 .offerMaker-container {
+  display: flex;
+  flex-direction: column;
   .om {
     margin: 0 auto;
     display: flex;
@@ -19,7 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 10px !important;
+    min-height: 70px;
     margin: 0 !important;
   }
 
@@ -27,7 +29,7 @@
     width: 95%;
     border-radius: 5px;
     padding: 0 10px !important;
-    margin-left: 15px !important;
+    margin-left: 20px !important;
     margin-right: 15px !important;
     border: 2px solid darkgray;
   }
@@ -138,7 +140,7 @@
 
   .om-List-header {
     background-color: #d0d0d0;
-    height: 70px;
+    min-height: 70px;
   }
 
   .om-body p {
@@ -155,9 +157,8 @@
 
   .item-list {
     max-height: 100% !important;
-    min-height: 150px !important;
     width: 100% !important;
-    border-radius: 0 !important;
+    border-radius: 0px !important;
   }
 
   .stage1 {
@@ -165,6 +166,7 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     margin-top: 15px;
+    margin-bottom: auto;
     padding: 0 10%;
   }
 
@@ -184,7 +186,8 @@
     font-weight: bold;
     background-color: #5227cc;
     border-radius: 10px;
-    width: 120px;
+    border: 3px solid #311b92;
+    width: 140px;
   }
 
   .final-content p {
@@ -253,9 +256,8 @@
 
   .om-final-check {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-content: center;
     text-align: center;
     width: 65%;
     margin: 0 auto;
@@ -265,9 +267,19 @@
     color: #5227cc;
     font-weight: bold;
     font-size: x-large;
+    margin-top: 15px;
+    margin-bottom: 2px;
+    
+  }
+
+  .om-final-check-body {
+    display: flex;
+    flex-direction: column;
   }
 
   .offercheck {
+    margin: 15px 20px 2px;
+    
     border-radius: 10px;
     border: 5px solid #5227cc;
     overflow: hidden;

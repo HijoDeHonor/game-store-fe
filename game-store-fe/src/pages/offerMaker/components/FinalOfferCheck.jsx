@@ -11,14 +11,20 @@ const FinalOfferCheck = () => {
 
   return (
     <>
-      <div className="om-final-check">
-          <p>{FINAL_OFFER}</p>
-        <div className="offercheck">
-          <OfferList items={offer} recicler={false} />
-        </div>
-          <p>{FINAL_REQUEST}</p>
-        <div className="offercheck">
-          <OfferList items={request} recicler={false} />
+      <div className="om">
+        <div className="om-final-check">
+          <div className="om-final-check-body">
+            <p>{FINAL_OFFER}</p>
+            <div className="offercheck">
+              <OfferList items={offer} recicler={false} />
+            </div>
+          </div>
+          <div className="om-final-check-body">
+            <p>{FINAL_REQUEST}</p>
+            <div className="offercheck">
+              <OfferList items={request} recicler={false} />
+            </div>
+          </div>
         </div>
       </div>
     </>

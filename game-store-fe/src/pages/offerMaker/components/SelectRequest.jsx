@@ -25,7 +25,7 @@ const SelectRequest = () => {
         titleReference={ITEMS_TO_REQUEST}
         updateList={updateRequestList} //update offer or request
         listOfItems={serverItems} // list of items from user or the server
-        listKey={newRequestItems} // either 'offer' or 'request'
+        finalList={newRequestItems} // either 'offer' or 'request'
       />
     </>
   );

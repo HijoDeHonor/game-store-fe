@@ -43,19 +43,17 @@ const OfferMaker = () => {
       });
       setAllLoad(true);
     });
-    if (allLoad) {
-    }
   }, []);
 
   // Stage controls
   const nextStage = () => {
-    if (offer.length > 0 && currentStage === 0) {
+    if (offer.length > 0 && currentStage === 0) {// Check if the offer has any element inside, if so, go to the next stage, if not  it does nothing
       const newStage = currentStage + 1;
       dispatch({
         type: SET_CURRENT_STAGE,
         data: newStage,
       });
-    } else if (request.length > 0 && currentStage === 1) {
+    } else if (request.length > 0 && currentStage === 1) {// Check if the request has any element inside, if so, go to the next stage, if not it does nothing
       const newStage = currentStage + 1;
       dispatch({
         type: SET_CURRENT_STAGE,
@@ -63,7 +61,7 @@ const OfferMaker = () => {
       });
     }
   };
-  const backStage = () => {
+  const backStage = () => {//this does not do checks, and only returns to a previous stage
     const newStage = currentStage - 1;
     dispatch({
       type: SET_CURRENT_STAGE,
