@@ -5,35 +5,61 @@ import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar";
 import ToggleBtn from "./components/ToggleBtn";
 import ItemList from "../../components/Itemlist";
-
-// styles
+import LoadingSpinner from "../../components/Spinner";
+// fake database
+import { getAllItems, getUserItems } from "../../services/GetAllItems";
+//styles
 import "./Inventory.css";
+import { MOD, RECICLER_OFF, RECICLER_ON } from "../../utils/constants";
 
 const Inventory = () => {
+  const userName = localStorage.getItem("userName") || "guest";
+
   const [toggle, setToggle] = useState(false);
-  const [query, setQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [key, setKey] = useState(0);
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  let userName = localStorage.getItem("UserName") || "Admin"; // borrar  cuando se ponga en uso la base de datos
+  const fetchData = async () => {
+    const data = await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(toggle ? getAllItems(): getUserItems());
+      }, 1000);
+    });
+    setData(data);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const filterData = /*async*/ () => {
-      let DBServerData = /*await*/ GetAllItems();
-      let DBUserData = /*await*/ GetAllItems(userName);
-      const data = toggle ? DBServerData : DBUserData;
-      const filtered = data.filter((item) =>
-        item.Name.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredData(filtered);
-    };
+    fetchData();
+    setIsLoading(true);
+  }, [toggle]);
+
+  useEffect(() => {
     filterData();
-  }, [toggle, query]);
+  }, [toggle, searchQuery, isLoading]);
+
+  const filterData = () => {
+    const filtered = data.filter((item) =>
+      item.Name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
+  const resetSearch = () => {
+    setSearchQuery("");
+    document.getElementById("search-input").value = "";
+  };
 
   const toggleButton = () => {
+    if (isLoading) {
+      return null;
+    }
     setToggle((prevToggle) => !prevToggle);
     setKey(key + 1);
-    setQuery("");
+    resetSearch();
   };
 
   return (
@@ -42,13 +68,21 @@ const Inventory = () => {
         <SearchBar
           key={key}
           filterKey={"Name"}
-          setQuery={setQuery}
-          placeholder={query}
+          setSearchQuery={setSearchQuery}
+          placeholder={searchQuery}
         />
         <ToggleBtn toggle={toggle} onClick={toggleButton} />
       </div>
       <div className="inventory-body">
-        <ItemList allTheItems={filteredData} modal={mod}/>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <ItemList
+            allTheItems={filteredData}
+            modal={MOD}
+            recicler={toggle ? RECICLER_OFF : RECICLER_ON}
+          />
+        )}
       </div>
     </div>
   );
