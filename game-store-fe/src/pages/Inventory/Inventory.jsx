@@ -74,6 +74,7 @@ const Inventory = () => {
               allTheItems={filteredData}
               modal={MOD}
               recicler={toggle ? RECICLER_OFF : RECICLER_ON}
+             
             />
           )}
         </div>

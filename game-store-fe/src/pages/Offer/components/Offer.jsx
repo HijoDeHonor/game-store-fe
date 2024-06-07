@@ -1,5 +1,5 @@
 import React from "react";
-import Item from "../../../components/Item";
+import Item from "../../../components/Item/Item";
 import tradeMake from "./tradeMake";
 
 const Offer = ({ offer }) => {
@@ -15,14 +15,14 @@ const Offer = ({ offer }) => {
       <td className="td-offer">
         <div className="item-container-offer">
           {Offer.map((item, index) => (
-            <Item key={index} item={item} top={"76%"} imageWidth="40px" />
+            <Item key={index} item={item} top="43%" imageWidth="40px" />
           ))}
         </div>
       </td>
       <td className="td-request">
         <div className="item-container-request">
           {Request.map((item, index) => (
-            <Item key={index} item={item} top={"76%"} imageWidth="40px" />
+            <Item key={index} item={item} top="43%" imageWidth="40px" />
           ))}
         </div>
       </td>

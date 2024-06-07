@@ -12,6 +12,7 @@ function ItemList({ allTheItems, onClick, add, modal, recicler, deleteAdd }) {
       modal={modal}
       recicler={recicler}
       deleteAdd={deleteAdd}
+      imageWidth={"60px"}
     />
   ));
 

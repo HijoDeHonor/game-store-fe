@@ -7,6 +7,7 @@ const SelectedList = ({ items, deleteAdd, recicler, modal }) => {
       modal={modal}
       recicler={recicler}
       deleteAdd={deleteAdd ? deleteAdd : null}
+      top={"70%"}
     />
   );
 };

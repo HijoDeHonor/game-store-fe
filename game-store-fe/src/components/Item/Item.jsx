@@ -9,7 +9,7 @@ import { Tooltip } from "react-tooltip";
 import ModalItem from "../Modal/Modal";
 import ReciclerItem from "../ReciclerItem";
 
-function Item({ item, add, onClick, modal, recicler, deleteAdd }) {
+function Item({ item, add, onClick, modal, recicler, deleteAdd , top , imageWidth}) {
   const [showModal, setShowModal] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const handleDeleteClick = () => {
@@ -67,6 +67,7 @@ function Item({ item, add, onClick, modal, recicler, deleteAdd }) {
           className="item-img"
           src={item.Img}
           alt={item.Name}
+          style={{ width: imageWidth }}
           onClick={handleToggleModal}
           data-tooltip-id="tooltip"
           data-tooltip-content={item.Name}
@@ -75,7 +76,7 @@ function Item({ item, add, onClick, modal, recicler, deleteAdd }) {
         <Tooltip id="tooltip" style={{ zIndex: 1000 }} />
 
         {item.Quantity !== 0 ? (
-          <div className="item-quantity">{item.Quantity}</div>
+          <div className="item-quantity" style={{marginTop: top}}>{item.Quantity}</div>
         ) : null}
 
         {modalOn()}

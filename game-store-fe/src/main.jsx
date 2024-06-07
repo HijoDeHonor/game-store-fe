@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from "./pages/login/login.jsx";
 import Inventory from "./pages/Inventory/Inventory.jsx";
 import OfferMakerWithProvider from "./pages/offerMaker/OfferMaker.jsx";
+import OfferList from "./pages/Offer/OfferList.jsx"
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
         element: <Inventory />,
       },
       { path: "login", element: <LoginForm /> },
+      { path: "offers", element: <OfferList /> }
     ],
   },
 ]);

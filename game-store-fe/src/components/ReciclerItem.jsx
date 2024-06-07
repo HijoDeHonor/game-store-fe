@@ -10,7 +10,7 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
 
   const handleDelete = () => {
     handleClose();
-    deleteAdd && deleteAdd(item)
+    deleteAdd && deleteAdd(item);
     console.log(item, "deleted");
     // deleteItem(item);
   };
@@ -22,15 +22,21 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
         <Modal.Title>You are about to delete:</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <img src={item.Img} style={{ height: "60px", cursor:"default"}} className="item-img" alt={item.Name} />
+        <img
+          src={item.Img}
+          style={{ height: "60px", cursor: "default" }}
+          className="item-img"
+          alt={item.Name}
+        />
         <p>{item.Name}</p>
         <p>Are you sure you want to delete it?</p>
       </Modal.Body>
-      <Modal.Footer style={{ justifyContent: "space-evenly", flexDirection: "row" }}>
+      <Modal.Footer
+        style={{ justifyContent: "space-evenly", flexDirection: "row" }}
+      >
         <button type="button" className="btn" onClick={handleClose}>
           Cancel
         </button>
-
         <button type="button" className="btn" onClick={handleDelete}>
           Delete
         </button>
