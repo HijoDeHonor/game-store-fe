@@ -4,6 +4,7 @@
   height: 100%;
 
   .om {
+    height: 90%;
     display: flex;
     flex-direction: column;
   }
@@ -16,16 +17,8 @@
   }
 
   .steps {
+    height: 100%;
     margin: auto 0;
-  }
-
-  .finalStep {
-    margin: auto;
-    min-height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
   }
 
   .search-bar {
@@ -177,7 +170,7 @@
   }
 
   .stage1 {
-    max-height: 20%;
+    max-height: 10%;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
