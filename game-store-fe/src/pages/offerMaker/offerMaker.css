@@ -7,6 +7,7 @@
     height: 90%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   .om h1,
