@@ -6,8 +6,8 @@ import "./Item.css"
 import { Tooltip } from "react-tooltip";
 
 //my components
-import ModalItem from "./Modal";
-import ReciclerItem from "./ReciclerItem";
+import ModalItem from "../Modal/Modal";
+import ReciclerItem from "../ReciclerItem";
 
 function Item({ item, add, onClick, modal, recicler, deleteAdd }) {
   const [showModal, setShowModal] = useState(false);

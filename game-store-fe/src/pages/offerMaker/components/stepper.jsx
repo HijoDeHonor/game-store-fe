@@ -12,7 +12,9 @@ const Stepper = ({ steps, currentStep, nextStep, prevStep, onSubmit }) => {
 
   return (
     <>
-      <div className="steps">{steps[currentStep]}</div>
+      <div className={currentStep === steps.length - 1 ? "finalStep" : "steps"}>
+        {steps[currentStep]}
+      </div>
       <div className="stage1">
         {currentStep < steps.length - 1 ? (
           <button className="stage-btn" onClick={handleSubmit}>

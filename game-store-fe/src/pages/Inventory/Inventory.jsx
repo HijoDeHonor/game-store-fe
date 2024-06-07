@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar";
 import ToggleBtn from "./components/ToggleBtn";
-import ItemList from "../../components/Itemlist";
+import ItemList from "../../components/ItemList/Itemlist";
 // fake database
 import DBServerData from "../../utils/DB-Server.json";
 import DBUserData from "../../utils/DB-User.json";

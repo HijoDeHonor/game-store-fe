@@ -1,4 +1,4 @@
-import ItemList from "../../../components/Itemlist";
+import ItemList from "../../../components/ItemList/Itemlist";
 
 const SelectedList = ({ items, deleteAdd, recicler, modal }) => {
   return (

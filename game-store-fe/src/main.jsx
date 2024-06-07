@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 //main components
 import LoginForm from "./pages/login/login.jsx";
-import Inventory from "./pages/Invetory/Inventory.jsx";
+import Inventory from "./pages/Inventory/Inventory.jsx";
 import OfferMakerWithProvider from "./pages/offerMaker/OfferMaker.jsx";
 
 const router = createBrowserRouter([

@@ -8,7 +8,7 @@ import CloseButton from "react-bootstrap/esm/CloseButton";
 import "./Modal.css"
 
 // components
-import QuantitySelector from "./QuantitySelector";
+import QuantitySelector from "../QuantitySelector/QuantitySelector";
 
 function ModalItem({ item, handleClose, show, add }) {
   const firstQuantity = item.Quantity;

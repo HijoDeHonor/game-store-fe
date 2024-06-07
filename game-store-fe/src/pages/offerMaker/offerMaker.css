@@ -1,16 +1,31 @@
 .offerMaker-container {
   display: flex;
   flex-direction: column;
+  height: 100%;
+
   .om {
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
   }
 
   .om h1,
   h3 {
+    margin-top: 20px;
     text-align: center;
     color: #7749f8;
+  }
+
+  .steps {
+    margin: auto 0;
+  }
+
+  .finalStep {
+    margin: auto;
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
   }
 
   .search-bar {
@@ -156,18 +171,18 @@
   }
 
   .item-list {
-    max-height: 100% !important;
+    height: auto;
     width: 100% !important;
     border-radius: 0px !important;
   }
 
   .stage1 {
+    max-height: 20%;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: auto;
     margin-bottom: auto;
-    padding: 0 10%;
   }
 
   .stage-btn {
@@ -178,6 +193,7 @@
     border-radius: 10px;
     width: 70px;
     border: 3px solid #311b92;
+    
   }
 
   .confirm-btn {
@@ -256,11 +272,15 @@
 
   .om-final-check {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
     width: 65%;
     margin: 0 auto;
+  }
+
+  .om-final-check-body:last-child {
+    margin-top: 30px;
   }
 
   .om-final-check p {
@@ -269,17 +289,16 @@
     font-size: x-large;
     margin-top: 15px;
     margin-bottom: 2px;
-    
   }
 
   .om-final-check-body {
     display: flex;
     flex-direction: column;
+    max-height: 50%;
   }
 
   .offercheck {
     margin: 15px 20px 2px;
-    
     border-radius: 10px;
     border: 5px solid #5227cc;
     overflow: hidden;

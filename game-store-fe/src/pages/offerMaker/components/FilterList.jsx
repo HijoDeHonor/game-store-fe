@@ -1,4 +1,4 @@
-import QuantitySelector from "../../../components/QuantitySelector";
+import QuantitySelector from "../../../components/QuantitySelector/QuantitySelector";
 import Table from "react-bootstrap/Table";
 const FilterList = ({
   data,
