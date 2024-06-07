@@ -1,4 +1,5 @@
 import React from "react";
+import { SEARCH } from "../utils/textConstants";
 
 const SearchBar = ({ setSearchQuery }) => {
   const handleInputChange = (event) => {
@@ -11,7 +12,8 @@ const SearchBar = ({ setSearchQuery }) => {
         className="search-input"
         id="search-input"
         type="text"
-        placeholder="Search..."
+        autoComplete="off"
+        placeholder={SEARCH}
         onChange={handleInputChange}
       />
     </div>

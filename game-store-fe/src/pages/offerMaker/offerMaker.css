@@ -1,0 +1,316 @@
+.offerMaker-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .om {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .om h1,
+  h3 {
+    margin-top: 20px;
+    text-align: center;
+    color: #7749f8;
+  }
+
+  .steps {
+    height: 100%;
+    margin: auto 0;
+  }
+
+  .search-bar {
+    background-color: #d0d0d0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+    margin: 0 !important;
+  }
+
+  .search-input {
+    width: 95%;
+    border-radius: 5px;
+    padding: 0 10px !important;
+    margin-left: 20px !important;
+    margin-right: 15px !important;
+    border: 2px solid darkgray;
+  }
+
+  .FilterContent {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fdfcfe;
+    overflow-y: auto;
+  }
+
+  /* Estilos para la scrollbar en navegadores Webkit (Chrome, Safari) */
+  .FilterContent::-webkit-scrollbar {
+    width: 8px; /* Ancho de la scrollbar */
+  }
+
+  .FilterContent::-webkit-scrollbar-track {
+    background: transparent; /* Fondo de la track */
+  }
+
+  .FilterContent::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.425); /* Color de la barrita */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+
+  /* Eliminar las flechas de desplazamiento en Webkit */
+  .FilterContent::-webkit-scrollbar-button {
+    display: none;
+  }
+  /* Estilos de la tabla */
+  .table {
+    width: 100%;
+  }
+
+  .tr-content {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .content {
+    width: 50%;
+    flex-direction: row;
+    display: flex;
+  }
+
+  .content img {
+    margin-left: 15px;
+    padding: 2px;
+    margin-right: 5px;
+    width: 50px;
+    border: 1px solid black;
+    background-color: #fdfcfe;
+  }
+
+  .content p {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    justify-content: center !important;
+    font-weight: bold;
+  }
+
+  .quantity-content {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+  }
+
+  .om-button-add {
+    display: flex;
+    justify-content: center;
+  }
+
+  .om-body {
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .select-body {
+    display: flex;
+    width: 40%;
+    height: auto;
+    flex-direction: column;
+    border: #5227cc 4px solid;
+    border-radius: 15px;
+    background-color: #fdfcfe;
+  }
+
+  .om-List {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    border: #5227cc 4px solid;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fdfcfe;
+  }
+
+  .om-List-header {
+    background-color: #d0d0d0;
+    min-height: 70px;
+  }
+
+  .om-body p {
+    color: #7749f8;
+  }
+
+  .hasReset {
+    background-color: transparent;
+    border: none;
+    width: 30px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
+  .item-list {
+    height: auto;
+    width: 100% !important;
+    border-radius: 0px !important;
+  }
+
+  .stage1 {
+    max-height: 10%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .stage-btn {
+    padding: 2px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #5227cc;
+    border-radius: 10px;
+    width: 70px;
+    border: 3px solid #311b92;
+    
+  }
+
+  .confirm-btn {
+    padding: 2px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #5227cc;
+    border-radius: 10px;
+    border: 3px solid #311b92;
+    width: 140px;
+  }
+
+  .final-content p {
+    color: #7749f8;
+  }
+
+  .add-and-rest-Lists {
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: auto;
+    background-color: #d0d0d0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .reset-all {
+    width: 40px;
+    height: 40px;
+    background-color: #5227cc;
+    border-radius: 10px;
+  }
+
+  .reset-all img {
+    width: 30px;
+    filter: invert(1);
+  }
+
+  .recicler-all {
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: auto;
+    background-color: #d0d0d0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .recicler-all-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #5227cc;
+    border-radius: 10px;
+  }
+
+  .recicler-all img {
+    width: 30px;
+    filter: invert(1);
+  }
+
+  .add-btn-request {
+    background-color: #5227cc;
+    color: #fdfcfe;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 150px;
+    height: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: auto 0;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .om-final-check {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 65%;
+    margin: 0 auto;
+  }
+
+  .om-final-check-body:last-child {
+    margin-top: 30px;
+  }
+
+  .om-final-check p {
+    color: #5227cc;
+    font-weight: bold;
+    font-size: x-large;
+    margin-top: 15px;
+    margin-bottom: 2px;
+  }
+
+  .om-final-check-body {
+    display: flex;
+    flex-direction: column;
+    max-height: 50%;
+  }
+
+  .offercheck {
+    border-radius: 10px;
+    border: 5px solid #5227cc;
+    overflow: hidden;
+  }
+
+  .recicler-Item {
+    position: absolute;
+    display: flex;
+    width: 60px;
+    height: 60px;
+  }
+
+  .recicler-Item img {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 4px;
+    cursor: pointer;
+    z-index: 2;
+  }
+}

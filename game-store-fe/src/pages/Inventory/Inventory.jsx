@@ -4,17 +4,19 @@ import React, { useState, useEffect } from "react";
 // components
 import SearchBar from "../../components/SearchBar";
 import ToggleBtn from "./components/ToggleBtn";
-import ItemList from "../../components/Itemlist";
 import LoadingSpinner from "../../components/Spinner";
+import ItemList from "../../components/ItemList/Itemlist";
 // fake database
 import { getAllItems, getUserItems } from "../../services/GetAllItems";
 //styles
 import "./Inventory.css";
-import { MOD, RECICLER_OFF, RECICLER_ON } from "../../utils/constants";
+import {
+  MOD,
+  RECICLER_OFF,
+  RECICLER_ON,
+} from "../../utils/constants";
 
 const Inventory = () => {
-  const userName = localStorage.getItem("userName") || "guest";
-
   const [toggle, setToggle] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -46,11 +48,6 @@ const Inventory = () => {
       item.Name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredData(filtered);
-  };
-
-  const resetSearch = () => {
-    setSearchQuery("");
-    document.getElementById("search-input").value = "";
   };
 
   const toggleButton = () => {

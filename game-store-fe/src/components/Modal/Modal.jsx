@@ -5,18 +5,17 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import CloseButton from "react-bootstrap/esm/CloseButton";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./Modal.css"
 
 // components
-import QuantitySelector from "./QuantitySelector";
+import QuantitySelector from "../QuantitySelector/QuantitySelector";
 
 function ModalItem({ item, handleClose, show, add }) {
   const firstQuantity = item.Quantity;
   const [quantity, setQuantity] = useState(item.Quantity);
 
-  const handleQuantityChange = (item, newQuantity) => {
+  const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
-    console.log(newQuantity);
   };
 
   const [shows, setShows] = useState(show);
@@ -32,32 +31,17 @@ function ModalItem({ item, handleClose, show, add }) {
   };
 
   const eraseItem = () => {
-    //deleteItem(item);
     setShows(false);
     console.log(item, "deleted");
   };
 
   const modalUpdatebtn = () => {
     if (firstQuantity !== 0 && quantity === 0) {
-      return (
-        <Button variant="primary" onClick={eraseItem}>
-          Delete
-        </Button>
-      );
+      return <Button onClick={eraseItem}>Delete</Button>;
     } else if (firstQuantity === 0) {
-      return (
-        <Button variant="primary" onClick={handleAddOrUpdate}>
-          Add
-        </Button>
-      );
-    }
-    
-    else if (firstQuantity !== 0 && quantity !== 0) {
-      return (
-        <Button variant="primary" onClick={handleAddOrUpdate}>
-          Update
-        </Button>
-      );
+      return <Button onClick={handleAddOrUpdate}>Add</Button>;
+    } else if (firstQuantity !== 0 && quantity !== 0) {
+      return <Button onClick={handleAddOrUpdate}>Update</Button>;
     }
   };
 
@@ -70,19 +54,19 @@ function ModalItem({ item, handleClose, show, add }) {
         onHide={handleCloseClick}
         id="modal-item"
       >
-        <Modal.Header>
+        <Modal.Header className="modal-header">
           <CloseButton onClick={handleCloseClick} />
           <Modal.Title>
             <h1>{item.Name}</h1>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="modal-body">
           <img src={item.Img} alt={item.Name} />
         </Modal.Body>
         <Modal.Footer>
           <QuantitySelector
             item={item}
-            onQuantityChange={handleQuantityChange}
+            onChangeQuantity={handleQuantityChange}
           />
           {modalUpdatebtn()}
         </Modal.Footer>
