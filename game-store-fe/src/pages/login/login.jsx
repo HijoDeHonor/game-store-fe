@@ -15,11 +15,11 @@ function LoginForm() {
         <h1>GAME STORE</h1>
         <div className='input-container'>
         <div className="input-box">
-          <input type="text" placeholder="User" required />
+          <input type="text" id='user' placeholder="User" required />
         </div>
 
         <div className="input-box">
-          <input type="password" placeholder="Password" required />
+          <input type="password" id='password' placeholder="Password" required />
         </div>
         </div>
         <div className="buttons-login">
