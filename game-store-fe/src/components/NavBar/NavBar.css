@@ -8,74 +8,69 @@
   color: #ffffff;
 }
 
-.nav p {
-  margin: 0 !important;
-  padding: 0 !important;
+.nav .nav-wrapper {
+  margin-top: 5px;
+  width: 100%;
 }
 
 .nav ul {
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  width: 80%;
-  margin-top: 5px;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0 !important;
   padding: 0 !important;
-  margin-bottom: 0 !important;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.nav .tittle {
-  margin: 0 auto;
+.nav li {
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
 }
-
-.nav a {
+.nav li .link-tittle {
+  display: flex;
+  margin-top: 5px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav li a {
   text-decoration: none;
   color: #ffffff;
 }
 
-.nav .user-menu {
-  width: 150px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row-reverse;
+.nav li p{
+    cursor: pointer;
 }
 
-.nav .user-menu-hover {
-  width: 150px;
+.nav .dropdown {
   position: relative;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom: #5227cc;
   display: flex;
-  flex-direction: row-reverse;
-  cursor: pointer;
+  justify-content: center;
 }
 
-.nav .drop-user-menu {
-  position: absolute;
-  background-color: blue;
-}
-
-.nav .drop-user-menu-hover {
-  position: absolute;
-  top: 22px;
-  right: 0;
+.nav .dropdown-content {
+  display: flex;
   width: 150px;
-  text-align: end;
-  padding: 10px;
-  background-color: #5227cc;
-  border: 3px black solid;
+  position: absolute;
+  top: 28px;
+  right: 50%;
+  transform: translateX(50%);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   border-radius: 5px;
+  border: 2px solid #000000;
+  background-color: #5227cc;
+}
+
+.nav .li-tittle {
   display: flex;
-  flex-direction: column;
+  margin-top: 5px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.nav .nav-offermaker{
-    width: 150px;
-}
-
-.nav .nav-login {
-    width: 150px;
-    text-align: end;
+.nav .content {
+    margin-top: 5px;
 }
