@@ -1,23 +1,80 @@
 .nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    position: sticky;
-    top: 0px;
-    z-index: 200;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #5227cc;
+  color: #ffffff;
+}
+
+.nav p {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .nav ul {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
-    width: 80%;
-    margin-top: 5px;
-    
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 80%;
+  margin-top: 5px;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav .tittle {
+  margin: 0 auto;
 }
 
 .nav a {
-    text-decoration: none;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav .user-menu {
+  width: 150px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.nav .user-menu-hover {
+  position: relative;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: #5227cc;
+  display: flex;
+  flex-direction: row-reverse;
+  cursor: pointer;
+}
+
+.nav .drop-user-menu {
+  position: absolute;
+  background-color: blue;
+}
+
+.nav .drop-user-menu-hover {
+  position: absolute;
+  top: 22px;
+  right: 0;
+  width: 150px;
+  text-align: end;
+  padding: 10px;
+  background-color: #5227cc;
+  border: 3px black solid;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav .nav-offermaker{
+    width: 150px;
+}
+
+.nav .nav-login {
+    width: 150px;
+    text-align: end;
 }

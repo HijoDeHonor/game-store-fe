@@ -4,9 +4,12 @@ import "./NavBar.css";
 
 const NavBar = () => {
   const [login, setLogin] = useState(true);
+  const [show, setShow] = useState(false);
+
+  let userName = localStorage.getItem("userName") //|| "Admin41";
 
   const checkUser = () => {
-    if (localStorage.getItem("user") !== null) {
+    if (userName !== null) {
       setLogin(false);
     } else {
       setLogin(true);
@@ -20,21 +23,26 @@ const NavBar = () => {
   return (
     <nav className="nav">
       <ul className="ul">
-        {login ? (
-          <Link to="/login">Login</Link>
-        ) : (
-          <Link to="/inventory">Inventory</Link>
-        )}
-        {login ? (
-          <Link to="/register">Register</Link>
-        ) : (
-          <Link to="/register">Inventory</Link>
-        )}
-        <Link to="/inventory">
-          <h1 className="title">GameStore</h1>
+        <Link  className="nav-offermaker" to="/offermaker">Create Offer</Link>
+        <Link className="tittle" to="/offers">
+          <h1 className="tittle">GameStore</h1>
         </Link>
-        <Link to="/offers">Offers</Link>
-        <Link to="/offermaker">Create Offer</Link>
+        {login ? (
+          <Link className="nav-login" to="/login">Login</Link>
+        ) : (
+          <div
+            onMouseLeave={() => setShow(false)}
+            className={show ? "user-menu-hover" : "user-menu"}
+          >
+            <p onMouseEnter={() => setShow(true)}>{userName}▼</p>
+            {show && (
+              <div className={show ? "drop-user-menu-hover" : "drop-user-menu"}>
+                <Link to="/inventory">My inventory ◄</Link>
+                <p>Cerrar Sesión ◄</p>
+              </div>
+            )}
+          </div>
+        )}
       </ul>
     </nav>
   );

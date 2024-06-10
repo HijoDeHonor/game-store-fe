@@ -44,6 +44,7 @@ function LoginForm() {
               placeholder="Password"
               id="password"
               onChange={handleOnChange}
+              autoComplete="current-password"
               required
             />
           </div>
