@@ -6,7 +6,7 @@ const NavBar = () => {
   const [login, setLogin] = useState(true);
   const [show, setShow] = useState(false);
 
-  let userName = localStorage.getItem("userName") //|| "Admin41";
+  let userName = localStorage.getItem("userName") || "Admin41";
 
   const checkUser = () => {
     if (userName !== null) {
