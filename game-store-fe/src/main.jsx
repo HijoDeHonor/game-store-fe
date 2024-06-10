@@ -9,6 +9,7 @@ import LoginForm from "./pages/login/login.jsx";
 import Inventory from "./pages/Inventory/Inventory.jsx";
 import OfferMakerWithProvider from "./pages/offerMaker/OfferMaker.jsx";
 import OfferList from "./pages/Offer/OfferList.jsx";
+import RegisterForm from "./pages/register/register.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,11 +17,9 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "", element: <LoginForm /> },
-      {
-        path: "inventory",
-        element: <Inventory />,
-      },
       { path: "login", element: <LoginForm /> },
+      { path: "register", element: <RegisterForm /> },
+      { path: "inventory", element: <Inventory /> },
       { path: "offers", element: <OfferList /> },
       { path: "offermaker", element: <OfferMakerWithProvider /> },
     ],

@@ -26,7 +26,6 @@ function LoginForm() {
   return (
     <div className="wrapper">
       <form action="">
-        <h1>GAME STORE</h1>
         <h2>Login</h2>
         <div className="input-container">
           <div className="input-box">
