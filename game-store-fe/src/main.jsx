@@ -17,17 +17,17 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      { path: "", element: <OfferList /> },
       { path: "login", element: <LoginForm /> },
       { path: "register", element: <RegisterForm /> },
       { path: "inventory", element: <Inventory /> },
-      { path: "offers", element: <OfferList /> },
       { path: "offermaker", element: <OfferMakerWithProvider /> },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+ 
     <RouterProvider router={router} />
-  </React.StrictMode>
+  
 );
