@@ -1,6 +1,6 @@
 // settings
 import React, { useState } from "react";
-import "./Item.css"
+import "./Item.css";
 
 //tools
 import { Tooltip } from "react-tooltip";
@@ -9,7 +9,16 @@ import { Tooltip } from "react-tooltip";
 import ModalItem from "../Modal/Modal";
 import ReciclerItem from "../ReciclerItem";
 
-function Item({ item, add, onClick, modal, recicler, deleteAdd , top , imageWidth}) {
+function Item({
+  item,
+  add,
+  onClick,
+  modal,
+  recicler,
+  deleteAdd,
+  top,
+  imageWidth,
+}) {
   const [showModal, setShowModal] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const handleDeleteClick = () => {
@@ -53,7 +62,13 @@ function Item({ item, add, onClick, modal, recicler, deleteAdd , top , imageWidt
 
   return (
     <div className="item-container">
-      <div className="item-card" key={item.Id}>
+      <div
+        className="item-card"
+        data-tooltip-id="tooltip"
+        data-tooltip-content={item.Name}
+        data-tooltip-place="top"
+        key={item.Id}
+      >
         {recicler && item.Quantity !== 0 ? (
           <div className="recicler-Item">
             <img
@@ -69,18 +84,17 @@ function Item({ item, add, onClick, modal, recicler, deleteAdd , top , imageWidt
           alt={item.Name}
           style={{ width: imageWidth }}
           onClick={handleToggleModal}
-          data-tooltip-id="tooltip"
-          data-tooltip-content={item.Name}
-          data-tooltip-place="top"
         />
-        <Tooltip id="tooltip" style={{ zIndex: 1000 }} />
 
         {item.Quantity !== 0 ? (
-          <div className="item-quantity" style={{marginTop: top}}>{item.Quantity}</div>
+          <div className="item-quantity" style={{ marginTop: top }}>
+            {item.Quantity}
+          </div>
         ) : null}
 
         {modalOn()}
         {modaldelete()}
+        <Tooltip id="tooltip" style={{ zIndex: 1000 }} />
       </div>
     </div>
   );
