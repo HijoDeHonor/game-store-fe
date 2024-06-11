@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 const LinkItem = ({ children, to, content, className }) => {
   const [show, setShow] = useState(false);
@@ -17,9 +16,9 @@ const LinkItem = ({ children, to, content, className }) => {
       {content ? (
         <p className="li-tittle">{children}</p>
       ) : (
-        <Link className={className? className : "link-tittle"} to={to}>
-        {children}
-        </Link>
+        <a className={className ? className : "link-tittle"} href={to}>
+          {children}
+        </a>
       )}
       {content && show ? (
         <div className="dropdown-content" onClick={handleClick}>

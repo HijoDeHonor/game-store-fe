@@ -60,16 +60,16 @@ async function removeItem(UserName, item) {
   return removeFromCollection;
 }
 
-
-
-
-const GetAllItems = (userName) => {
-  const user = userName;
-  if (user) {
-    return DBUser;
-  } else {
-    return DBServer;
-  }
+const getAllItems = async () => {
+  return new Promise((resolve) => {
+    resolve(DBServer);
+  });
 };
 
-export { removeItem, addItem, GetAllItems };
+const getUserItems = async () => {
+  return new Promise((resolve) => {
+    resolve(DBUser);
+  });
+};
+
+export { removeItem, addItem, getAllItems, getUserItems };

@@ -4,7 +4,7 @@ import {
   useOfferMaker,
 } from "./provider/offerMakerProvider";
 import "./offerMaker.css";
-import { getAllItems, getUserItems } from "../../services/GetAllItems";
+import { getAllItems, getUserItems } from "../../services/itemService.js";
 import {
   SET_CURRENT_STAGE,
   SET_OFFER,
@@ -26,11 +26,14 @@ const OfferMaker = () => {
   // 'fetch' to get the userItems and the serverItems then set in the context
   useEffect(() => {
     getUserItems().then((result) => {
+      console.log(result, "result")
       const items = result.map((item) => {
         const maxQuantity = item.Quantity;
         item.Quantity = 0;
+        
         return { ...item, maxQuantity };
       });
+      console.log(items, "despues de mq0")
       dispatch({
         type: SET_USER_ITEMS,
         data: items,

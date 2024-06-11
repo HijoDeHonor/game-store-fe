@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LinkItem from "./LinkItem";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [login, setLogin] = useState(false);
@@ -22,7 +21,7 @@ const NavBar = () => {
     return (
       <div>
         <div className="content">
-          <Link to={"inventory"}>My Inventory</Link>
+          <a href={"inventory"}>My Inventory</a>
         </div>
         <div>
           <p

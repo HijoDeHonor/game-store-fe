@@ -7,7 +7,7 @@ import ToggleBtn from "./components/ToggleBtn";
 import LoadingSpinner from "../../components/Spinner";
 import ItemList from "../../components/ItemList/Itemlist";
 // fake database
-import { getAllItems, getUserItems } from "../../services/GetAllItems";
+import { getAllItems, getUserItems } from "../../services/itemService";
 //styles
 import "./Inventory.css";
 import { MOD, RECICLER_OFF, RECICLER_ON } from "../../utils/constants";
