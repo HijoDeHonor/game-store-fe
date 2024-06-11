@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const LinkItem = ({ children, to, content }) => {
+const LinkItem = ({ children, to, content, className }) => {
   const [show, setShow] = useState(false);
 
   const handleMouseEnter = () => setShow(true);
@@ -17,8 +17,8 @@ const LinkItem = ({ children, to, content }) => {
       {content ? (
         <p className="li-tittle">{children}</p>
       ) : (
-        <Link className="link-tittle" to={to}>
-          {children}
+        <Link className={className? className : "link-tittle"} to={to}>
+        {children}
         </Link>
       )}
       {content && show ? (

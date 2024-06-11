@@ -46,7 +46,7 @@ const NavBar = () => {
           <LinkItem key={"offermaker"} to={"/offermaker"}>
             Create Offer
           </LinkItem>
-          <LinkItem key={"home"} to={"/"}>
+          <LinkItem className={"tittle"} key={"home"} to={"/offers"}>
             GameStore
           </LinkItem>
           {login ? (
