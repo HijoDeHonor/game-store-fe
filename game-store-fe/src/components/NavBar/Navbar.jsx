@@ -5,7 +5,7 @@ import "./NavBar.css";
 const NavBar = () => {
   const [login, setLogin] = useState(false);
 
-  let userName = localStorage.getItem("userName"); //|| "Nituca41";
+  let userName = localStorage.getItem("userName") || "Nituca41";
   const checkUser = () => {
     if (userName !== null) {
       setLogin(false);
@@ -49,14 +49,9 @@ const NavBar = () => {
             GameStore
           </LinkItem>
           {login ? (
-            <div className="sign-in-log-in">
-              <LinkItem key={"signIn"} to={"signin"}>
-                Sign In
-              </LinkItem>
-              <LinkItem key={"user"} to={"/login"}>
-                Login
-              </LinkItem>
-            </div>
+            <LinkItem key={"user"} to={"/login"}>
+              Login
+            </LinkItem>
           ) : (
             <LinkItem key={"account"} to={""} content={accountContent()}>
               {userName}

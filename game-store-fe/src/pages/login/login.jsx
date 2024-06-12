@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import logInService from "../../services/loginService";
-//import { useHistory } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 function LoginForm() {
   const [error, setError] = useState("");
@@ -11,6 +11,8 @@ function LoginForm() {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleOnChange = (event) => {
     const { id, value } = event.target;
     setUser((prevState) => ({
@@ -19,13 +21,24 @@ function LoginForm() {
     }));
   };
 
-  const goToRegister = () => {
-    //history.push("/register");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await logInService(User, setError);
+      navigate("/");
+    } catch (err) {
+      setError("Invalid username or password");
+    }
+  };
+
+  const goToRegister = (e) => {
+    e.preventDefault();
+    navigate("/signin");
   };
 
   return (
     <div className="wrapper">
-      <form action="">
+      <form onSubmit={ () =>{handleSubmit()}}>
         <h2>Login</h2>
         <div className="input-container">
           <div className="input-box">
@@ -50,11 +63,7 @@ function LoginForm() {
           </div>
         </div>
         <div className="buttons-login">
-          <button
-            className="login"
-            onClick={ () => logInService(User, setError)}
-            type="button"
-          >
+          <button className="login" type="button">
             Log In
           </button>
           <button className="signin" onClick={goToRegister}>

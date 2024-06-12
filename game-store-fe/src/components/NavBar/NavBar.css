@@ -37,10 +37,12 @@
 .nav li a {
   text-decoration: none;
   color: #ffffff;
+  vertical-align: middle;
 }
 
 .nav li p {
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 .nav .dropdown {
@@ -50,7 +52,7 @@
 }
 
 .nav .dropdown-content {
-  display: flex;
+  display: table-cell;
   width: 150px;
   position: absolute;
   top: 28px;
@@ -60,8 +62,8 @@
   align-items: center;
   text-align: center;
   border-radius: 5px;
-  border: 2px solid #000000;
   background-color: #5227cc;
+  vertical-align: auto;
 }
 
 .nav .li-tittle {
@@ -89,11 +91,6 @@
     1px 1px 0 #000;
 }
 
-.nav .sign-in-log-in {
-  display: flex;
-  flex-direction: row;
-}
-
-.nav .sign-in-log-in li {
-  min-width: 60px !important
+.nav .dropdown-content p {
+  margin-bottom: 1rem;
 }
