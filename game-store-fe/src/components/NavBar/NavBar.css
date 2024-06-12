@@ -88,3 +88,12 @@
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
 }
+
+.nav .sign-in-log-in {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav .sign-in-log-in li {
+  min-width: 60px !important
+}

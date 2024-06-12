@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <OfferList /> },
       { path: "login", element: <LoginForm /> },
-      { path: "register", element: <RegisterForm /> },
+      { path: "signin", element: <RegisterForm /> },
       { path: "inventory", element: <Inventory /> },
       { path: "offermaker", element: <OfferMakerWithProvider /> },
     ],
