@@ -30,6 +30,25 @@ const ListSelector = ({
     filterData();
   }, [searchQuery, itemsToFilter]);
 
+
+  useEffect(()=>{
+    if (finalList.length > 0) {
+      const updateItemsToFilter = itemsToFilter.map((item) => {
+        const sameItem = finalList.find(
+          (finalItem) => finalItem.Name === item.Name
+        );
+        if (sameItem){
+          return {
+            ...item,
+            maxQuantity: item.maxQuantity - sameItem.Quantity
+          };
+        }
+        return item;
+      });
+      setItemsToFilter(updateItemsToFilter);
+    }
+  },[])
+
   const addAndUpdate = () => {
     const itemsToAdd = prevItems.filter((item) => item.Quantity !== 0);
 
