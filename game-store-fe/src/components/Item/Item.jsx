@@ -94,8 +94,8 @@ function Item({
 
         {modalOn()}
         {modaldelete()}
-        <Tooltip id="tooltip" style={{ zIndex: 1000 }} />
       </div>
+        <Tooltip id="tooltip" style={{ zIndex: 1000 }} />
     </div>
   );
 }
