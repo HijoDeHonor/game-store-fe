@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       {
         path: "inventory",
         element: (
-          <ProtectedRoute canNavigate={false}>
+          <ProtectedRoute>
             <Inventory />
           </ProtectedRoute>
         ),
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: "offermaker",
         element: (
-          <ProtectedRoute canNavigate={false}>
+          <ProtectedRoute>
             <OfferMakerWithProvider />
           </ProtectedRoute>
         ),

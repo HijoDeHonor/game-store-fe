@@ -1,11 +1,13 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ canNavigate, redirectPath = "/login" }) => {
-  if (!canNavigate) {
-    return <Navigate to={redirectPath} replace />;
+const ProtectedRoute = ({ children }) => {
+  const isAuthenticated = !!localStorage.getItem("GameStore-userName");
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
   }
 
-  return <Outlet />;
+  return children;
 };
 
 export default ProtectedRoute;
