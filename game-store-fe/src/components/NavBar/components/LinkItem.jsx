@@ -11,7 +11,7 @@ const LinkItem = ({ children, to, content, className }) => {
     <li
       className={content ? "dropdown" : ""}
       onMouseEnter={handleMouseEnter}
-     // onMouseLeave={handleMouseLeave}
+      onMouseLeave={handleMouseLeave}
     >
       {content ? (
         <p className="li-tittle">{children}</p>

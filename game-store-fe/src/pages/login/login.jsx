@@ -7,7 +7,7 @@ function LoginForm() {
   const [error, setError] = useState("");
 
   const [User, setUser] = useState({
-    username: "",
+    userName: "",
     password: "",
   });
 
@@ -23,9 +23,17 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    console.log(User, "user");
     try {
-      await logInService(User, setError);
-      navigate("/");
+      const res = await logInService(User, setError);
+      if (res.ok) {
+        localStorage.setItem("token", res.token);
+        navigate("/");
+        window.location.reload();
+      } else {
+        setError("Invalid username or password");
+      }
     } catch (err) {
       setError("Invalid username or password");
     }
@@ -38,14 +46,14 @@ function LoginForm() {
 
   return (
     <div className="wrapper">
-      <form onSubmit={ () =>{handleSubmit()}}>
+      <form onSubmit={handleSubmit}>
         <h2>Login</h2>
         <div className="input-container">
           <div className="input-box">
             <input
               type="text"
               placeholder="User"
-              id="username"
+              id="userName"
               onChange={handleOnChange}
               required
             />
@@ -63,7 +71,7 @@ function LoginForm() {
           </div>
         </div>
         <div className="buttons-login">
-          <button className="login" type="button">
+          <button className="login" type="submit">
             Log In
           </button>
           <button className="signin" onClick={goToRegister}>

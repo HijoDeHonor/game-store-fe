@@ -6,19 +6,17 @@ import "./NavBar.css";
 const NavBar = () => {
   const [login, setLogin] = useState(false);
 
-  let userName = localStorage.getItem("userName") //|| "sdasd";
   const checkUser = () => {
+    let userName = localStorage.getItem("userName");
     if (userName !== null) {
-      setLogin(false);
-    } else {
       setLogin(true);
+    } else {
+      setLogin(false);
     }
   };
   useEffect(() => {
     checkUser();
   }, []);
-
-  
 
   return (
     <nav className="nav">
@@ -31,12 +29,12 @@ const NavBar = () => {
             GameStore
           </LinkItem>
           {login ? (
-            <LinkItem key={"user"} to={"/login"}>
-              Login
+            <LinkItem key={"account"} to={""} content={<AccountContent />}>
+              {localStorage.getItem("userName")}
             </LinkItem>
           ) : (
-            <LinkItem key={"account"} to={""} content={AccountContent()}>
-              {userName}
+            <LinkItem key={"user"} to={"/login"}>
+              Login
             </LinkItem>
           )}
         </ul>
