@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import LinkItem from "./LinkItem";
+import LinkItem from "./components/LinkItem";
+import AccountContent from "./components/AccountContent";
 import "./NavBar.css";
 
 const NavBar = () => {
   const [login, setLogin] = useState(false);
 
-  let userName = localStorage.getItem("userName") || "Nituca41";
+  let userName = localStorage.getItem("userName") //|| "sdasd";
   const checkUser = () => {
     if (userName !== null) {
       setLogin(false);
@@ -17,26 +18,7 @@ const NavBar = () => {
     checkUser();
   }, []);
 
-  const accountContent = () => {
-    return (
-      <div>
-        <div className="content">
-          <a href={"inventory"}>My Inventory</a>
-        </div>
-        <div>
-          <p
-            className="content"
-            onClick={() => {
-              localStorage.removeItem("userName");
-              setLogin(false);
-            }}
-          >
-            Sign off
-          </p>
-        </div>
-      </div>
-    );
-  };
+  
 
   return (
     <nav className="nav">
@@ -53,7 +35,7 @@ const NavBar = () => {
               Login
             </LinkItem>
           ) : (
-            <LinkItem key={"account"} to={""} content={accountContent()}>
+            <LinkItem key={"account"} to={""} content={AccountContent()}>
               {userName}
             </LinkItem>
           )}

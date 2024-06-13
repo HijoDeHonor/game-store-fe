@@ -9,14 +9,13 @@
 }
 
 .nav .nav-wrapper {
-  margin-top: 5px;
   width: 100%;
 }
 
 .nav ul {
   display: flex;
   justify-content: space-around;
-  align-items: baseline;
+  align-items: center;
   list-style: none;
   margin: 0 !important;
   padding: 0 !important;
@@ -29,15 +28,15 @@
 }
 .nav li .link-tittle {
   display: flex;
-  margin-top: 5px;
+  justify-content: center;
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 19px;
 }
 .nav li a {
   text-decoration: none;
   color: #ffffff;
-  vertical-align: middle;
 }
 
 .nav li p {
@@ -68,10 +67,10 @@
 
 .nav .li-tittle {
   display: flex;
-  margin-top: 5px;
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 19px;
 }
 
 .nav .content {
