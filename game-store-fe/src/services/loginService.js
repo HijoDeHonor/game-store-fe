@@ -6,11 +6,13 @@ const logInService = (User, setError) => {
     (u) => u.userName === User.userName && u.password === User.password
   );
   if (userFound) {
-    localStorage.setItem("token", userFound.token);
-    localStorage.setItem("userName", userFound.userName);
-    console.log(userFound.token);
     setError("");
-    return { ok: true, token: userFound.token, message: "Login successful" };
+    return {
+      ok: true,
+      userName: userFound.userName,
+      token: userFound.token,
+      message: "Login successful",
+    };
   } else {
     return setError("Usuario o contraseña incorrectos");
   }

@@ -24,11 +24,11 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    console.log(User, "user");
     try {
       const res = await logInService(User, setError);
       if (res.ok) {
-        localStorage.setItem("token", res.token);
+        window.localStorage.setItem("GameStore-userName", res.userName)
+        window.localStorage.setItem("GameStore-user-token", res.token)
         navigate("/");
         window.location.reload();
       } else {

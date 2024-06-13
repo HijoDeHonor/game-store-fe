@@ -15,11 +15,11 @@ const AccountContent = () => {
         <p
           className="content"
           onClick={() => {
-            localStorage.removeItem("userName");
-            localStorage.removeItem("token");
+            localStorage.removeItem("GameStore-userName");
+            localStorage.removeItem("GameStore-user-token");
             if (
-              localStorage.getItem("userName") === null &&
-              localStorage.getItem("token") === null
+              localStorage.getItem("GameStore-userName") === null &&
+              localStorage.getItem("GameStore-user-token") === null
             ) {
               navigate("/");
               window.location.reload();

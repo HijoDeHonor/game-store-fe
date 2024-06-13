@@ -1,12 +1,24 @@
 import React from "react";
 import Item from "../../../components/Item/Item";
 import tradeMake from "./tradeMake";
+import { useNavigate } from "react-router-dom";
 
 const Offer = ({ offer }) => {
   const { Id, Offer, Request, UserNamePoster } = offer;
 
+  const navigate = useNavigate();
+
   const Confirm = (Id, Offer, Request, UserNamePoster) => {
     tradeMake(Id, Offer, Request, UserNamePoster);
+  };
+
+  const handleConfirmTrade = () => {
+    if (localStorage.getItem("GameStore-userName") === null) {
+      navigate("/login");
+      window.location.reload();
+    } else {
+      Confirm(Id, Offer, Request, UserNamePoster);
+    }
   };
 
   return (
@@ -28,10 +40,7 @@ const Offer = ({ offer }) => {
       </td>
       <td className="td-btn">
         <div className="buttons-container">
-          <button
-            className="btn-trade"
-            onClick={() => Confirm(Id, Offer, Request, UserNamePoster)}
-          >
+          <button className="btn-trade" onClick={() => handleConfirmTrade()}>
             TRADE
           </button>
         </div>

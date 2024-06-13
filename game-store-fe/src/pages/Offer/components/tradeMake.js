@@ -1,8 +1,6 @@
 function tradeMake(Id, Offer, Request, UserNamePoster) {
-  const userNameTrader = localStorage.getItem("username")||"Admin";//borrar esta linea cuando se ponga en uso la base de datos
+  const userNameTrader = localStorage.getItem("GameStore-userName");//borrar esta linea cuando se ponga en uso la base de datos
   const userNamePoster = UserNamePoster;
-  const offer = Offer;
-  const request = Request;
   const id = Id;
   
   // restore this comented code when the back end is ready
