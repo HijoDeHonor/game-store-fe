@@ -1,0 +1,95 @@
+.nav {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #5227cc;
+  color: #ffffff;
+}
+
+.nav .nav-wrapper {
+  width: 100%;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.nav li {
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+}
+.nav li .link-tittle {
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 19px;
+}
+.nav li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav li p {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.nav .dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.nav .dropdown-content {
+  display: table-cell;
+  width: 150px;
+  position: absolute;
+  top: 28px;
+  right: 50%;
+  transform: translateX(50%);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #5227cc;
+  vertical-align: auto;
+}
+
+.nav .li-tittle {
+  display: flex;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.nav .content {
+  margin-top: 5px;
+}
+
+.nav .tittle {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.nav .tittle:hover,
+.dropdown:hover,
+.link-tittle:hover {
+  color: #ffffff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.nav .dropdown-content p {
+  margin-bottom: 1rem;
+}

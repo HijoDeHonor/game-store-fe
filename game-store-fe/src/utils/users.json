@@ -1,101 +1,101 @@
 [
   {
-    "username": "admin",
+    "userName": "admin",
     "password": "admin",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJhZG1pbiIsImlhdCI6MTY3MjA3NzY3MH0.0V0rQfUf5Vw4Qn6P4Z0w5j0XKX1bYsO6Qg4f7hCvXo"
   },
   {
-    "username": "Valdemar",
+    "userName": "Valdemar",
     "password": "user",
     "token": "token user1"
   },
   {
-    "username": "Scammer",
+    "userName": "Scammer",
     "password": "user",
     "token": "token user2"
   },
   {
-    "username": "LumiLagro",
+    "userName": "LumiLagro",
     "password": "user",
     "token": "token user3"
   },
   {
-    "username": "SaturDon",
+    "userName": "SaturDon",
     "password": "user",
     "token": "token user4"
   },
   {
-    "username": "SaveMartha",
+    "userName": "SaveMartha",
     "password": "user",
     "token": "token user5"
   },
   {
-    "username": "NinjaNinja",
+    "userName": "NinjaNinja",
     "password": "user",
     "token": "token user6"
   },
   {
-    "username": "ElYiyo",
+    "userName": "ElYiyo",
     "password": "user",
     "token": "token user7"
   },
   {
-    "username": "ElLocoPapa",
+    "userName": "ElLocoPapa",
     "password": "user",
     "token": "token user8"
   },
   {
-    "username": "Nituca41",
+    "userName": "Nituca41",
     "password": "user",
     "token": "token user9"
   },
   {
-    "username": "Vrael",
+    "userName": "Vrael",
     "password": "user",
     "token": "token user10"
   },
   {
-    "username": "Kaladin",
+    "userName": "Kaladin",
     "password": "user",
     "token": "token user11"
   },
   {
-    "username": "Morita",
+    "userName": "Morita",
     "password": "user",
     "token": "token user12"
   },
   {
-    "username": "PepeGrillo",
+    "userName": "PepeGrillo",
     "password": "user",
     "token": "token user13"
   },
   {
-    "username": "VongolaPrimo",
+    "userName": "VongolaPrimo",
     "password": "user",
     "token": "token user14"
   },
   {
-    "username": "Kelek",
+    "userName": "Kelek",
     "password": "user",
     "token": "token user15"
   },
   {
-    "username": "kevin",
+    "userName": "kevin",
     "password": "user",
     "token": "token user16"
   },
   {
-    "username": "stuart",
+    "userName": "stuart",
     "password": "user",
     "token": "token user17"
   },
   {
-    "username": "ElBob",
+    "userName": "ElBob",
     "password": "user",
     "token": "token user18"
   },
   {
-    "username": "GatoGato",
+    "userName": "GatoGato",
     "password": "user",
     "token": "token user19"
   }

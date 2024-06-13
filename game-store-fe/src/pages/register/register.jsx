@@ -31,7 +31,6 @@ function RegisterForm() {
   return (
     <div className="wrapper">
       <form>
-        <h1>GAME STORE</h1>
         <h2>Register</h2>
         <div className="input-container">
           <div className="input-box">
@@ -42,7 +41,7 @@ function RegisterForm() {
               value={newUser.username}
               onChange={handleChange}
               required
-            />            
+            />
           </div>
           <div className="input-box">
             <input
@@ -51,6 +50,7 @@ function RegisterForm() {
               placeholder="Password"
               value={newUser.password}
               onChange={handleChange}
+              autoComplete="new-password"
               required
             />
           </div>
@@ -61,20 +61,21 @@ function RegisterForm() {
               placeholder="Confirm Password"
               value={newUser.confirmPassword}
               onChange={handleChange}
+              autoComplete="new-password"
               required
             />
           </div>
         </div>
         <div className="buttons-register">
-          <button type="button" onClick={handleClickSubmit} className="register">
+          <button
+            type="button"
+            onClick={handleClickSubmit}
+            className="register"
+          >
             Register
           </button>
         </div>
-        {error && (
-              <div className="error-message">
-                {error}
-              </div>
-            )}
+        {error && <div className="error-message">{error}</div>}
       </form>
     </div>
   );
