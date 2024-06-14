@@ -7,6 +7,8 @@ const logInService = (User, setError) => {
   );
   if (userFound) {
     setError("");
+    window.localStorage.setItem("GameStore-userName", userFound.userName);
+    window.localStorage.setItem("GameStore-user-token", userFound.token);
     return {
       ok: true,
       userName: userFound.userName,

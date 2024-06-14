@@ -3,6 +3,7 @@ import { useState } from "react";
 import logInService from "../../services/loginService";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
+import { LOGIN_USER_PASS_ERROR, LOG_IN, SIGN_IN } from "../../utils/textConstants";
 function LoginForm() {
   const [error, setError] = useState("");
 
@@ -26,16 +27,15 @@ function LoginForm() {
     setError("");
     try {
       const res = await logInService(User, setError);
+      console.log(res)
       if (res.ok) {
-        window.localStorage.setItem("GameStore-userName", res.userName)
-        window.localStorage.setItem("GameStore-user-token", res.token)
         navigate("/");
         window.location.reload();
       } else {
-        setError("Invalid username or password");
+        setError(LOGIN_USER_PASS_ERROR);
       }
     } catch (err) {
-      setError("Invalid username or password");
+      setError(LOGIN_USER_PASS_ERROR);
     }
   };
 
@@ -47,7 +47,7 @@ function LoginForm() {
   return (
     <div className="wrapper">
       <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
+        <h2>{LOG_IN}</h2>
         <div className="input-container">
           <div className="input-box">
             <input
@@ -72,10 +72,10 @@ function LoginForm() {
         </div>
         <div className="buttons-login">
           <button className="login" type="submit">
-            Log In
+            {LOG_IN}
           </button>
           <button className="signin" onClick={goToRegister}>
-            Sign In
+            {SIGN_IN}
           </button>
         </div>
         {error && <div className="error-message">{error}</div>}
