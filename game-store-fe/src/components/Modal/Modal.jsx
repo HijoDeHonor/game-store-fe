@@ -67,6 +67,7 @@ function ModalItem({ item, handleClose, show, add }) {
           <QuantitySelector
             item={item}
             onChangeQuantity={handleQuantityChange}
+            shouldShowQuantity={true}
           />
           {modalUpdatebtn()}
         </Modal.Footer>
