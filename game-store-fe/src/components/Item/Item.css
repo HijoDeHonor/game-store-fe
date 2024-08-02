@@ -1,54 +1,108 @@
 .item-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* Permite que los elementos se ajusten en múltiples líneas si es necesario */
+  gap: 10px;
+  /* Espaciado entre los ítems */
+}
+
+.item-card {
+  position: relative;
+  max-width: 60px;
+  padding: 0;
+  box-sizing: border-box;
+  /* Cambiado a border-box para incluir padding y border en el ancho total */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.recicler-Item {
+  position: absolute;
+  display: flex;
+  width: 60px;
+  height: 60px;
+}
+
+.recicler-Item img {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 4px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.item-img {
+  background-color: #d5d5d5;
+  max-width: 100%;
+  /* Ajusta la imagen al contenedor */
+  padding: 2px;
+  border: 1px solid #000;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.item-quantity {
+  width: 20px;
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 70%;
+  background-color: #fff;
+  border: 1px solid #7749f8;
+  color: #7749f8;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Media Queries */
+
+@media (max-width: 600px) {
+  .item-container {
+    gap: 5px;
+    /* Reduce el espaciado en pantallas pequeñas */
+  }
+
   .item-card {
-    position: relative;
-    max-width: 60px;
-    padding: 0px;
-    box-sizing: content-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    max-width: 100%;
+    /* Asegura que las tarjetas ocupen todo el ancho disponible en pantallas pequeñas */
   }
 
   .recicler-Item {
+    width: 50px;
+    /* Ajusta el tamaño para pantallas más pequeñas */
+    height: 50px;
     position: absolute;
-    display: flex;
-    width: 60px;
-    height: 60px;
+    margin-top: -5px;
+    margin-left: -5px;
+    cursor: pointer;
+    z-index: 2;
   }
 
   .recicler-Item img {
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    margin-top: 5px;
-    margin-left: 4px;
-    cursor: pointer;
-    z-index: 2;
+    width: 8px;
+    /* Ajusta el tamaño de la imagen en pantallas pequeñas */
+    height: 8px;
+    margin-top: 4px;
+    margin-left: 3px;
   }
 
   .item-img {
-    background-color: #d5d5d5;
-    margin-top: 2px;
-    max-width: 60px;
-    padding: 2px;
-    border: 1px solid #000;
-    cursor: pointer;
-    z-index: 1;
+    max-width: 100%;
+    /* Ajusta la imagen al contenedor */
   }
 
   .item-quantity {
-    width: 20px;
-    position: absolute;
-    font-size: 12px;
-    font-weight: bold;
-    justify-self: center;
-    margin-top: 70%;
-    background-color: #fff;
-    border: 1px solid #7749f8;
-    color: #7749f8;
-    cursor: pointer;
-    z-index: 2;
+    width: 15px;
+    /* Ajusta el tamaño del contador en pantallas más pequeñas */
+    font-size: 10px;
+    margin-top: 65%;
   }
 }

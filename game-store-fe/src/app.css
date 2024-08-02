@@ -1,6 +1,15 @@
 .container {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 95vh;
-  flex-direction: column;;
+  flex-direction: column;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 600px) {
+  .container {
+    height: auto;
+    padding: 10px; 
+  }
 }

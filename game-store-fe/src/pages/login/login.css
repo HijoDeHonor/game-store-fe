@@ -1,40 +1,41 @@
-.wrapper {
+.wrapper-loggin {
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
     align-items: center;
-}
-
-.wrapper h1 {
+    flex-direction: column;
+  }
+  
+  .wrapper-loggin h1 {
     color: #7749f8;
     font-size: 50px;
     text-align: center;
-}
-
-.wrapper h2 {
+  }
+  
+  .wrapper-loggin h2 {
     color: #7749f8;
     font-size: 30px;
     text-align: center;
     margin-top: 30px;
-}
-
-.wrapper .input-container {
+  }
+  
+  .wrapper-loggin .input-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     margin: 30px 0;
-}
-
-.wrapper .input-box { 
+  }
+  
+  .wrapper-loggin .input-box { 
     width: 75%;
     height: 50px;
     margin: 10px 0;
     box-shadow: 0px 0px 10px 0px rgba(82, 39, 204, 0.5); 
-    border-radius: 10px ;
-}
-
-.input-box input {
+    border-radius: 10px;
+  }
+  
+  .input-box input {
     width: 100%;
     height: 100%;
     background: transparent;
@@ -46,36 +47,99 @@
     font-size: 16px;
     color: #a48ce9;
     padding: 20px 45px 20px 20px;
-}
-
-.input-box input::placeholder {
+  }
+  
+  .input-box input::placeholder {
     color: #c7ccd1;
-}
-
-.wrapper .buttons-login {
+  }
+  
+  .wrapper-loggin .buttons-login {
     display: flex;
     justify-content: space-between;
     margin: 10px;
-}
-
-.buttons-login .login {
+    width: 75%; /* Asegurar que los botones no se estiren demasiado en pantallas grandes */
+  }
+  
+  .buttons-login .login {
     background-color: #5227cc;
     color: white;
     cursor: pointer;
-}
-
-.buttons-login .signin {
+  }
+  
+  .buttons-login .signin {
     background: #fafafa;
     color: #b893f4;
     border: 2px solid #5227cc;
     cursor: pointer;
-}
-
-.wrapper .buttons-login button {
+  }
+  
+  .wrapper-loggin .buttons-login button {
     width: 35%;
     height: 45px;
     border: none;
     outline: none;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(82, 39, 204, 0.5);
-}
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+
+    .wrapper-loggin {
+        height: 50vh;
+    }
+
+    .wrapper-loggin h1 {
+      font-size: 40px;
+    }
+  
+    .wrapper-loggin h2 {
+      font-size: 24px;
+    }
+  
+    .wrapper-loggin .input-box {
+      width: 90%;
+    }
+  
+    .wrapper-loggin .buttons-login {
+      flex-direction: row;
+      width: 90%;
+    }
+  
+    .buttons-login .login,
+    .buttons-login .signin {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+
+    .wrapper-loggin {
+        height: 50vh;
+    }
+
+    .wrapper-loggin h1 {
+      font-size: 30px;
+    }
+  
+    .wrapper-loggin h2 {
+      font-size: 20px;
+    }
+  
+    .wrapper-loggin .input-box {
+      width: 100%;
+    }
+  
+    .wrapper-loggin .buttons-login {
+      flex-direction: row;
+      width: 100%;
+    }
+  
+    .buttons-login .login,
+    .buttons-login .signin {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+  }

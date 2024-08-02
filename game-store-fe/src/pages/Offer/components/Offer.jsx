@@ -27,14 +27,14 @@ const Offer = ({ offer }) => {
       <td className="td-offer">
         <div className="item-container-offer">
           {Offer.map((item, index) => (
-            <Item key={index} item={item} top="43%" imageWidth="40px" />
+            <Item key={index} item={item} top="20px" imageWidth="40px" />
           ))}
         </div>
       </td>
       <td className="td-request">
         <div className="item-container-request">
           {Request.map((item, index) => (
-            <Item key={index} item={item} top="43%" imageWidth="40px" />
+            <Item key={index} item={item} top="20px" imageWidth="40px" />
           ))}
         </div>
       </td>

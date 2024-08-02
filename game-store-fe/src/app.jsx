@@ -6,7 +6,7 @@ const App = () => {
   return (
     <>
       <NavBar />
-      <div className="container">
+      <div className="container-fluid">
         <Outlet />
       </div>
     </>
