@@ -45,7 +45,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper-loggin">
       <form onSubmit={handleSubmit}>
         <h2>{LOG_IN}</h2>
         <div className="input-container">

@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import CustomLink from "./CustomLink";
 const LinkItem = ({ children, to, content, className }) => {
   const [show, setShow] = useState(false);
+  const [menuIcon, setMenuIcon] = useState(' ≡')
+
   
-  const handleMouseEnter = () => setShow(true);
-  const handleMouseLeave = () => setShow(false);
+  const handleMouseEnter = () => {
+    setShow(true);
+    setMenuIcon(" ☰");
+  };
+
+  const handleMouseLeave = () => {
+    setShow(false);
+    setMenuIcon(" ≡");
+  };
   const handleClick = () => setShow(false);
 
   return (
@@ -14,7 +23,7 @@ const LinkItem = ({ children, to, content, className }) => {
       onMouseLeave={handleMouseLeave}
     >
       {content ? (
-        <p className="li-tittle">{children}</p>
+        <p className="link-tittle">{children}{menuIcon}</p>
       ) : (
         <CustomLink to={to} tittle={children} className={className}/>
       )}

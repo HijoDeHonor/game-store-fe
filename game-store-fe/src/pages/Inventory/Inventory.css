@@ -1,87 +1,158 @@
 .inventory-container {
   display: flex;
   justify-content: center;
-  
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas más pequeñas */
+}
 
+.inventory {
+  width: 80% !important;
+}
+
+.inventory-header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  width: 100%;
+  background-color: #7749f8;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.toggle-container {
+  position: relative;
+  width: 150px;
+  height: 30px;
+  background-color: #fff;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 15px;
+  padding: 4px;
+  --toggle-width: 85px;
+}
+
+.toggle-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: var(--toggle-width);
+  font-size: 16px;
+  line-height: 14px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #5d27f3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  padding: 2px 2px;
+  border-radius: 15px;
+  position: absolute;
+  transition: all 0.3s ease;
+  left: 5px;
+  height: 22px;
+}
+
+.disable {
+  background-color: #5d27f3;
+  left: calc(100% - var(--toggle-width) - 5px);
+}
+
+.search-bar {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 40px;
+  padding-left: 10px;
+}
+
+.search-input {
+  border-radius: 5px;
+  border-top: 2px solid #000;
+  padding-left: 10px;
+  margin-left: 10px;
+  height: 30px;
+}
+
+.inventory-body {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  min-height: 69vh;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Media Queries */
+@media (max-width: 680px) {
   .inventory {
-    width: 80% !important;
-  }
-
-  .inventory-header {
-    display: flex;
-    justify-content: flex-start;
-    padding: 10px;
-    background-color: #7749f8;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-  }
-
-  .toggle-container {
-    position: relative;
-    width: 150px;
-    height: 30px;
-    background-color: #fff;
-    cursor: pointer;
-    user-select: none;
-    border-radius: 15px;
-    padding: 4px;
-  }
-
-  .toggle-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    width: 85px;
-    font-size: 16px;
-    line-height: 14px;
-    cursor: pointer;
-    color: #fff;
-    background-color: #5d27f3;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    padding: 2px 2px;
-    border-radius: 15px;
-    position: absolute;
-    transition: all 0.3s ease;
-    left: 5px;
-    height: 23px;
-  }
-
-  .disable {
-    background-color: #5d27f3;
-    left: 60px;
-  }
-
-  .search-bar {
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 40px;
-    padding-left: 10px;
-  }
-
-  .search-input {
-    border-radius: 5px;
-    border-top: 2px solid #000;
-    padding-left: 10px;
-    margin-left: 10px;
-    height: 30px;
+    width: 100% !important;
   }
 
   .inventory-body {
-    width: 100%;
-    height: auto;
-    background-color: #fff;
-    min-height: 69vh;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    min-height: 60vh;
+    overflow-y: scroll;
+    max-height: 60vh;
+    overflow-x: hidden;
   }
-  
+
+  .inventory-body::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .inventory-body::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 10px 0;
+    /* Fondo de la track */
+  }
+
+  .inventory-body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.425);
+    /* Color de la barrita */
+    border-radius: 10px;
+    /* Bordes redondeados */
+  }
+
+  /* Eliminar las flechas de desplazamiento en Webkit */
+  .inventory-body::-webkit-scrollbar-button {
+    display: none;
+  }
+
   .spinner-container {
     position: absolute;
-    top: 50%;
+    top: 55vh;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .search-bar {
+    width: 65%;
+    margin-right: 0;
+    padding-left: 5px;
+  }
+
+  .search-input {
+    width: calc(100% - 20px);
+    margin-left: 0;
+    height: 30px;
+  }
+
+  .toggle-container {
+    width: 140px;
+    height: 30px;
+  }
+
+  .toggle-btn {
+    width: calc(50% - 4px); /* Ajusta el ancho dinámicamente */
+    font-size: 12px;
+  }
+
+  .disable {
+    left: calc(100% - (50% - 4px) - 5px);
   }
 }

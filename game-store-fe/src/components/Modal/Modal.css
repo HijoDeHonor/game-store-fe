@@ -2,6 +2,9 @@
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 15px !important; /* Añade padding para mejorar el espacio */
 }
 
 .modal-body {
@@ -9,6 +12,7 @@
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
+  padding: 15px !important; /* Añade padding para mejorar el espacio */
 }
 
 .modal-body img {
@@ -16,6 +20,7 @@
   height: 150px !important;
   border: #000 2px solid !important;
   border-radius: 15px !important;
+  margin-bottom: 15px !important; /* Añade margen inferior para espacio entre imagen y contenido */
 }
 
 .modal-footer {
@@ -23,14 +28,33 @@
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
+  padding: 15px !important; /* Añade padding para mejorar el espacio */
 }
 
 .btn {
   background-color: #7749f8 !important;
   color: #fff !important;
   border: none !important;
+  padding: 10px 20px !important; /* Añade padding para mejorar el tamaño del botón */
+  border-radius: 5px !important; /* Añade border-radius para mejorar la apariencia del botón */
+  margin-top: 10px !important; /* Añade margen superior para espacio entre botones */
 }
 
-.quantity-selector{
-    justify-content: center!important;
+.quantity-selector {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 10px !important; /* Añade margen superior para espacio entre selector y otros elementos */
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .modal-body img {
+    width: 120px !important; /* Ajusta el tamaño de la imagen para pantallas más pequeñas */
+    height: 120px !important;
+  }
+
+  .btn {
+    width: 50% !important; /* Ajusta el ancho del botón para pantallas más pequeñas */
+  }
 }

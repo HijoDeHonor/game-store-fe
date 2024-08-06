@@ -1,8 +1,8 @@
 .offerMaker-container {
   display: flex;
   flex-direction: column;
-  height: 95%;
-  
+  height: 90%;
+
 
   .om {
     height: 90%;
@@ -55,22 +55,27 @@
 
   /* Estilos para la scrollbar en navegadores Webkit (Chrome, Safari) */
   .FilterContent::-webkit-scrollbar {
-    width: 8px; /* Ancho de la scrollbar */
+    width: 8px;
+    /* Ancho de la scrollbar */
   }
 
   .FilterContent::-webkit-scrollbar-track {
-    background: transparent; /* Fondo de la track */
+    background: transparent;
+    /* Fondo de la track */
   }
 
   .FilterContent::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.425); /* Color de la barrita */
-    border-radius: 10px; /* Bordes redondeados */
+    background-color: rgba(0, 0, 0, 0.425);
+    /* Color de la barrita */
+    border-radius: 10px;
+    /* Bordes redondeados */
   }
 
   /* Eliminar las flechas de desplazamiento en Webkit */
   .FilterContent::-webkit-scrollbar-button {
     display: none;
   }
+
   /* Estilos de la tabla */
   .table {
     width: 100%;
@@ -101,9 +106,12 @@
     margin-top: auto;
     margin-bottom: auto;
     margin-right: auto;
-    padding-left: 10px;
-    justify-content: center !important;
+    padding-left: 5px;
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: default;
+    width: 100%;
   }
 
   .quantity-content {
@@ -188,7 +196,6 @@
     border-radius: 10px;
     width: 70px;
     border: 3px solid #311b92;
-    
   }
 
   .confirm-btn {
@@ -284,6 +291,7 @@
     font-size: x-large;
     margin-top: 15px;
     margin-bottom: 2px;
+    text-wrap: nowrap;
   }
 
   .om-final-check-body {
@@ -313,5 +321,171 @@
     margin-left: 4px;
     cursor: pointer;
     z-index: 2;
+  }
+
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .om h3 {
+      font-size: larger;
+      margin-top: 10px;
+    }
+
+    .om-body {
+      flex-direction: column;
+      padding: 2px;
+    }
+
+    .hasReset {
+      margin-left: 25px;
+    }
+
+    .stage1 {
+      height: 45px;
+    }
+
+    .select-body,
+    .om-List {
+      width: 100%;
+      max-height: 35vh;
+      border: none;
+      min-height: 30vh;
+    }
+
+    .offercheck {
+      min-height: 35vh;
+      background-color: #fff;
+    }
+
+    .om-List-header {
+      min-height: 50px;
+    }
+
+    .search-bar {
+      min-height: 60px;
+    }
+
+    .search-input {
+      width: 90%;
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+    }
+
+    .content img {
+      width: 40px;
+    }
+
+    .stage-btn,
+    .confirm-btn {
+      font-size: 14px;
+      margin-top: 5px;
+      padding: 3px;
+    }
+
+    .confirm-btn {
+      width: 120px;
+    }
+
+    .quantity-selector{
+      justify-content: flex-end !important;
+      margin-right: 10px;
+    }
+
+    .add-btn-request {
+      max-width: 80px;
+      font-size: 16px;
+      margin: 5px;
+      padding: 0px
+    }
+
+    .item-list {
+      width: 100% !important;
+    }
+
+    .offercheck {
+      max-width: 85%;
+      width: 100%;
+      margin: 0 auto;
+      overflow: scroll;
+      max-height: 33vh;
+      min-height: 33vh;
+    }
+
+    .offercheck::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .om h3 {
+      font-size: large;
+      margin-top: 10px;
+    }
+
+    .search-input {
+      width: 80%;
+      margin-left: 5px !important;
+      margin-right: 5px !important;
+    }
+
+    .hasReset {
+      margin-left: 25px;
+    }
+
+    .select-body,
+    .om-List {
+      width: 100%;
+      max-height: 35vh;
+      border: none;
+      min-height: 30vh;
+    }
+
+    .stage1 {
+      height: 45px;
+      position: sticky;
+      bottom: 5px;
+    }
+
+    .stage-btn,
+    .confirm-btn {
+      font-size: 12px;
+      padding: 5px;
+    }
+
+    .confirm-btn {
+      width: 100px;
+    }
+
+    
+
+    .add-btn-request {
+      max-width: 60px;
+      font-size: 14px;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    .om-final-check p {
+      font-size: larger;
+      width: 100%;
+    }
+
+    .om-final-check {
+      width: 80%;
+
+    }
+
+    .offercheck {
+      max-width: 85%;
+      width: 100%;
+      margin: 0 auto;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      max-height: 33vh;
+      min-height: 33vh;
+    }
+
+    .offercheck::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

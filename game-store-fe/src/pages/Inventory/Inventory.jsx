@@ -26,7 +26,10 @@ const Inventory = () => {
         resolve(toggle ? getAllItems() : getUserItems());
       }, 1000);
     });
+  
     setData(data);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  
     setIsLoading(false);
   };
 

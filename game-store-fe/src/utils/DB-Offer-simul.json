@@ -7,66 +7,20 @@
         "Quantity": 2,
         "Img": "https://cdn-icons-png.freepik.com/256/11041/11041347.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       },
-
       {
         "Name": "Latigo",
         "Quantity": 2,
         "Img": "https://cdn-icons-png.freepik.com/256/6852/6852948.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       },
       {
-        "Name": "Guadaña",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/11041/11041347.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
-      },
-
-      {
-        "Name": "Latigo",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/6852/6852948.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+        "Name": "Báculo",
+        "Quantity": 5,
+        "Img": "https://cdn-icons-png.freepik.com/256/456/456398.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       },
       {
-        "Name": "Guadaña",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/11041/11041347.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
-      },
-
-      {
-        "Name": "Latigo",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/6852/6852948.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
-      },
-      {
-        "Name": "Guadaña",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/11041/11041347.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
-      },
-
-      {
-        "Name": "Latigo",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/6852/6852948.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
-      },
-      {
-        "Name": "Guadaña",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/11041/11041347.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
-      },
-
-      {
-        "Name": "Latigo",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/6852/6852948.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
-      },
-      {
-        "Name": "Guadaña",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/11041/11041347.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
-      },
-
-      {
-        "Name": "Latigo",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/6852/6852948.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+        "Name": "Fusil",
+        "Quantity": 1,
+        "Img": "https://cdn-icons-png.freepik.com/256/9327/9327367.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       }
     ],
     "Request": [
@@ -111,7 +65,6 @@
         "Quantity": 3,
         "Img": "https://cdn-icons-png.freepik.com/256/11041/11041347.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       },
-
       {
         "Name": "Latigo",
         "Quantity": 2,
@@ -127,6 +80,16 @@
         "Name": "Martillo de Thor",
         "Quantity": 1,
         "Img": "https://cdn-icons-png.freepik.com/256/12092/12092522.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      },
+      {
+        "Name": "Guadaña",
+        "Quantity": 2,
+        "Img": "https://cdn-icons-png.freepik.com/256/11041/11041347.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      },
+      {
+        "Name": "Latigo",
+        "Quantity": 2,
+        "Img": "https://cdn-icons-png.freepik.com/256/6852/6852948.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       }
     ],
     "Request": [
@@ -134,6 +97,16 @@
         "Name": "Arco de cristal",
         "Quantity": 1,
         "Img": "https://cdn-icons-png.freepik.com/256/12569/12569010.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      },
+      {
+        "Name": "Escudo reflectante",
+        "Quantity": 1,
+        "Img": "https://cdn-icons-png.freepik.com/256/2920/2920081.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      },
+      {
+        "Name": "Escudo",
+        "Quantity": 2,
+        "Img": "https://cdn-icons-png.freepik.com/256/861/861377.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       }
     ],
     "UserNamePoster": "SaturDon"
@@ -170,6 +143,11 @@
         "Name": "Látigo de fuego",
         "Quantity": 1,
         "Img": "https://cdn-icons-png.freepik.com/256/4648/4648637.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      },
+      {
+        "Name": "Guadaña de fuego",
+        "Quantity": 1,
+        "Img": "https://cdn-icons-png.freepik.com/256/5874/5874157.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       }
     ],
     "UserNamePoster": "ElLocoPapa"
@@ -178,16 +156,16 @@
     "Id": 7,
     "Offer": [
       {
-        "Name": "Bumerán",
-        "Quantity": 8,
-        "Img": "https://cdn-icons-png.freepik.com/256/5019/5019127.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+        "Name": "Lanza de fuego",
+        "Quantity": 1,
+        "Img": "https://cdn-icons-png.freepik.com/256/3764/3764532.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       }
     ],
     "Request": [
       {
-        "Name": "Bumerán mágico",
-        "Quantity": 2,
-        "Img": "https://cdn-icons-png.freepik.com/256/2508/2508042.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+        "Name": "Lanza sagrada",
+        "Quantity": 1,
+        "Img": "https://cdn-icons-png.freepik.com/256/6476/6476184.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       }
     ],
     "UserNamePoster": "Lumilagro"
@@ -245,7 +223,8 @@
       }
     ],
     "UserNamePoster": "NinjaNinja"
-  },{
+  },
+  {
     "Id": 11,
     "Offer": [
       {
@@ -367,9 +346,9 @@
     "Id": 17,
     "Offer": [
       {
-        "Name": "Bumerán",
-        "Quantity": 8,
-        "Img": "https://cdn-icons-png.freepik.com/256/5019/5019127.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+        "Name": "Dardo",
+        "Quantity": 10,
+        "Img": "https://cdn-icons-png.freepik.com/256/4279/4279305.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       }
     ],
     "Request": [
@@ -434,7 +413,8 @@
       }
     ],
     "UserNamePoster": "NinjaNinja"
-  },{
+  },
+  {
     "Id": 21,
     "Offer": [
       {
@@ -469,7 +449,8 @@
       }
     ],
     "UserNamePoster": "ElYIyo"
-  },{
+  },
+  {
     "Id": 23,
     "Offer": [
       {
