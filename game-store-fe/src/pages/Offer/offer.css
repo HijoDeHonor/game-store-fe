@@ -67,10 +67,6 @@
   text-align: center;
 }
 
-.td-offer {
-  padding-left: 15px;
-}
-
 .item-container-offer,
 .item-container-request {
   display: grid;
@@ -125,6 +121,46 @@
   border: none;
 }
 
+.btn-trade.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+
+}
+
+.btn-trade {
+  display: none;
+}
+
+/* Botón de icono */
+.btn-trade.icon {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 7px
+}
+
+.btn-trade.icon img {
+  width: 25px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  filter: invert(1);
+}
+
+/* Mostrar botón de texto en pantallas grandes */
+@media (min-width: 600px) {
+  .btn-trade {
+    display: inline-block;
+  }
+}
+
+/* Mostrar botón de icono en pantallas pequeñas */
+@media (max-width: 599px) {
+  .btn-trade.icon {
+    display: inline-block;
+  }
+}
 .pagination li {
   color: transparent;
   font-weight: bold;
@@ -170,7 +206,7 @@
 }
 
 /* Media Queries */
-@media (max-width: 600px) {
+@media (max-width: 680px) {
   .offer-container {
     padding: 3vh;
     height: auto;
@@ -181,8 +217,9 @@
     height: 80vh;
   }
 
-  .th-id, .th-offer {
+  .th-offer {
     font-size: 18px !important;
+    text-align: start !important;
   }
 
   .td-id {
@@ -190,7 +227,10 @@
   }
 
   .item-container-offer, .item-container-request {
-    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 0px;
+    padding-right: 5px;
+    padding-top: 5px;
   }
 
   .btn-trade {

@@ -27,6 +27,7 @@
   user-select: none;
   border-radius: 15px;
   padding: 4px;
+  --toggle-width: 85px;
 }
 
 .toggle-btn {
@@ -34,7 +35,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  width: 85px;
+  width: var(--toggle-width);
   font-size: 16px;
   line-height: 14px;
   cursor: pointer;
@@ -46,12 +47,12 @@
   position: absolute;
   transition: all 0.3s ease;
   left: 5px;
-  height: 23px;
+  height: 22px;
 }
 
 .disable {
   background-color: #5d27f3;
-  left: 60px;
+  left: calc(100% - var(--toggle-width) - 5px);
 }
 
 .search-bar {
@@ -94,7 +95,32 @@
   }
 
   .inventory-body {
-    min-height: 38vh;
+    min-height: 40vh;
+    overflow-y: scroll;
+    max-height: 60vh;
+    overflow-x: hidden;
+  }
+
+  .inventory-body::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .inventory-body::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 10px 0;
+    /* Fondo de la track */
+  }
+
+  .inventory-body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.425);
+    /* Color de la barrita */
+    border-radius: 10px;
+    /* Bordes redondeados */
+  }
+
+  /* Eliminar las flechas de desplazamiento en Webkit */
+  .inventory-body::-webkit-scrollbar-button {
+    display: none;
   }
 
   .spinner-container {
@@ -122,11 +148,11 @@
   }
 
   .toggle-btn {
-    width: px;
-    font-size: 14px;
+    width: calc(50% - 4px); /* Ajusta el ancho dinámicamente */
+    font-size: 12px;
   }
 
   .disable {
-    left: 50px;
+    left: calc(100% - (50% - 4px) - 5px);
   }
 }

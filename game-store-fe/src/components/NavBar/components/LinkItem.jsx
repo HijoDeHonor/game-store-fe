@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import CustomLink from "./CustomLink";
 const LinkItem = ({ children, to, content, className }) => {
   const [show, setShow] = useState(false);
-  
+  const [arrowIcon, setArrowIcon] = useState(' ︽')
+
   const handleMouseEnter = () => setShow(true);
   const handleMouseLeave = () => setShow(false);
   const handleClick = () => setShow(false);

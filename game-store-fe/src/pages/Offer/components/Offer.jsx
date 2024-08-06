@@ -2,6 +2,7 @@ import React from "react";
 import Item from "../../../components/Item/Item";
 import tradeMake from "./tradeMake";
 import { useNavigate } from "react-router-dom";
+import ButtonTrade from './ButtonTrade.jsx';
 
 const Offer = ({ offer }) => {
   const { Id, Offer, Request, UserNamePoster } = offer;
@@ -23,29 +24,25 @@ const Offer = ({ offer }) => {
 
   return (
     <tr className="tr-table">
-      <td className="td-id">{Id}</td>
+      <td className="td-id">{ Id }</td>
       <td className="td-offer">
         <div className="item-container-offer">
-          {Offer.map((item, index) => (
-            <Item key={index} item={item} top="20px" imageWidth="40px" />
-          ))}
+          { Offer.map((item, index) => (
+            <Item key={ index } item={ item } top="20px" imageWidth="40px" />
+          )) }
         </div>
       </td>
       <td className="td-request">
         <div className="item-container-request">
-          {Request.map((item, index) => (
-            <Item key={index} item={item} top="20px" imageWidth="40px" />
-          ))}
+          { Request.map((item, index) => (
+            <Item key={ index } item={ item } top="20px" imageWidth="40px" />
+          )) }
         </div>
       </td>
       <td className="td-btn">
-        <div className="buttons-container">
-          <button className="btn-trade" onClick={() => handleConfirmTrade()}>
-            TRADE
-          </button>
-        </div>
+        <ButtonTrade handleConfirmTrade={ handleConfirmTrade } />
       </td>
-    </tr>
+    </tr >
   );
 };
 

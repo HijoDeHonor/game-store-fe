@@ -22,21 +22,21 @@ const NavBar = () => {
     <nav className="nav">
       <div className="nav-wrapper">
         <ul>
-          <LinkItem key={"offermaker"} to={"/offermaker"}>
+          <LinkItem key={ "offermaker" } to={ "/offermaker" }>
             Create Offer
           </LinkItem>
-          <LinkItem className={"tittle"} key={"home"} to={"/"}>
+          <LinkItem className={ "tittle" } key={ "home" } to={ "/" }>
             GameStore
           </LinkItem>
-          {login ? (
-            <LinkItem key={"account"} to={""} content={<AccountContent />}>
-              {localStorage.getItem("GameStore-userName")}
+          { login ? (
+            <LinkItem key={ "account" } to={ "" } content={ <AccountContent /> }>
+              { localStorage.getItem("GameStore-userName") }
             </LinkItem>
           ) : (
-            <LinkItem key={"user"} to={"/login"}>
+            <LinkItem key={ "user" } to={ "/login" }>
               Login
             </LinkItem>
-          )}
+          ) }
         </ul>
       </div>
     </nav>

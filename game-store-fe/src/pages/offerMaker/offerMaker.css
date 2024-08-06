@@ -1,7 +1,7 @@
 .offerMaker-container {
   display: flex;
   flex-direction: column;
-  height: 95%;
+  height: 90%;
 
 
   .om {
@@ -106,9 +106,12 @@
     margin-top: auto;
     margin-bottom: auto;
     margin-right: auto;
-    padding-left: 10px;
-    justify-content: center !important;
+    padding-left: 5px;
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: default;
+    width: 100%;
   }
 
   .quantity-content {
@@ -288,6 +291,7 @@
     font-size: x-large;
     margin-top: 15px;
     margin-bottom: 2px;
+    text-wrap: nowrap;
   }
 
   .om-final-check-body {
@@ -321,20 +325,35 @@
 
   /* Media Queries */
   @media (max-width: 768px) {
+    .om h3 {
+      font-size: larger;
+      margin-top: 10px;
+    }
+
     .om-body {
       flex-direction: column;
       padding: 2px;
     }
 
-    .select-body {
-      min-height: 50vh;
+    .hasReset {
+      margin-left: 15px;
+    }
+
+    .stage1 {
+      height: 45px;
     }
 
     .select-body,
     .om-List {
       width: 100%;
-      max-height: 50vh;
+      max-height: 35vh;
       border: none;
+      min-height: 30vh;
+    }
+
+    .offercheck {
+      min-height: 35vh;
+      background-color: #fff;
     }
 
     .om-List-header {
@@ -358,49 +377,88 @@
     .stage-btn,
     .confirm-btn {
       font-size: 14px;
-      width: 60px;
       margin-top: 5px;
+      padding: 3px;
     }
 
     .confirm-btn {
       width: 120px;
-      margin-top: 5px;
-
     }
 
     .reset-all,
     .recicler-all-btn {
       width: 30px;
       height: 30px;
+      margin-top: 3px;
+      border-radius: 5px;
     }
 
     .reset-all img,
     .recicler-all img {
       width: 20px;
+      margin-top: 3px;
+      vertical-align: top;
     }
 
     .add-btn-request {
-      max-width: 120px;
+      max-width: 80px;
       font-size: 16px;
-      margin: 5px
+      margin: 5px;
+      padding: 0px
     }
 
     .item-list {
       width: 100% !important;
     }
+
+    .offercheck {
+      max-width: 85%;
+      width: 100%;
+      margin: 0 auto;
+      overflow: scroll;
+      max-height: 33vh;
+      min-height: 33vh;
+    }
+
+    .offercheck::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   @media (max-width: 480px) {
+    .om h3 {
+      font-size: large;
+      margin-top: 10px;
+    }
+
     .search-input {
       width: 80%;
       margin-left: 5px !important;
       margin-right: 5px !important;
     }
 
+    .hasReset {
+      margin-left: 15px;
+    }
+
+    .select-body,
+    .om-List {
+      width: 100%;
+      max-height: 35vh;
+      border: none;
+      min-height: 30vh;
+    }
+
+    .stage1 {
+      height: 45px;
+      position: sticky;
+      bottom: 5px;
+    }
+
     .stage-btn,
     .confirm-btn {
       font-size: 12px;
-      width: 50px;
+      padding: 5px;
     }
 
     .confirm-btn {
@@ -412,15 +470,43 @@
       width: 25px;
       height: 25px;
     }
-    
+
     .reset-all img,
     .recicler-all img {
       width: 15px;
+      margin-top: 3px;
+      vertical-align: top;
     }
 
     .add-btn-request {
-      max-width: 100px;
+      max-width: 60px;
       font-size: 14px;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    .om-final-check p {
+      font-size: larger;
+      width: 100%;
+    }
+
+    .om-final-check {
+      width: 80%;
+
+    }
+
+    .offercheck {
+      max-width: 85%;
+      width: 100%;
+      margin: 0 auto;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      max-height: 33vh;
+      min-height: 33vh;
+    }
+
+    .offercheck::-webkit-scrollbar {
+      display: none;
     }
   }
 }
