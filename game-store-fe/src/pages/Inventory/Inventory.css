@@ -95,7 +95,7 @@
   }
 
   .inventory-body {
-    min-height: 40vh;
+    min-height: 60vh;
     overflow-y: scroll;
     max-height: 60vh;
     overflow-x: hidden;
@@ -125,7 +125,7 @@
 
   .spinner-container {
     position: absolute;
-    top: 28vh;
+    top: 55vh;
     left: 50%;
     transform: translate(-50%, -50%);
   }

@@ -336,7 +336,7 @@
     }
 
     .hasReset {
-      margin-left: 15px;
+      margin-left: 25px;
     }
 
     .stage1 {
@@ -385,19 +385,9 @@
       width: 120px;
     }
 
-    .reset-all,
-    .recicler-all-btn {
-      width: 30px;
-      height: 30px;
-      margin-top: 3px;
-      border-radius: 5px;
-    }
-
-    .reset-all img,
-    .recicler-all img {
-      width: 20px;
-      margin-top: 3px;
-      vertical-align: top;
+    .quantity-selector{
+      justify-content: flex-end !important;
+      margin-right: 10px;
     }
 
     .add-btn-request {
@@ -438,7 +428,7 @@
     }
 
     .hasReset {
-      margin-left: 15px;
+      margin-left: 25px;
     }
 
     .select-body,
@@ -465,18 +455,7 @@
       width: 100px;
     }
 
-    .reset-all,
-    .recicler-all-btn {
-      width: 25px;
-      height: 25px;
-    }
-
-    .reset-all img,
-    .recicler-all img {
-      width: 15px;
-      margin-top: 3px;
-      vertical-align: top;
-    }
+    
 
     .add-btn-request {
       max-width: 60px;
