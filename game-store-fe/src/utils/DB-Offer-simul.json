@@ -11,6 +11,16 @@
         "Name": "Latigo",
         "Quantity": 2,
         "Img": "https://cdn-icons-png.freepik.com/256/6852/6852948.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      },
+      {
+        "Name": "Báculo",
+        "Quantity": 5,
+        "Img": "https://cdn-icons-png.freepik.com/256/456/456398.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
+      },
+      {
+        "Name": "Fusil",
+        "Quantity": 1,
+        "Img": "https://cdn-icons-png.freepik.com/256/9327/9327367.png?uid=R125020544&ga=GA1.1.297410512.1711637426&"
       }
     ],
     "Request": [
