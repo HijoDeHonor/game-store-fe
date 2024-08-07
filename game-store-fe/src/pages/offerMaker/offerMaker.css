@@ -88,8 +88,9 @@
 
   .content {
     width: 50%;
-    flex-direction: row;
     display: flex;
+    flex-direction: row;
+
   }
 
   .content img {
@@ -102,7 +103,7 @@
   }
 
   .content p {
-    display: flex;
+    display: block;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: auto;
@@ -110,6 +111,7 @@
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
     cursor: default;
     width: 100%;
   }
@@ -323,8 +325,14 @@
     z-index: 2;
   }
 
+  @media (max-width: 1080px) and (min-width: 890px) {
+    .content {
+      flex-wrap: wrap;
+    }
+  } 
+
   /* Media Queries */
-  @media (max-width: 768px) {
+  @media (max-width: 890px) {
     .om h3 {
       font-size: larger;
       margin-top: 10px;
@@ -361,7 +369,7 @@
     }
 
     .search-bar {
-      min-height: 60px;
+      min-height: 50px;
     }
 
     .search-input {
@@ -385,7 +393,7 @@
       width: 120px;
     }
 
-    .quantity-selector{
+    .quantity-selector {
       justify-content: flex-end !important;
       margin-right: 10px;
     }
@@ -415,7 +423,7 @@
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 450px) {
     .om h3 {
       font-size: large;
       margin-top: 10px;
@@ -455,7 +463,17 @@
       width: 100px;
     }
 
-    
+    .content {
+      flex-wrap: wrap;
+      min-width: 80px;
+    }
+
+    .content p {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .add-btn-request {
       max-width: 60px;

@@ -6,7 +6,7 @@
   align-content: start; /* Alinear la última fila en la parte superior */
   background-color: #fff;
   padding: 15px;
-  height: 69vh;
+  height: 100%;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   overflow-y: scroll;
@@ -26,6 +26,6 @@
   .item-list {
     grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); /* Ajusta el tamaño mínimo de las columnas para pantallas pequeñas */
     padding: 10px; /* Reduce el padding en pantallas pequeñas */
-    height: auto; /* Ajusta la altura para pantallas pequeñas */
+    height: 100%; /* Ajusta la altura para pantallas pequeñas */
   }
 }

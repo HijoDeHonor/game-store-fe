@@ -91,9 +91,11 @@
 /* Media Queries */
 @media (max-width: 680px) {
   .inventory {
-    width: 100% !important;
+    width: 90% !important;
   }
-
+  .container {
+    height: 75vh !important;
+  }
   .inventory-body {
     min-height: 60vh;
     overflow-y: scroll;
@@ -125,7 +127,7 @@
 
   .spinner-container {
     position: absolute;
-    top: 55vh;
+    top: 45vh;
     left: 50%;
     transform: translate(-50%, -50%);
   }
