@@ -7,7 +7,7 @@ import { LOGIN_USER_PASS_ERROR, LOG_IN, SIGN_IN } from "../../utils/textConstant
 function LoginForm() {
   const [error, setError] = useState("");
 
-  const [User, setUser] = useState({
+  const [user, setUser] = useState({
     userName: "",
     password: "",
   });
@@ -26,8 +26,7 @@ function LoginForm() {
     e.preventDefault();
     setError("");
     try {
-      const res = await logInService(User, setError);
-      console.log(res)
+      const res = await logInService(user, setError);
       if (res.ok) {
         navigate("/");
         window.location.reload();
