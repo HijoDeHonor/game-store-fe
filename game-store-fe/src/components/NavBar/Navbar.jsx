@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import LinkItem from "./components/LinkItem";
-import AccountContent from "./components/AccountContent";
-import "./NavBar.css";
+import { useState, useEffect } from 'react';
+import LinkItem from './components/LinkItem';
+import AccountContent from './components/AccountContent';
+import './NavBar.css';
 
 const NavBar = () => {
   const [login, setLogin] = useState(false);
 
   const checkUser = () => {
-    let userName = localStorage.getItem("GameStore-userName");
+    let userName = localStorage.getItem('GameStore-userName');
     if (userName !== null) {
       setLogin(true);
     } else {
@@ -22,18 +22,18 @@ const NavBar = () => {
     <nav className="nav">
       <div className="nav-wrapper">
         <ul>
-          <LinkItem key={ "offermaker" } to={ "/offermaker" }>
+          <LinkItem key={ 'offermaker' } to={ '/offermaker' }>
             Create Offer
           </LinkItem>
-          <LinkItem className={ "tittle" } key={ "home" } to={ "/" }>
+          <LinkItem className={ 'tittle' } key={ 'home' } to={ '/' }>
             GameStore
           </LinkItem>
           { login ? (
-            <LinkItem key={ "account" } to={ "" } content={ <AccountContent /> }>
-              { localStorage.getItem("GameStore-userName") }
+            <LinkItem key={ 'account' } to={ '' } content={ <AccountContent /> }>
+              { localStorage.getItem('GameStore-userName') }
             </LinkItem>
           ) : (
-            <LinkItem key={ "user" } to={ "/login" }>
+            <LinkItem key={ 'user' } to={ '/login' }>
               Login
             </LinkItem>
           ) }

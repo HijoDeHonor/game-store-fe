@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import resetIcon from "../../assets/resetIcon.png";
-import "./QuantitySelector.css";
+import React, { useEffect, useState } from 'react';
+import resetIcon from '../../assets/resetIcon.png';
+import './QuantitySelector.css';
 
-function QuantitySelector({
+function QuantitySelector ({
   item,
   onChangeQuantity,
   maxQuantity,

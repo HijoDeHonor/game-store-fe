@@ -1,7 +1,7 @@
-import Modal from "react-bootstrap/Modal";
-import CloseButton from "react-bootstrap/esm/CloseButton";
-import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
+import Modal from 'react-bootstrap/Modal';
+import CloseButton from 'react-bootstrap/esm/CloseButton';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { removeItem } from '../services/itemService';
 
 const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
   const handleXClose = () => {
@@ -9,10 +9,16 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
   };
 
   const handleDelete = () => {
+    if (deleteAdd) {
+      deleteAdd(item);
+      return;
+    }
     handleClose();
-    deleteAdd && deleteAdd(item);
-    console.log(item, "deleted");
-    // deleteItem(item);
+    const itemToRemove = [{ 
+      itemName: item.Name,
+      quantity: item.Quantity }];
+    removeItem(itemToRemove);
+    window.location.reload();
   };
 
   return (
@@ -24,7 +30,7 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
       <Modal.Body>
         <img
           src={item.Img}
-          style={{ height: "60px", cursor: "default" }}
+          style={{ height: '60px', cursor: 'default' }}
           className="item-img"
           alt={item.Name}
         />
@@ -32,7 +38,7 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
         <p>Are you sure you want to delete it?</p>
       </Modal.Body>
       <Modal.Footer
-        style={{ justifyContent: "space-evenly", flexDirection: "row" }}
+        style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}
       >
         <button type="button" className="btn" onClick={handleClose}>
           Cancel

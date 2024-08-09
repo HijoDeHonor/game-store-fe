@@ -1,15 +1,15 @@
 // settings
-import React, { useState } from "react";
-import "./Item.css";
+import { useState } from 'react';
+import './Item.css';
 
 //tools
-import { Tooltip } from "react-tooltip";
+import { Tooltip } from 'react-tooltip';
 
 //my components
-import ModalItem from "../Modal/Modal";
-import ReciclerItem from "../ReciclerItem";
+import ModalItem from '../Modal/Modal';
+import ReciclerItem from '../ReciclerItem';
 
-function Item({
+function Item ({
   item,
   add,
   onClick,
@@ -95,7 +95,7 @@ function Item({
         {modalOn()}
         {modaldelete()}
       </div>
-        <Tooltip id="tooltip" style={{ zIndex: 1000 }} />
+      <Tooltip id="tooltip" style={{ zIndex: 1000 }} />
     </div>
   );
 }

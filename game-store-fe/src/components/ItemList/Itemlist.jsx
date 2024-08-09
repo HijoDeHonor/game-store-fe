@@ -1,18 +1,17 @@
-import React from "react";
-import Item from "../Item/Item";
-import "./ItemList.css"
+import Item from '../Item/Item';
+import './ItemList.css';
 
-function ItemList({ allTheItems, onClick, add, modal, recicler, deleteAdd }) {
+function ItemList ({ allTheItems, onClick, add, modal, recicler, deleteAdd }) {
   const ItemList = allTheItems.map((item) => (
     <Item
-      key={item.Id}
+      key={item.Name}
       item={item}
       onClick={onClick}
       add={add}
       modal={modal}
       recicler={recicler}
       deleteAdd={deleteAdd}
-      imageWidth={"60px"}
+      imageWidth={'60px'}
     />
   ));
 

@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   OfferMakerProvider,
   useOfferMaker,
-} from "./provider/offerMakerProvider";
-import "./offerMaker.css";
-import { getAllItems, getUserItems } from "../../services/itemService.js";
+} from './provider/offerMakerProvider';
+import './offerMaker.css';
+import { getAllItems, getUserItems } from '../../services/itemService.js';
 import {
   SET_CURRENT_STAGE,
   SET_OFFER,
   SET_REQUEST,
   SET_SERVER_ITEMS,
   SET_USER_ITEMS,
-} from "../../utils/textConstants";
-import Stepper from "./components/stepper";
-import SelectOffer from "./components/SelectOffer";
-import SelectRequest from "./components/SelectRequest";
-import FinalOfferCheck from "./components/FinalOfferCheck";
+} from '../../utils/textConstants';
+import Stepper from './components/stepper';
+import SelectOffer from './components/SelectOffer';
+import SelectRequest from './components/SelectRequest';
+import FinalOfferCheck from './components/FinalOfferCheck';
 
 const OfferMaker = () => {
   const { state, dispatch } = useOfferMaker();
   const { currentStage, userItems, serverItems, offer, request } = state;
 
-  const [allLoad, setAllLoad] = useState(false);
-
   // 'fetch' to get the userItems and the serverItems then set in the context
   useEffect(() => {
-    getUserItems().then((result) => {
+    getUserItems(localStorage.getItem('GameStore-userName')).then((result) => {
       const items = result.map((item) => {
         const maxQuantity = item.Quantity;
         item.Quantity = 0;
@@ -79,7 +77,7 @@ const OfferMaker = () => {
   };
 
   const confirmCreateOffer = () => {
-    alert("genio de la vida ya tenes creada tu oferta papa");
+    alert('genio de la vida ya tenes creada tu oferta papa');
     reset();
   };
 
@@ -90,9 +88,9 @@ const OfferMaker = () => {
           <div className="offerMaker-container">
             <Stepper
               steps={[
-                <SelectOffer key={"SelectOffer"} />,
-                <SelectRequest key={"SelectReuest"} />,
-                <FinalOfferCheck key={"FinalOfferCheck"} />,
+                <SelectOffer key={'SelectOffer'} />,
+                <SelectRequest key={'SelectReuest'} />,
+                <FinalOfferCheck key={'FinalOfferCheck'} />,
               ]}
               currentStep={currentStage}
               nextStep={nextStage}

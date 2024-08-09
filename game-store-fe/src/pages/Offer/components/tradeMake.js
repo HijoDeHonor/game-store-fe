@@ -1,5 +1,5 @@
-function tradeMake(Id, Offer, Request, UserNamePoster) {
-  const userNameTrader = localStorage.getItem("GameStore-userName");//borrar esta linea cuando se ponga en uso la base de datos
+function tradeMake (Id, Offer, Request, UserNamePoster) {
+  const userNameTrader = localStorage.getItem('GameStore-userName');//borrar esta linea cuando se ponga en uso la base de datos
   const userNamePoster = UserNamePoster;
   const id = Id;
   
@@ -13,16 +13,16 @@ function tradeMake(Id, Offer, Request, UserNamePoster) {
   //delete this lines when the back end is ready or make a use of it
   console.log(
     userNamePoster,
-    "obtuvo ",
+    'obtuvo ',
     Request[0].Name,
-    "y ",
+    'y ',
     userNameTrader,
-    "obtuvo ",
+    'obtuvo ',
     Offer[0].Name,
-    "en la oferta #",
+    'en la oferta #',
     id,
-    "."
+    '.'
   );
 }
 
-export default tradeMake
+export default tradeMake;

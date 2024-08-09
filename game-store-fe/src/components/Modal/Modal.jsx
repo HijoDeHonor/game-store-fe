@@ -1,16 +1,17 @@
 // setings
-import { useState } from "react";
+import { useState } from 'react';
 
 // bootstrap
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import CloseButton from "react-bootstrap/esm/CloseButton";
-import "./Modal.css"
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import CloseButton from 'react-bootstrap/esm/CloseButton';
+import './Modal.css';
 
 // components
-import QuantitySelector from "../QuantitySelector/QuantitySelector";
+import QuantitySelector from '../QuantitySelector/QuantitySelector';
+import { addItem, removeItem } from '../../services/itemService';
 
-function ModalItem({ item, handleClose, show, add }) {
+function ModalItem ({ item, handleClose, show }) {
   const firstQuantity = item.Quantity;
   const [quantity, setQuantity] = useState(item.Quantity);
 
@@ -25,14 +26,24 @@ function ModalItem({ item, handleClose, show, add }) {
     setShows(false);
   };
   const handleAddOrUpdate = () => {
+    const updateItem= {
+      itemName: item.Name,
+      quantity: quantity - firstQuantity
+    };
+    addItem(updateItem);
     handleClose();
     setShows(false);
-    add && add(item, quantity);
+    window.location.reload();
   };
 
   const eraseItem = () => {
+    const itemToRemove = [{ 
+      itemName: item.Name,
+      quantity: firstQuantity }];
+    removeItem(itemToRemove);
+    handleClose();
     setShows(false);
-    console.log(item, "deleted");
+    window.location.reload();
   };
 
   const modalUpdatebtn = () => {
