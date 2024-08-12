@@ -1,5 +1,5 @@
-import QuantitySelector from "../../../components/QuantitySelector/QuantitySelector";
-import Table from "react-bootstrap/Table";
+import QuantitySelector from '../../../components/QuantitySelector/QuantitySelector';
+import Table from 'react-bootstrap/Table';
 const FilterList = ({
   data,
   onChangeQuantity,
@@ -18,7 +18,7 @@ const FilterList = ({
     <Table striped borderless hover>
       <tbody>
         {data.map((item) => (
-          <tr className="tr-content" key={item.Id}>
+          <tr className="tr-content" key={item.Name}>
             <td className="content">
               <img src={item.Img} alt={item.Name} />
               <p>{item.Name}</p>

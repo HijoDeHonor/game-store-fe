@@ -46,8 +46,9 @@ const Inventory = () => {
   }, [toggle, searchQuery, isLoading]);
   
   const filterData = () => {
-    if (data.length=== 0) {
-      setFilteredData(data);
+    if ((data === undefined)||(data.length=== 0)) {
+      setFilteredData([]);
+      return;
     }
     const filtered = data.filter((item) =>
       item.Name.toLowerCase().includes(searchQuery.toLowerCase())

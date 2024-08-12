@@ -57,7 +57,6 @@
     display: flex;
     justify-content: space-between;
     margin: 10px;
-    width: 75%; /* Asegurar que los botones no se estiren demasiado en pantallas grandes */
   }
   
   .buttons-login .login {

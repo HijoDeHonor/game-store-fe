@@ -1,4 +1,4 @@
-import ItemList from "../../../components/ItemList/Itemlist";
+import ItemList from '../../../components/ItemList/Itemlist';
 
 const SelectedList = ({ items, deleteAdd, recicler, modal }) => {
   return (
@@ -7,7 +7,7 @@ const SelectedList = ({ items, deleteAdd, recicler, modal }) => {
       modal={modal}
       recicler={recicler}
       deleteAdd={deleteAdd ? deleteAdd : null}
-      top={"70%"}
+      top={'70%'}
     />
   );
 };

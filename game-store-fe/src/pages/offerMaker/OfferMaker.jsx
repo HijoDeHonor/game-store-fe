@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   OfferMakerProvider,
   useOfferMaker,
@@ -7,8 +7,6 @@ import './offerMaker.css';
 import { getAllItems, getUserItems } from '../../services/itemService.js';
 import {
   SET_CURRENT_STAGE,
-  SET_OFFER,
-  SET_REQUEST,
   SET_SERVER_ITEMS,
   SET_USER_ITEMS,
 } from '../../utils/textConstants';
@@ -16,11 +14,15 @@ import Stepper from './components/stepper';
 import SelectOffer from './components/SelectOffer';
 import SelectRequest from './components/SelectRequest';
 import FinalOfferCheck from './components/FinalOfferCheck';
+import { createOffer } from '../../services/offerService.js';
+import { useNavigate } from 'react-router-dom';
+
 
 const OfferMaker = () => {
   const { state, dispatch } = useOfferMaker();
   const { currentStage, userItems, serverItems, offer, request } = state;
 
+  const navigate = useNavigate();
   // 'fetch' to get the userItems and the serverItems then set in the context
   useEffect(() => {
     getUserItems(localStorage.getItem('GameStore-userName')).then((result) => {
@@ -70,21 +72,22 @@ const OfferMaker = () => {
     });
   };
 
-  const reset = () => {
-    dispatch({ type: SET_CURRENT_STAGE, data: 0 });
-    dispatch({ type: SET_OFFER, data: [] });
-    dispatch({ type: SET_REQUEST, data: [] });
-  };
+  
 
-  const confirmCreateOffer = () => {
-    alert('genio de la vida ya tenes creada tu oferta papa');
-    reset();
+  const confirmCreateOffer = async () => {
+    const sendOffer= offer.map(({ Name, Quantity }) => ({ itemName: Name, quantity: Quantity }));
+    const sendRequest= request.map(({ Name, Quantity }) => ({ itemName: Name, quantity: Quantity }));
+    
+    if (await createOffer(sendOffer,sendRequest)) {
+      navigate('/');
+      window.location.reload();
+    }
   };
 
   return (
     <>
       {
-        /*allLoad &&*/ userItems.length > 0 && serverItems.length > 0 && (
+        userItems.length > 0 && serverItems.length > 0 && (
           <div className="offerMaker-container">
             <Stepper
               steps={[

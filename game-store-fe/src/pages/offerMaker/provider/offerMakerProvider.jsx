@@ -1,11 +1,11 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from 'react';
 import {
   SET_CURRENT_STAGE,
   SET_OFFER,
   SET_REQUEST,
   SET_SERVER_ITEMS,
   SET_USER_ITEMS,
-} from "../../../utils/textConstants";
+} from '../../../utils/textConstants';
 
 const OfferMakerContext = createContext();
 

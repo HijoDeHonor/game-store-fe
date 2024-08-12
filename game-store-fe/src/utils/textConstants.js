@@ -41,9 +41,10 @@ export const ADD_ITEM_ERROR = 'Adding error. Please try again.';
 export const REMOVE_ITEM_ERROR = 'Removing error. Please try again.';
 // LocalStorage
 export const LOCAL_USERNAME = 'GameStore-userName';
+export const TOKEN = 'acces_token';
 
 // URL BACK
 export const URL_BACK = 'http://localhost:4130';
 export const URL_SERVER_INVENTORY = '/inventory/server/items';
 export const URL_USERS_INVENTORY = '/inventory/Users/';
-
+export const URL_OFFERS = '/offers/';
