@@ -1,16 +1,17 @@
-import React from "react";
-import Pagination from "react-bootstrap/Pagination";
-import getPageNumbers from "../../../utils/getPageNumbers";
+import Pagination from 'react-bootstrap/Pagination';
+import getPageNumbers from '../../../utils/getPageNumbers';
 
-function PaginationComponent({ currentPage, totalPages, goToPage }) {
-  if (totalPages === 1) return null;
+function PaginationComponent ({ currentPage, totalPages, goToPage }) {
+  if (totalPages === 1) {
+    return null;
+  }
 
   return (
     <Pagination>
       <Pagination.First onClick={() => goToPage(1)} />
       <Pagination.Prev onClick={() => goToPage(Math.max(currentPage - 1, 1))} />
       {getPageNumbers(currentPage, totalPages).map((pageNumber, index) => {
-        if (pageNumber === "...") {
+        if (pageNumber === '...') {
           return (
             <Pagination.Ellipsis
               key={index}

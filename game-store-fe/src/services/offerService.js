@@ -1,23 +1,20 @@
-import json from '../utils/DB-Offer-simul.json';
 import { LOCAL_USERNAME, URL_BACK, URL_OFFERS } from '../utils/textConstants';
 import { v4 as uuidv4 } from 'uuid';
 export const getOffers = async (pageNumber) => {
-  return new Promise((resolve) => {
-    const currentPage = pageNumber || 1;
-    const itemsPerPage = 10;
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const paginatedData = json.slice(startIndex, endIndex);
-    const totalPages = Math.ceil(json.length / itemsPerPage);
-
-    setTimeout(() => {
-      resolve({
-        data: paginatedData,
-        totalPages: totalPages,
-        currentPage: currentPage,
-      }); 
-    }, 1500);
-  });
+  try {
+    const offers = await fetch(`${URL_BACK}${URL_OFFERS}${pageNumber}`,{
+      method: 'GET',
+      headers:{
+        'Content-Type': 'aplication/json',
+      },
+      credentials: 'include'
+    });
+    if (offers.ok) {
+      return offers.json();
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const createOffer = async (offer, request) => {

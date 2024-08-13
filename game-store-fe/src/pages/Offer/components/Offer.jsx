@@ -1,11 +1,10 @@
-import React from "react";
-import Item from "../../../components/Item/Item";
-import tradeMake from "./tradeMake";
-import { useNavigate } from "react-router-dom";
+import Item from '../../../components/Item/Item';
+import tradeMake from './tradeMake';
+import { useNavigate } from 'react-router-dom';
 import ButtonTrade from './ButtonTrade.jsx';
 
 const Offer = ({ offer }) => {
-  const { Id, Offer, Request, UserNamePoster } = offer;
+  const { Id, Offer, Request, UserNamePoster, IdList } = offer;
 
   const navigate = useNavigate();
 
@@ -14,8 +13,8 @@ const Offer = ({ offer }) => {
   };
 
   const handleConfirmTrade = () => {
-    if (localStorage.getItem("GameStore-userName") === null) {
-      navigate("/login");
+    if (localStorage.getItem('GameStore-userName') === null) {
+      navigate('/login');
       window.location.reload();
     } else {
       Confirm(Id, Offer, Request, UserNamePoster);
@@ -24,7 +23,7 @@ const Offer = ({ offer }) => {
 
   return (
     <tr className="tr-table">
-      <td className="td-id">{ Id }</td>
+      <td className="td-id">{ IdList }</td>
       <td className="td-offer">
         <div className="item-container-offer">
           { Offer.map((item, index) => (
