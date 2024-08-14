@@ -1,5 +1,5 @@
-import React from "react";
-import { SEARCH } from "../utils/textConstants";
+
+import { SEARCH } from '../utils/textConstants';
 
 const SearchBar = ({ setSearchQuery }) => {
   const handleInputChange = (event) => {

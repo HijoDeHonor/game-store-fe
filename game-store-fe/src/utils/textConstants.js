@@ -1,9 +1,28 @@
 export const SEARCH = 'Search...';
 export const x = 'x';
 
-
+// text
 export const NEXT = 'NEXT';
 export const BACK = 'BACK';
+export const ADD = 'Add';
+export const DELETE = 'Delete';
+export const UPDATE = 'Update';
+export const MY_INVENTORY = 'My Inventory';
+export const CREATE_OFFER_NAV = 'Create Offer';
+export const GAMESTORE = 'GameStore';
+export const ALL_ITEMS = 'All Items';
+export const MY_ITEMS = 'My Items';
+export const OFFER = 'Offer';
+export const REQUEST = 'Request';
+export const NO_ITEM_MATCH = 'There is no match for that item name.';
+
+// paths
+export const LOGIN = '/login';
+export const SIGNIN = '/signin';
+export const INVENTORY = '/inventory';
+export const HOME = '/';
+export const OFFERS = '';
+export const OFFERMAKER = '/offermaker';
 
 // OFFER MAKER
 export const ITEMS_TO_OFFER = 'Choose your items for the Offer.';
@@ -18,7 +37,7 @@ export const ADD_TO_REQUEST = 'Add to Request';
 export const FINAL_OFFER = 'You are offering this items.';
 export const FINAL_REQUEST = 'In exchange for these items.';
 export const CREATE_OFFER = 'CREATE OFFER';
-export const ADD = 'Add →';
+export const ADD_ARROW = 'Add →';
 
 // DISPATCH
 export const SET_USER_ITEMS = 'SET_USER_ITEMS';
@@ -39,6 +58,9 @@ export const SUCCESSFULL_SIGNIN = 'Sign in successfull';
 export const ERROR_TRY_AGAIN = 'Registration error. Please try again.';
 export const ADD_ITEM_ERROR = 'Adding error. Please try again.';
 export const REMOVE_ITEM_ERROR = 'Removing error. Please try again.';
+export const TRY_AGAIN = 'Something goes wrong. Please try agian.';
+export const TRADE_SUCCESS = 'The trade was complete succcessfully.';
+export const NO_OFFERS = 'THERE ARE NO OFFERS YET';
 // LocalStorage
 export const LOCAL_USERNAME = 'GameStore-userName';
 export const TOKEN = 'acces_token';

@@ -1,8 +1,8 @@
-import { ADD_ITEM_ERROR, REMOVE_ITEM_ERROR, URL_BACK, URL_SERVER_INVENTORY, URL_USERS_INVENTORY } from '../utils/textConstants';
+import { ADD_ITEM_ERROR, LOCAL_USERNAME, REMOVE_ITEM_ERROR, URL_BACK, URL_SERVER_INVENTORY, URL_USERS_INVENTORY } from '../utils/textConstants';
 
 const addItem = async (item) => {
   try {
-    const response = await fetch(`${URL_BACK}${URL_USERS_INVENTORY}${localStorage.getItem('GameStore-userName')}`,{
+    const response = await fetch(`${URL_BACK}${URL_USERS_INVENTORY}${localStorage.getItem(LOCAL_USERNAME)}`,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ const addItem = async (item) => {
 async function removeItem (item) {
   try {
     console.log(item);
-    const response = await fetch(`${URL_BACK}${URL_USERS_INVENTORY}${localStorage.getItem('GameStore-userName')}`,{
+    const response = await fetch(`${URL_BACK}${URL_USERS_INVENTORY}${localStorage.getItem(LOCAL_USERNAME)}`,{
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

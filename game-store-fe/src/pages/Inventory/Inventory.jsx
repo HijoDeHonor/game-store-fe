@@ -11,6 +11,7 @@ import { getAllItems, getUserItems } from '../../services/itemService';
 //styles
 import './Inventory.css';
 import { MOD, RECICLER_OFF, RECICLER_ON } from '../../utils/constants';
+import { LOCAL_USERNAME } from '../../utils/textConstants';
 
 const Inventory = () => {
   const [toggle, setToggle] = useState(false);
@@ -24,7 +25,7 @@ const Inventory = () => {
       setTimeout(async () => {
         const result = toggle
           ? await getAllItems() 
-          : await getUserItems(localStorage.getItem('GameStore-userName'));
+          : await getUserItems(localStorage.getItem(LOCAL_USERNAME));
         resolve(result);
       }, 1000);
     });

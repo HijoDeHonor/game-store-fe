@@ -1,17 +1,17 @@
-import "./register.css";
-import React, { useState } from "react";
-import handleSubmit from "../../services/registerService";
-import { ERROR_TRY_AGAIN, PASSWORD_DONT_MATCH } from '../../utils/textConstants.js';
-import { useNavigate } from "react-router-dom";
+import './register.css';
+import { useState } from 'react';
+import handleSubmit from '../../services/registerService';
+import { ERROR_TRY_AGAIN, LOGIN, PASSWORD_DONT_MATCH } from '../../utils/textConstants.js';
+import { useNavigate } from 'react-router-dom';
 
 
 function RegisterForm () {
   const [newUser, setNewUser] = useState({
-    userName: "",
-    password: "",
-    confirmPassword: "",
+    userName: '',
+    password: '',
+    confirmPassword: '',
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function RegisterForm () {
       ...prevState,
       [id]: value,
     }));
-    setError("");
+    setError('');
   };
 
   const handleClickSubmit = async (e) => {
@@ -36,7 +36,7 @@ function RegisterForm () {
         const res = await handleSubmit(newUser, setError);
 
         if (res.ok) {
-          navigate("/login");
+          navigate(LOGIN);
           window.location.reload();
         } else {
           setError(ERROR_TRY_AGAIN);
@@ -98,6 +98,6 @@ function RegisterForm () {
       </form>
     </div>
   );
-};
+}
 
 export default RegisterForm;

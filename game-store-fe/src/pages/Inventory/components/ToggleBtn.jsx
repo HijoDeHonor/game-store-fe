@@ -1,4 +1,4 @@
-import React from 'react';
+import { ALL_ITEMS, MY_ITEMS } from '../../../utils/textConstants';
 
 const ToggleBtn = ({ toggle, onClick }) => {
   return (
@@ -6,7 +6,7 @@ const ToggleBtn = ({ toggle, onClick }) => {
       <div className={`toggle-btn ${toggle ? 'disable' : ''}`}>
         {''}
         
-        {toggle ? 'All Items' : 'My Items'}
+        {toggle ? ALL_ITEMS : MY_ITEMS}
       </div>
     </div>
   );

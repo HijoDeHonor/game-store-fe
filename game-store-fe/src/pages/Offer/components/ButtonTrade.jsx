@@ -1,4 +1,3 @@
-import React from 'react';
 import tradeIcon from '../../../assets/trade.png';
 
 export default function ButtonTrade ({ handleConfirmTrade }) {

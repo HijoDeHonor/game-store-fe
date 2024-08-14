@@ -6,6 +6,7 @@ import {
 import './offerMaker.css';
 import { getAllItems, getUserItems } from '../../services/itemService.js';
 import {
+  HOME,
   SET_CURRENT_STAGE,
   SET_SERVER_ITEMS,
   SET_USER_ITEMS,
@@ -79,7 +80,7 @@ const OfferMaker = () => {
     const sendRequest= request.map(({ Name, Quantity }) => ({ itemName: Name, quantity: Quantity }));
     
     if (await createOffer(sendOffer,sendRequest)) {
-      navigate('/');
+      navigate(HOME);
       window.location.reload();
     }
   };

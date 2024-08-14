@@ -1,3 +1,4 @@
+import { HOME, LOCAL_USERNAME, MY_INVENTORY } from '../../../utils/textConstants';
 import CustomLink from './CustomLink';
 import { useNavigate } from 'react-router-dom';
 const AccountContent = () => {
@@ -7,7 +8,7 @@ const AccountContent = () => {
       <div className="content">
         <CustomLink
           to={'inventory'}
-          tittle={'My Inventory'}
+          tittle={MY_INVENTORY}
           className={'content'}
         />
       </div>
@@ -15,12 +16,11 @@ const AccountContent = () => {
         <p
           className="content"
           onClick={() => {
-            localStorage.removeItem('GameStore-userName');
-            document.cookie = 'acces_token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+            localStorage.removeItem(LOCAL_USERNAME);
             if (
-              localStorage.getItem('GameStore-userName') === null
+              localStorage.getItem(LOCAL_USERNAME) === null
             ) {
-              navigate('/');
+              navigate(HOME);
               window.location.reload();
             }
           }}

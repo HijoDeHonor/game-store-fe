@@ -10,6 +10,7 @@ import './Modal.css';
 // components
 import QuantitySelector from '../QuantitySelector/QuantitySelector';
 import { addItem, removeItem } from '../../services/itemService';
+import { ADD, DELETE, UPDATE } from '../../utils/textConstants';
 
 function ModalItem ({ item, handleClose, show }) {
   const firstQuantity = item.Quantity;
@@ -48,11 +49,11 @@ function ModalItem ({ item, handleClose, show }) {
 
   const modalUpdatebtn = () => {
     if (firstQuantity !== 0 && quantity === 0) {
-      return <Button onClick={eraseItem}>Delete</Button>;
+      return <Button onClick={eraseItem}>{DELETE}</Button>;
     } else if (firstQuantity === 0) {
-      return <Button onClick={handleAddOrUpdate}>Add</Button>;
+      return <Button onClick={handleAddOrUpdate}>{ADD}</Button>;
     } else if (firstQuantity !== 0 && quantity !== 0) {
-      return <Button onClick={handleAddOrUpdate}>Update</Button>;
+      return <Button onClick={handleAddOrUpdate}>{UPDATE}</Button>;
     }
   };
 

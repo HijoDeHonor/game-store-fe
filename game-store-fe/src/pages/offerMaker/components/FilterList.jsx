@@ -1,5 +1,6 @@
 import QuantitySelector from '../../../components/QuantitySelector/QuantitySelector';
 import Table from 'react-bootstrap/Table';
+import { NO_ITEM_MATCH } from '../../../utils/textConstants';
 const FilterList = ({
   data,
   onChangeQuantity,
@@ -9,7 +10,7 @@ const FilterList = ({
   if (data.length === 0) {
     return (
       <div className="content">
-        <p>There is no match for that item name.</p>
+        <p>{NO_ITEM_MATCH}</p>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import logInService from '../../services/loginService';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
-import { LOGIN_USER_PASS_ERROR, LOG_IN, SIGN_IN } from '../../utils/textConstants';
+import { LOGIN_USER_PASS_ERROR, LOG_IN, SIGNIN, SIGN_IN } from '../../utils/textConstants';
 function LoginForm () {
   const [error, setError] = useState('');
 
@@ -39,7 +39,7 @@ function LoginForm () {
 
   const goToRegister = (e) => {
     e.preventDefault();
-    navigate('/signin');
+    navigate(SIGNIN);
   };
 
   return (

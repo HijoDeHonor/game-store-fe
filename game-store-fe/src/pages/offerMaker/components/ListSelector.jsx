@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import SearchBar from '../../../components/SearchBar';
 import FilterList from './FilterList';
 import SelectedList from './SelectedList';
-import { ADD } from '../../../utils/textConstants';
+import { ADD_ARROW } from '../../../utils/textConstants';
 import resetIcon from '../../../assets/resetIcon.png';
 
 const ListSelector = ({
@@ -199,7 +199,7 @@ const ListSelector = ({
         </div>
         <div className="om-button-add">
           <button className="add-btn-request" onClick={addAndUpdate}>
-            {ADD}
+            {ADD_ARROW}
           </button>
         </div>
         <div className="om-List">

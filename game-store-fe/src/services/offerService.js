@@ -35,10 +35,31 @@ export const createOffer = async (offer, request) => {
     });
 
     if (newOffer.ok) {
-      
       return true;
     }
+    return false;
   } catch (error) {
     console.log(error);
+    return false;
+  }
+};
+
+export const acceptTrade = async (Id, userName) => {
+  try {
+    const tradeAcepted = await fetch(`${URL_BACK}${URL_OFFERS}${Id}`,{
+      method: 'PATCH',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({ userName: userName })
+    });
+    if (tradeAcepted.ok) {
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.log(error);
+
   }
 };

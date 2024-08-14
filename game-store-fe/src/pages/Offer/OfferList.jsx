@@ -6,6 +6,7 @@ import Pagination from './components/Pagination';
 import LoadingSpinner from '../../components/Spinner';
 
 import './offer.css';
+import { NO_OFFERS, OFFER, REQUEST } from '../../utils/textConstants';
 
 function OfferList () {
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,7 +50,7 @@ function OfferList () {
       targetPage = totalPages;
     }
     setIsLoading(true);
-    setCurrentPage(targetPage); // Actualizar currentPage
+    setCurrentPage(targetPage);
     document.querySelector('.offer-list').scrollTop = 0;
   };
 
@@ -60,8 +61,8 @@ function OfferList () {
           <thead className="t-head">
             <tr>
               <th className="th-id">#</th>
-              <th className="th-offer">Offer</th>
-              <th className="th-offer">Request</th>
+              <th className="th-offer">{OFFER}</th>
+              <th className="th-offer">{REQUEST}</th>
               <th></th>
             </tr>
           </thead>
@@ -76,7 +77,7 @@ function OfferList () {
               </tr>
             ) : offers.length === 0 ? (
               <tr>
-                <td>THERE ARE NO OFFERS YET</td>
+                <td>{NO_OFFERS}</td>
               </tr>
             ) : (
               offers.map((offer) => (
