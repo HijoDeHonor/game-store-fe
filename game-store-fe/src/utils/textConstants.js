@@ -66,7 +66,7 @@ export const LOCAL_USERNAME = 'GameStore-userName';
 export const TOKEN = 'acces_token';
 
 // URL BACK
-export const URL_BACK = 'game-store-be-two.vercel.app';
-export const URL_SERVER_INVENTORY = '/inventory/server/items';
-export const URL_USERS_INVENTORY = '/inventory/Users/';
-export const URL_OFFERS = '/offers/';
+export const URL_BACK = import.meta.env.VITE_URL_BACK;
+export const URL_SERVER_INVENTORY = import.meta.env.VITE_URL_SERVER_INVENTORY;
+export const URL_USERS_INVENTORY = import.meta.env.VITE_URL_USERS_INVENTORY;
+export const URL_OFFERS = import.meta.env.VITE_URL_OFFERS;
