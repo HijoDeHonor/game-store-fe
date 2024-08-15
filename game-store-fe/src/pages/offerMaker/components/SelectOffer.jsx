@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { ITEMS_TO_OFFER, SET_OFFER } from "../../../utils/textConstants";
-import { useOfferMaker } from "../provider/offerMakerProvider";
-import ListSelector from "./ListSelector";
+import { useEffect, useState } from 'react';
+import { ITEMS_TO_OFFER, SET_OFFER } from '../../../utils/textConstants';
+import { useOfferMaker } from '../provider/offerMakerProvider';
+import ListSelector from './ListSelector';
 
 const SelectOffer = () => {
   const { state, dispatch } = useOfferMaker();

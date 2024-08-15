@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import CustomLink from "./CustomLink";
+import { useState } from 'react';
+import CustomLink from './CustomLink';
 const LinkItem = ({ children, to, content, className }) => {
   const [show, setShow] = useState(false);
-  const [menuIcon, setMenuIcon] = useState(' ≡')
+  const [menuIcon, setMenuIcon] = useState(' ≡');
 
   
   const handleMouseEnter = () => {
     setShow(true);
-    setMenuIcon(" ☰");
+    setMenuIcon(' ☰');
   };
 
   const handleMouseLeave = () => {
     setShow(false);
-    setMenuIcon(" ≡");
+    setMenuIcon(' ≡');
   };
   const handleClick = () => setShow(false);
 
   return (
     <li
-      className={content ? "dropdown" : ""}
+      className={content ? 'dropdown' : ''}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

@@ -1,15 +1,14 @@
-import React from "react";
-import { useState } from "react";
-import logInService from "../../services/loginService";
-import { useNavigate } from "react-router-dom";
-import "./login.css";
-import { LOGIN_USER_PASS_ERROR, LOG_IN, SIGN_IN } from "../../utils/textConstants";
-function LoginForm() {
-  const [error, setError] = useState("");
+import { useState } from 'react';
+import logInService from '../../services/loginService';
+import { useNavigate } from 'react-router-dom';
+import './login.css';
+import { LOGIN_USER_PASS_ERROR, LOG_IN, SIGNIN, SIGN_IN } from '../../utils/textConstants';
+function LoginForm () {
+  const [error, setError] = useState('');
 
-  const [User, setUser] = useState({
-    userName: "",
-    password: "",
+  const [user, setUser] = useState({
+    userName: '',
+    password: '',
   });
 
   const navigate = useNavigate();
@@ -24,12 +23,11 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError('');
     try {
-      const res = await logInService(User, setError);
-      console.log(res)
+      const res = await logInService(user, setError);
       if (res.ok) {
-        navigate("/");
+        navigate('/');
         window.location.reload();
       } else {
         setError(LOGIN_USER_PASS_ERROR);
@@ -41,7 +39,7 @@ function LoginForm() {
 
   const goToRegister = (e) => {
     e.preventDefault();
-    navigate("/signin");
+    navigate(SIGNIN);
   };
 
   return (

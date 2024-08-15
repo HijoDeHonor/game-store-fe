@@ -1,8 +1,7 @@
-import React from "react";
-import { useOfferMaker } from "../provider/offerMakerProvider";
-import { FINAL_OFFER, FINAL_REQUEST } from "../../../utils/textConstants";
+import { useOfferMaker } from '../provider/offerMakerProvider';
+import { FINAL_OFFER, FINAL_REQUEST } from '../../../utils/textConstants';
 
-import OfferList from "./SelectedList";
+import OfferList from './SelectedList';
 
 const FinalOfferCheck = () => {
   const { state } = useOfferMaker();

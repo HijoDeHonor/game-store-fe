@@ -1,7 +1,7 @@
-const numberInput = document.getElementById("numberinput");
+const numberInput = document.getElementById('numberinput');
 
-numberInput.addEventListener("input", (event) => {
-    let value = event.target.value;
-    value = value.replace(/\D/g, '');
-    event.target.value = value;
-})
+numberInput.addEventListener('input', (event) => {
+  let value = event.target.value;
+  value = value.replace(/\D/g, '');
+  event.target.value = value;
+});

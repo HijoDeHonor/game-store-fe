@@ -1,22 +1,33 @@
-import users from "../utils/users.json";
+import { LOCAL_USERNAME, LOGIN_USER_PASS_ERROR, SUCCESSFULL_LOGIN, URL_BACK } from '../utils/textConstants.js';
 
-const logInService = (User, setError) => {
-  const data = users;
-  const userFound = data.find(
-    (u) => u.userName === User.userName && u.password === User.password
-  );
-  if (userFound) {
-    setError("");
-    window.localStorage.setItem("GameStore-userName", userFound.userName);
-    window.localStorage.setItem("GameStore-user-token", userFound.token);
+
+const logInService = async (user, setError) => {
+  try {
+    const response = await fetch(`${URL_BACK}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+      credentials: 'include'
+    });
+
+    if (!response.ok) {
+      setError(LOGIN_USER_PASS_ERROR);
+      return;
+    }
+
+    const userFound = await response.json();
+
+    localStorage.setItem(LOCAL_USERNAME, userFound.userName);
+
     return {
       ok: true,
       userName: userFound.userName,
-      token: userFound.token,
-      message: "Login successful",
+      message: SUCCESSFULL_LOGIN,
     };
-  } else {
-    return setError("Usuario o contraseña incorrectos");
+  } catch (error) {
+    setError(LOGIN_USER_PASS_ERROR);
   }
 };
 

@@ -1,27 +1,26 @@
-import CustomLink from "./CustomLink";
-import { useNavigate } from "react-router-dom";
+import { HOME, LOCAL_USERNAME, MY_INVENTORY } from '../../../utils/textConstants';
+import CustomLink from './CustomLink';
+import { useNavigate } from 'react-router-dom';
 const AccountContent = () => {
   const navigate = useNavigate();
   return (
     <div>
       <div className="content">
         <CustomLink
-          to={"inventory"}
-          tittle={"My Inventory"}
-          className={"content"}
+          to={'inventory'}
+          tittle={MY_INVENTORY}
+          className={'content'}
         />
       </div>
       <div>
         <p
           className="content"
           onClick={() => {
-            localStorage.removeItem("GameStore-userName");
-            localStorage.removeItem("GameStore-user-token");
+            localStorage.removeItem(LOCAL_USERNAME);
             if (
-              localStorage.getItem("GameStore-userName") === null &&
-              localStorage.getItem("GameStore-user-token") === null
+              localStorage.getItem(LOCAL_USERNAME) === null
             ) {
-              navigate("/");
+              navigate(HOME);
               window.location.reload();
             }
           }}

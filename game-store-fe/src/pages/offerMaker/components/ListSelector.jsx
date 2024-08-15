@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import SearchBar from "../../../components/SearchBar";
-import FilterList from "./FilterList";
-import SelectedList from "./SelectedList";
-import { ADD } from "../../../utils/textConstants";
-import resetIcon from "../../../assets/resetIcon.png";
+import { useEffect, useState } from 'react';
+import SearchBar from '../../../components/SearchBar';
+import FilterList from './FilterList';
+import SelectedList from './SelectedList';
+import { ADD_ARROW } from '../../../utils/textConstants';
+import resetIcon from '../../../assets/resetIcon.png';
 
 const ListSelector = ({
   listOfItems, // list of items from user or the server
@@ -12,7 +12,7 @@ const ListSelector = ({
   titleReference,
 }) => {
   //states
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [filteredData, setFilteredData] = useState([]);
   const [itemsToFilter, setItemsToFilter] = useState(listOfItems);
   const [prevItems, setPrevItems] = useState([]);
@@ -37,7 +37,7 @@ const ListSelector = ({
         const sameItem = finalList.find(
           (finalItem) => finalItem.Name === item.Name
         );
-        if (sameItem){
+        if (sameItem) {
           return {
             ...item,
             maxQuantity: item.maxQuantity - sameItem.Quantity
@@ -47,7 +47,7 @@ const ListSelector = ({
       });
       setItemsToFilter(updateItemsToFilter);
     }
-  },[])
+  },[]);
 
   const addAndUpdate = () => {
     const itemsToAdd = prevItems.filter((item) => item.Quantity !== 0);
@@ -90,7 +90,7 @@ const ListSelector = ({
         })
       );
     } else {
-      alert("There are no items selected.");
+      alert('There are no items selected.');
     }
     resetAllCounts();
   };
@@ -106,13 +106,13 @@ const ListSelector = ({
         itemsToFilter.map((itemToFilter) =>
           itemToFilter.Name === item.Name
             ? {
-                ...itemToFilter,
-                Quantity: 0,
-                maxQuantity:
+              ...itemToFilter,
+              Quantity: 0,
+              maxQuantity:
                   itemToFilter.maxQuantity !== undefined
                     ? itemToFilter.Quantity + item.maxQuantity
                     : undefined,
-              }
+            }
             : itemToFilter
         )
       );
@@ -199,7 +199,7 @@ const ListSelector = ({
         </div>
         <div className="om-button-add">
           <button className="add-btn-request" onClick={addAndUpdate}>
-            {ADD}
+            {ADD_ARROW}
           </button>
         </div>
         <div className="om-List">

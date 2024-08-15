@@ -1,5 +1,6 @@
-import QuantitySelector from "../../../components/QuantitySelector/QuantitySelector";
-import Table from "react-bootstrap/Table";
+import QuantitySelector from '../../../components/QuantitySelector/QuantitySelector';
+import Table from 'react-bootstrap/Table';
+import { NO_ITEM_MATCH } from '../../../utils/textConstants';
 const FilterList = ({
   data,
   onChangeQuantity,
@@ -9,7 +10,7 @@ const FilterList = ({
   if (data.length === 0) {
     return (
       <div className="content">
-        <p>There is no match for that item name.</p>
+        <p>{NO_ITEM_MATCH}</p>
       </div>
     );
   }
@@ -18,7 +19,7 @@ const FilterList = ({
     <Table striped borderless hover>
       <tbody>
         {data.map((item) => (
-          <tr className="tr-content" key={item.Id}>
+          <tr className="tr-content" key={item.Name}>
             <td className="content">
               <img src={item.Img} alt={item.Name} />
               <p>{item.Name}</p>

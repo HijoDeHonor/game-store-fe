@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import resetIcon from "../../assets/resetIcon.png";
-import "./QuantitySelector.css";
+import { useEffect, useState } from 'react';
+import resetIcon from '../../assets/resetIcon.png';
+import './QuantitySelector.css';
 
-function QuantitySelector({
+function QuantitySelector ({
   item,
   onChangeQuantity,
   maxQuantity,
@@ -66,7 +66,7 @@ function QuantitySelector({
           -
         </button>
         <input
-          id={`number-input ${item.Id}`}
+          id={`number-input ${item.Name}`}
           className="quantity-input"
           type="text"
           value={shouldShowQuantity ? quantity : 0}

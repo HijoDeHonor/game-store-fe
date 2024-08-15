@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { ITEMS_TO_REQUEST, SET_REQUEST } from "../../../utils/textConstants";
-import { useOfferMaker } from "../provider/offerMakerProvider";
-import SelectStage from "./ListSelector";
+import { useEffect, useState } from 'react';
+import { ITEMS_TO_REQUEST, SET_REQUEST } from '../../../utils/textConstants';
+import { useOfferMaker } from '../provider/offerMakerProvider';
+import SelectStage from './ListSelector';
 
 const SelectRequest = () => {
-    const {state, dispatch} = useOfferMaker();
-    const {request, serverItems} = state 
+  const { state, dispatch } = useOfferMaker();
+  const { request, serverItems } = state; 
   const [newRequestItems, setNewRequestItems] = useState(request);
 
   useEffect(() => {

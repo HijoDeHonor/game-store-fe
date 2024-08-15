@@ -1,14 +1,20 @@
-import "./register.css";
-import React, { useState } from "react";
-import handleSubmit from "../../services/registerService";
+import './register.css';
+import { useState } from 'react';
+import handleSubmit from '../../services/registerService';
+import { ERROR_TRY_AGAIN, LOGIN, PASSWORD_DONT_MATCH } from '../../utils/textConstants.js';
+import { useNavigate } from 'react-router-dom';
 
-function RegisterForm() {
+
+function RegisterForm () {
   const [newUser, setNewUser] = useState({
-    username: "",
-    password: "",
-    confirmPassword: "",
+    userName: '',
+    password: '',
+    confirmPassword: '',
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
+
+  const navigate = useNavigate();
+
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -16,15 +22,28 @@ function RegisterForm() {
       ...prevState,
       [id]: value,
     }));
-    setError("");
+    setError('');
   };
 
-  const handleClickSubmit = (e) => {
+  const handleClickSubmit = async (e) => {
     e.preventDefault();
-    if (newUser.password !== newUser.confirmPassword) {
-      setError("Passwords do not match");
-    } else {
-      handleSubmit(newUser, setError);
+    setError('');
+    try {
+
+      if (newUser.password !== newUser.confirmPassword) {
+        setError(PASSWORD_DONT_MATCH);
+      } else {
+        const res = await handleSubmit(newUser, setError);
+
+        if (res.ok) {
+          navigate(LOGIN);
+          window.location.reload();
+        } else {
+          setError(ERROR_TRY_AGAIN);
+        }
+      }
+    } catch (error) {
+      setError(ERROR_TRY_AGAIN);
     }
   };
 
@@ -35,11 +54,11 @@ function RegisterForm() {
         <div className="input-container">
           <div className="input-box">
             <input
-              id="username"
+              id="userName"
               type="text"
               placeholder="User"
-              value={newUser.username}
-              onChange={handleChange}
+              value={ newUser.userName }
+              onChange={ handleChange }
               required
             />
           </div>
@@ -48,8 +67,8 @@ function RegisterForm() {
               id="password"
               type="password"
               placeholder="Password"
-              value={newUser.password}
-              onChange={handleChange}
+              value={ newUser.password }
+              onChange={ handleChange }
               autoComplete="new-password"
               required
             />
@@ -59,8 +78,8 @@ function RegisterForm() {
               id="confirmPassword"
               type="password"
               placeholder="Confirm Password"
-              value={newUser.confirmPassword}
-              onChange={handleChange}
+              value={ newUser.confirmPassword }
+              onChange={ handleChange }
               autoComplete="new-password"
               required
             />
@@ -69,13 +88,13 @@ function RegisterForm() {
         <div className="buttons-register">
           <button
             type="button"
-            onClick={handleClickSubmit}
+            onClick={ handleClickSubmit }
             className="register"
           >
             Register
           </button>
         </div>
-        {error && <div className="error-message">{error}</div>}
+        { error && <div className="error-message">{ error }</div> }
       </form>
     </div>
   );

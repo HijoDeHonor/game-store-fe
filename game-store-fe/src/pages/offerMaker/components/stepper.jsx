@@ -1,5 +1,4 @@
-import React from "react";
-import { BACK, CREATE_OFFER, NEXT } from "../../../utils/textConstants";
+import { BACK, CREATE_OFFER, NEXT } from '../../../utils/textConstants';
 
 const Stepper = ({ steps, currentStep, nextStep, prevStep, onSubmit }) => {
   const handleSubmit = () => {

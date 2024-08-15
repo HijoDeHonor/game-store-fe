@@ -1,30 +1,34 @@
-import React from "react";
-import Item from "../../../components/Item/Item";
-import tradeMake from "./tradeMake";
-import { useNavigate } from "react-router-dom";
+import Item from '../../../components/Item/Item';
+import { useNavigate } from 'react-router-dom';
 import ButtonTrade from './ButtonTrade.jsx';
+import { acceptTrade } from '../../../services/offerService.js';
+import { INVENTORY, LOCAL_USERNAME, LOGIN, TRADE_SUCCESS, TRY_AGAIN } from '../../../utils/textConstants.js';
 
 const Offer = ({ offer }) => {
-  const { Id, Offer, Request, UserNamePoster } = offer;
+  const { Id, Offer, Request, IdList } = offer;
 
   const navigate = useNavigate();
 
-  const Confirm = (Id, Offer, Request, UserNamePoster) => {
-    tradeMake(Id, Offer, Request, UserNamePoster);
-  };
-
   const handleConfirmTrade = () => {
-    if (localStorage.getItem("GameStore-userName") === null) {
-      navigate("/login");
+    if (localStorage.getItem(LOCAL_USERNAME) === null) {
+      navigate(LOGIN);
       window.location.reload();
     } else {
-      Confirm(Id, Offer, Request, UserNamePoster);
+      let userName = localStorage.getItem(LOCAL_USERNAME);
+      const isAcecepted = acceptTrade(Id, userName);
+      if (!isAcecepted) {
+        alert(TRY_AGAIN);
+        window.location.reload();
+      }
     }
+    alert(TRADE_SUCCESS);
+    navigate(INVENTORY);
+    window.location.reload();
   };
 
   return (
     <tr className="tr-table">
-      <td className="td-id">{ Id }</td>
+      <td className="td-id">{ IdList }</td>
       <td className="td-offer">
         <div className="item-container-offer">
           { Offer.map((item, index) => (
