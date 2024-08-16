@@ -18,22 +18,25 @@ function OfferList () {
     const fetchOffers = async () => {
       try {
         const offersData = await getOffers(currentPage);
-        let offersList = offersData.offers;
-
-        offersList = offersList.map((offer, index) => ({
-          ...offer,
-          IdList: index + 1 + ((currentPage - 1) * 10),
-        }));
-        setOffers(offersList);
-        const totalOffersCount = offersData.totalOffers;
-        const totalPages = Math.ceil(totalOffersCount / 10);
-        setTotalPages(totalPages);  
+        if (!Array.isArray(offersData)) {
+          setOffers([]);
+          setTotalPages(1);
+        } else {
+          let offersList = offersData.offers;
+          offersList = offersList.map((offer, index) => ({
+            ...offer,
+            IdList: index + 1 + ((currentPage - 1) * 10),
+          }));
+          setOffers(offersList);
+          const totalOffersCount = offersData.totalOffers;
+          const totalPages = Math.ceil(totalOffersCount / 10);
+          setTotalPages(totalPages);  
+        }
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
-      
     };
     fetchOffers();
   }, [currentPage]);

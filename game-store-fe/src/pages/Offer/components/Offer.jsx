@@ -9,13 +9,13 @@ const Offer = ({ offer }) => {
 
   const navigate = useNavigate();
 
-  const handleConfirmTrade = () => {
+  const handleConfirmTrade = async () => {
     if (localStorage.getItem(LOCAL_USERNAME) === null) {
       navigate(LOGIN);
       window.location.reload();
     } else {
       let userName = localStorage.getItem(LOCAL_USERNAME);
-      const isAcecepted = acceptTrade(Id, userName);
+      const isAcecepted = await acceptTrade(Id, userName);
       if (!isAcecepted) {
         alert(TRY_AGAIN);
         window.location.reload();

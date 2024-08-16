@@ -26,22 +26,26 @@ function ModalItem ({ item, handleClose, show }) {
     handleClose();
     setShows(false);
   };
-  const handleAddOrUpdate = () => {
+  const handleAddOrUpdate = async () => {
     const updateItem= {
       itemName: item.Name,
       quantity: quantity - firstQuantity
     };
-    addItem(updateItem);
+    await addItem(updateItem);
     handleClose();
     setShows(false);
     window.location.reload();
   };
 
-  const eraseItem = () => {
-    const itemToRemove = [{ 
-      itemName: item.Name,
-      quantity: firstQuantity }];
-    removeItem(itemToRemove);
+  const eraseItem = async () => {
+    const itemToRemove = [
+      { 
+        itemName: item.Name,
+        quantity: firstQuantity 
+      }
+    ];
+    
+    await removeItem(itemToRemove);
     handleClose();
     setShows(false);
     window.location.reload();
