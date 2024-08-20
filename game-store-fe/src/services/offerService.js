@@ -1,3 +1,4 @@
+import errorModal from '../utils/401ErrorModal';
 import { LOCAL_USERNAME, URL_BACK, URL_OFFERS } from '../utils/textConstants';
 import { v4 as uuidv4 } from 'uuid';
 export const getOffers = async (pageNumber) => {
@@ -36,8 +37,19 @@ export const createOffer = async (offer, request) => {
 
     if (newOffer.ok) {
       return true;
+    } 
+    if (!newOffer.ok) {
+      if (newOffer.status === 401) {
+        errorModal(() => {
+          localStorage.removeItem(LOCAL_USERNAME);
+          window.location.href = '/login';
+        },()=>{
+          localStorage.removeItem(LOCAL_USERNAME);
+          window.location.href = '/';
+        });
+      }
+      return false;
     }
-    return false;
   } catch (error) {
     console.log(error);
     return false;
@@ -56,10 +68,13 @@ export const acceptTrade = async (Id, userName) => {
     });
     if (tradeAcepted.ok) {
       return true;
+    } if (!tradeAcepted.ok) {
+      if (tradeAcepted.status === 401) {
+        errorModal();
+      }
+      return false;
     }
-    return false;
   } catch (error) {
     console.log(error);
-
   }
 };

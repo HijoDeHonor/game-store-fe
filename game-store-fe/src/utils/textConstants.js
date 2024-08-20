@@ -49,6 +49,7 @@ export const SET_CURRENT_STAGE = 'SET_CURRENT_STAGE';
 // LOGIN and REGISTER
 export const LOG_IN = 'Log In';
 export const SIGN_IN = 'Sign In';
+export const STAY_OUT = 'Stay Out';
 export const LOGIN_USER_PASS_ERROR = 'Invalid username or password';
 export const PASSWORD_DONT_MATCH = 'Password Dont match';
 
@@ -61,6 +62,7 @@ export const REMOVE_ITEM_ERROR = 'Removing error. Please try again.';
 export const TRY_AGAIN = 'Something goes wrong. Please try agian.';
 export const TRADE_SUCCESS = 'The trade was complete succcessfully.';
 export const NO_OFFERS = 'THERE ARE NO OFFERS YET';
+export const GETTIN_ITEMS_ERROR = 'Getting items error.';
 // LocalStorage
 export const LOCAL_USERNAME = 'GameStore-userName';
 export const TOKEN = 'acces_token';

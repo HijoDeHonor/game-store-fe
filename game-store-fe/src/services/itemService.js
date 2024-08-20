@@ -1,4 +1,5 @@
-import { ADD_ITEM_ERROR, LOCAL_USERNAME, REMOVE_ITEM_ERROR, URL_BACK, URL_SERVER_INVENTORY, URL_USERS_INVENTORY } from '../utils/textConstants';
+import errorModal from '../utils/401ErrorModal';
+import { ADD_ITEM_ERROR, GETTIN_ITEMS_ERROR, LOCAL_USERNAME, REMOVE_ITEM_ERROR, URL_BACK, URL_SERVER_INVENTORY, URL_USERS_INVENTORY } from '../utils/textConstants';
 
 const addItem = async (item) => {
   try {
@@ -11,6 +12,9 @@ const addItem = async (item) => {
       body:JSON.stringify(item),
     });
     if (!response.ok) {
+      if (response.status === 401) {
+        errorModal();
+      }
       throw new Error(ADD_ITEM_ERROR);
     }
   } catch (error) {
@@ -30,6 +34,9 @@ async function removeItem (item) {
       body: JSON.stringify(item)
     });
     if (!response.ok) {
+      if (response.status === 401) {
+        errorModal();
+      }
       throw new Error(REMOVE_ITEM_ERROR);
     }
   } catch (error) {
@@ -68,9 +75,14 @@ const getUserItems = async (userName) => {
       },
       credentials: 'include'
     });
+    if (!response.ok) {
+      if (response.status === 401) {
+        errorModal();
+      }
+      throw new Error(GETTIN_ITEMS_ERROR);
+    }
     const allItems = await response.json();
     return allItems;
-    
   } catch (error) {
     console.error;
   }
