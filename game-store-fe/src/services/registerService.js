@@ -8,7 +8,8 @@ const handleSubmit = async (newUser, setError) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newUser)
+      body: JSON.stringify(newUser),
+      credentials: 'include'
     });
 
     if (!response.ok) {

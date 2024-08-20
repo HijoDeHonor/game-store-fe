@@ -27,6 +27,7 @@ function LoginForm () {
     try {
       const res = await logInService(user, setError);
       if (res.ok) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         navigate('/');
         window.location.reload();
       } else {

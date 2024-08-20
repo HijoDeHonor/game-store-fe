@@ -44,6 +44,7 @@ const getAllItems = async () => {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include'
     });
     const items = await response.json();
     

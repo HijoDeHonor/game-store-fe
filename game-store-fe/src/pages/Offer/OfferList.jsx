@@ -69,8 +69,8 @@ function OfferList () {
               <th></th>
             </tr>
           </thead>
-          <tbody className="tbody">
-            {isLoading ? (
+          {isLoading ? (
+            <tbody className="tbody">
               <tr className="tr-spinner">
                 <td>
                   <span>
@@ -78,16 +78,20 @@ function OfferList () {
                   </span>
                 </td>
               </tr>
-            ) : offers.length === 0 ? (
-              <tr>
-                <td>{NO_OFFERS}</td>
+            </tbody>
+          ) : offers.length === 0 ? (
+            <tbody>
+              <tr className='no-offer'>
+                <p>{NO_OFFERS}</p> 
               </tr>
-            ) : (
-              offers.map((offer) => (
+            </tbody>
+          ) : (
+            <tbody className="tbody">
+              {offers.map((offer) => (
                 <Offer key={offer.Id} offer={offer} />
-              ))
-            )}
-          </tbody>
+              ))}
+            </tbody>
+          )}
         </Table>
       </div>
       <div className="page-btn-container">
