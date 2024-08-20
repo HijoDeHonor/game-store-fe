@@ -1,11 +1,11 @@
 import swal from 'sweetalert2';
-import { HOME, LOCAL_USERNAME, LOG_IN, STAY_OUT, LOGIN } from './textConstants';
+import { HOME, LOCAL_USERNAME, LOG_IN, STAY_OUT, LOGIN, MODAL_TITLE_401, MODAL_MESSAGE_401 } from './textConstants';
 
 function errorModal () {
   localStorage.removeItem(LOCAL_USERNAME);
   swal.fire({
-    title: 'You need to login again, your session ran out.',
-    text: 'Your session just expired',
+    title: MODAL_TITLE_401,
+    text: MODAL_MESSAGE_401,
     icon: 'info',
     showConfirmButton: true,
     confirmButtonText: LOG_IN,

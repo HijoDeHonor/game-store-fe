@@ -23,7 +23,7 @@ function OfferList () {
           (typeof offersData.totalOffers !== 'number' || offersData.totalOffers < 0) ||
           (!Array.isArray(offersData.offers) || offersData.offers.length !== offersData.totalOffers)) {
           setOffers([]);
-          setTotalPages(1);      
+          setTotalPages(1);
         } else {
           let offersList = offersData.offers;
           offersList = offersList.map((offer, index) => ({

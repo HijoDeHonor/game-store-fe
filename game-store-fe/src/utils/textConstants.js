@@ -54,6 +54,8 @@ export const LOGIN_USER_PASS_ERROR = 'Invalid username or password';
 export const PASSWORD_DONT_MATCH = 'Password Dont match';
 
 // messages
+export const MODAL_TITLE_401 = 'You need to login again, your session ran out.';
+export const MODAL_MESSAGE_401 = 'Your session just expired';
 export const SUCCESSFULL_LOGIN = 'Log in successfull';
 export const SUCCESSFULL_SIGNIN = 'Sign in successfull';
 export const ERROR_TRY_AGAIN = 'Registration error. Please try again.';
