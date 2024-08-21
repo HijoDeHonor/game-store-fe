@@ -11,8 +11,13 @@ import './Modal.css';
 import QuantitySelector from '../QuantitySelector/QuantitySelector';
 import { addItem, removeItem } from '../../services/itemService';
 import { ADD, DELETE, UPDATE } from '../../utils/textConstants';
+import { useSnackbarContext } from '../../utils/snackbars.jsx';
+
 
 function ModalItem ({ item, handleClose, show }) {
+
+  const { error } = useSnackbarContext();
+
   const firstQuantity = item.Quantity;
   const [quantity, setQuantity] = useState(item.Quantity);
 
@@ -31,10 +36,15 @@ function ModalItem ({ item, handleClose, show }) {
       itemName: item.Name,
       quantity: quantity - firstQuantity
     };
-    await addItem(updateItem);
-    handleClose();
-    setShows(false);
-    window.location.reload();
+    try {
+      await addItem(updateItem);
+    } catch (e) {
+      error(e);
+    } finally {
+      handleClose();
+      setShows(false);
+      window.location.reload();
+    }
   };
 
   const eraseItem = async () => {
@@ -44,11 +54,15 @@ function ModalItem ({ item, handleClose, show }) {
         quantity: firstQuantity 
       }
     ];
-    
-    await removeItem(itemToRemove);
-    handleClose();
-    setShows(false);
-    window.location.reload();
+    try {
+      await removeItem(itemToRemove);
+    } catch (e) {
+      error(e);
+    } finally {
+      handleClose();
+      setShows(false);
+      window.location.reload();
+    }
   };
 
   const modalUpdatebtn = () => {

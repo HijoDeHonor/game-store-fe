@@ -2,23 +2,32 @@ import Modal from 'react-bootstrap/Modal';
 import CloseButton from 'react-bootstrap/esm/CloseButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { removeItem } from '../services/itemService';
+import { useSnackbarContext } from '../utils/snackbars';
 
 const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
+
+  const { error } = useSnackbarContext();
+
   const handleXClose = () => {
     handleClose();
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (deleteAdd) {
       deleteAdd(item);
       return;
     }
-    handleClose();
     const itemToRemove = [{ 
       itemName: item.Name,
       quantity: item.Quantity }];
-    removeItem(itemToRemove);
-    window.location.reload();
+    try {
+      removeItem(itemToRemove);
+    } catch (e) {
+      error(e);
+    } finally {
+      handleClose();
+      window.location.reload();
+    }
   };
 
   return (

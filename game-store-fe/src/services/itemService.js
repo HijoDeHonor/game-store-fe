@@ -19,6 +19,7 @@ const addItem = async (item) => {
     }
   } catch (error) {
     console.log(error);
+    throw Error(error);
   }
 };
 
@@ -41,6 +42,7 @@ async function removeItem (item) {
     }
   } catch (error) {
     console.log(error);
+    throw Error(error);
   }
 }
 
@@ -85,6 +87,7 @@ const getUserItems = async (userName) => {
     return allItems;
   } catch (error) {
     console.error;
+    throw Error(error);
   }
 };
 

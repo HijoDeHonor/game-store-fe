@@ -3,18 +3,19 @@ import { useState } from 'react';
 import handleSubmit from '../../services/registerService';
 import { ERROR_TRY_AGAIN, LOGIN, PASSWORD_DONT_MATCH } from '../../utils/textConstants.js';
 import { useNavigate } from 'react-router-dom';
-
+import { useSnackbarContext } from '../../utils/snackbars.jsx';
 
 function RegisterForm () {
+
+  const { error } = useSnackbarContext();
+
   const [newUser, setNewUser] = useState({
     userName: '',
     password: '',
     confirmPassword: '',
   });
-  const [error, setError] = useState('');
 
   const navigate = useNavigate();
-
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -22,28 +23,26 @@ function RegisterForm () {
       ...prevState,
       [id]: value,
     }));
-    setError('');
   };
 
   const handleClickSubmit = async (e) => {
     e.preventDefault();
-    setError('');
     try {
-
       if (newUser.password !== newUser.confirmPassword) {
-        setError(PASSWORD_DONT_MATCH);
-      } else {
-        const res = await handleSubmit(newUser, setError);
-
-        if (res.ok) {
-          navigate(LOGIN);
-          window.location.reload();
-        } else {
-          setError(ERROR_TRY_AGAIN);
-        }
+        throw new Error(PASSWORD_DONT_MATCH);
       }
-    } catch (error) {
-      setError(ERROR_TRY_AGAIN);
+
+      const res = await handleSubmit(newUser);
+
+      if (res.ok) {
+        navigate(LOGIN);
+        window.location.reload();
+      } else {
+        throw new Error(ERROR_TRY_AGAIN);
+      }
+
+    } catch (err) {
+      error(err.message);
     }
   };
 
@@ -94,10 +93,8 @@ function RegisterForm () {
             Register
           </button>
         </div>
-        { error && <div className="error-message">{ error }</div> }
       </form>
     </div>
   );
 }
-
 export default RegisterForm;

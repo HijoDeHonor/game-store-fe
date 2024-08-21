@@ -1,25 +1,21 @@
 import { ERROR_TRY_AGAIN, SUCCESSFULL_SIGNIN, URL_BACK } from '../utils/textConstants.js';
 
 
-const handleSubmit = async (newUser, setError) => {
+const handleSubmit = async (newUser) => {
   try {
     const response = await fetch(`${URL_BACK}/users`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newUser),
-      credentials: 'include'
+      body: JSON.stringify(newUser)
     });
 
     if (!response.ok) {
-      const errorMessage = await response.text();
-      setError(errorMessage || ERROR_TRY_AGAIN);
-      return;
+      throw Error(ERROR_TRY_AGAIN);
     }
 
     const userCreate = await response.json();
-    setError('');
     return {
       ok: true,
       userName: userCreate.userName,
@@ -28,7 +24,7 @@ const handleSubmit = async (newUser, setError) => {
 
   } catch (error) {
     console.log(error);
-    setError(ERROR_TRY_AGAIN);
+    throw error;
   }
 };
 

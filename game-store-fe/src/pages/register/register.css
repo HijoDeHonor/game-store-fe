@@ -39,15 +39,6 @@
     align-items: center;
 }
 
-.error-message {
-    width: 100%;
-    max-width: 500px;
-    margin: 10px 0;
-    font-size: 14px;
-    color: red;
-    text-align: center;
-}
-
 .wrapper .input-box input {
     width: 100%;
     height: 100%;

@@ -46,7 +46,6 @@ function OfferList () {
 
   const goToPage = (targetPage) => {
     if (isLoading === true) {
-      console.log('se evito la carga de datos');
       return;
     }
 
