@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import ButtonTrade from './ButtonTrade.jsx';
 import { acceptTrade } from '../../../services/offerService.js';
 import { INVENTORY, LOCAL_USERNAME, LOGIN, TRADE_SUCCESS, TRY_AGAIN } from '../../../utils/textConstants.js';
+import { useSnackbarContext } from '../../../utils/snackbars.jsx';
 
 const Offer = ({ offer }) => {
   const { Id, Offer, Request, IdList } = offer;
 
   const navigate = useNavigate();
+
+  const { success, error } = useSnackbarContext();
 
   const handleConfirmTrade = async () => {
     if (localStorage.getItem(LOCAL_USERNAME) === null) {
@@ -17,11 +20,11 @@ const Offer = ({ offer }) => {
       let userName = localStorage.getItem(LOCAL_USERNAME);
       const isAcecepted = await acceptTrade(Id, userName);
       if (!isAcecepted) {
-        alert(TRY_AGAIN);
+        error(TRY_AGAIN);
         window.location.reload();
       }
     }
-    alert(TRADE_SUCCESS);
+    success(TRADE_SUCCESS);
     navigate(INVENTORY);
     window.location.reload();
   };

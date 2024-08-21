@@ -8,6 +8,7 @@ import { Tooltip } from 'react-tooltip';
 //my components
 import ModalItem from '../Modal/Modal';
 import ReciclerItem from '../ReciclerItem';
+import ReciclerIcon from '../../assets/delete.png';
 
 function Item ({
   item,
@@ -72,7 +73,7 @@ function Item ({
         {recicler && item.Quantity !== 0 ? (
           <div className="recicler-Item">
             <img
-              src="https://static-00.iconduck.com/assets.00/delete-icon-1864x2048-bp2i0gor.png"
+              src={ ReciclerIcon }
               alt="Delete"
               onClick={handleDeleteClick}
             />

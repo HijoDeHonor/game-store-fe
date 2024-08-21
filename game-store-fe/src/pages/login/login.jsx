@@ -2,9 +2,11 @@ import { useState } from 'react';
 import logInService from '../../services/loginService';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
-import { LOGIN_USER_PASS_ERROR, LOG_IN, SIGNIN, SIGN_IN } from '../../utils/textConstants';
+import { LOGIN_USER_PASS_ERROR, LOG_IN, SIGNIN, SIGN_IN, SUCCESSFULL_LOGIN } from '../../utils/textConstants';
+import { useSnackbarContext } from '../../utils/snackbars';
 function LoginForm () {
-  const [error, setError] = useState('');
+
+  const { success, error } = useSnackbarContext();
 
   const [user, setUser] = useState({
     userName: '',
@@ -23,18 +25,19 @@ function LoginForm () {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+
     try {
-      const res = await logInService(user, setError);
+      const res = await logInService(user);
       if (res.ok) {
+        success(SUCCESSFULL_LOGIN);
         await new Promise((resolve) => setTimeout(resolve, 1000));
         navigate('/');
         window.location.reload();
       } else {
-        setError(LOGIN_USER_PASS_ERROR);
+        throw Error(LOGIN_USER_PASS_ERROR);
       }
     } catch (err) {
-      setError(LOGIN_USER_PASS_ERROR);
+      error(err);
     }
   };
 
@@ -77,7 +80,6 @@ function LoginForm () {
             {SIGN_IN}
           </button>
         </div>
-        {error && <div className="error-message">{error}</div>}
       </form>
     </div>
   );

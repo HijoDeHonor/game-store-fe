@@ -4,6 +4,7 @@ import FilterList from './FilterList';
 import SelectedList from './SelectedList';
 import { ADD_ARROW } from '../../../utils/textConstants';
 import resetIcon from '../../../assets/resetIcon.png';
+import reciclerIcon from '../../../assets/delete.png';
 
 const ListSelector = ({
   listOfItems, // list of items from user or the server
@@ -213,7 +214,7 @@ const ListSelector = ({
             <button className="recicler-all-btn">
               <img
                 className="recicler-BIN"
-                src="https://static-00.iconduck.com/assets.00/delete-icon-1864x2048-bp2i0gor.png"
+                src= {reciclerIcon}
                 alt="recicler BIN"
                 onClick={deleteAllCounts}
               />

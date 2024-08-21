@@ -1,13 +1,13 @@
 import './register.css';
 import { useState } from 'react';
 import handleSubmit from '../../services/registerService';
-import { ERROR_TRY_AGAIN, LOGIN, PASSWORD_DONT_MATCH } from '../../utils/textConstants.js';
+import { ERROR_TRY_AGAIN, LOGIN, PASSWORD_DONT_MATCH, SUCCESSFULL_SIGNIN } from '../../utils/textConstants.js';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbarContext } from '../../utils/snackbars.jsx';
 
 function RegisterForm () {
 
-  const { error } = useSnackbarContext();
+  const { success, error } = useSnackbarContext();
 
   const [newUser, setNewUser] = useState({
     userName: '',
@@ -35,6 +35,7 @@ function RegisterForm () {
       const res = await handleSubmit(newUser);
 
       if (res.ok) {
+        success(SUCCESSFULL_SIGNIN);
         navigate(LOGIN);
         window.location.reload();
       } else {

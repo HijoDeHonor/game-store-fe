@@ -3,10 +3,11 @@ import CloseButton from 'react-bootstrap/esm/CloseButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { removeItem } from '../services/itemService';
 import { useSnackbarContext } from '../utils/snackbars';
+import { CANCEL, DELETE, RECICLER_BIN_SUB_TEXT, RECICLER_BIN_TITLE, SUCCESS_REMOVE_ITEM } from '../utils/textConstants';
 
 const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
 
-  const { error } = useSnackbarContext();
+  const { success, error } = useSnackbarContext();
 
   const handleXClose = () => {
     handleClose();
@@ -21,7 +22,8 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
       itemName: item.Name,
       quantity: item.Quantity }];
     try {
-      removeItem(itemToRemove);
+      await removeItem(itemToRemove);
+      success(SUCCESS_REMOVE_ITEM);
     } catch (e) {
       error(e);
     } finally {
@@ -34,7 +36,7 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header>
         <CloseButton onClick={handleXClose} />
-        <Modal.Title>You are about to delete:</Modal.Title>
+        <Modal.Title>{RECICLER_BIN_TITLE}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <img
@@ -44,16 +46,16 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
           alt={item.Name}
         />
         <p>{item.Name}</p>
-        <p>Are you sure you want to delete it?</p>
+        <p>{RECICLER_BIN_SUB_TEXT}</p>
       </Modal.Body>
       <Modal.Footer
         style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}
       >
         <button type="button" className="btn" onClick={handleClose}>
-          Cancel
+          {CANCEL}
         </button>
         <button type="button" className="btn" onClick={handleDelete}>
-          Delete
+          {DELETE}
         </button>
       </Modal.Footer>
     </Modal>

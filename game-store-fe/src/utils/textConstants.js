@@ -5,6 +5,7 @@ export const x = 'x';
 export const NEXT = 'NEXT';
 export const BACK = 'BACK';
 export const ADD = 'Add';
+export const CANCEL = 'Cancel';
 export const DELETE = 'Delete';
 export const UPDATE = 'Update';
 export const MY_INVENTORY = 'My Inventory';
@@ -15,7 +16,8 @@ export const MY_ITEMS = 'My Items';
 export const OFFER = 'Offer';
 export const REQUEST = 'Request';
 export const NO_ITEM_MATCH = 'There is no match for that item name.';
-
+export const RECICLER_BIN_TITLE = 'You are about to delete: ';
+export const RECICLER_BIN_SUB_TEXT = 'Are you sure you want to delete it?';
 // paths
 export const LOGIN = '/login';
 export const SIGNIN = '/signin';
@@ -54,10 +56,14 @@ export const LOGIN_USER_PASS_ERROR = 'Invalid username or password';
 export const PASSWORD_DONT_MATCH = 'Password Dont match';
 
 // messages
-export const MODAL_TITLE_401 = 'You need to login again, your session ran out.';
-export const MODAL_MESSAGE_401 = 'Your session just expired';
+export const SUCCES_CREATE_OFFER = 'The offer was created';
+export const SUCCESS_REMOVE_ITEM = 'The item was removed from your inventory';
+export const SUCCESS_ADD_ITEM = 'The item was added to your inventory';
 export const SUCCESSFULL_LOGIN = 'Log in successfull';
 export const SUCCESSFULL_SIGNIN = 'Sign in successfull';
+export const MODAL_TITLE_401 = 'You need to login again, your session ran out.';
+export const MODAL_MESSAGE_401 = 'Your session just expired';
+export const ERROR_CREATE_OFFER = 'Creation error. Please try again.';
 export const ERROR_TRY_AGAIN = 'Registration error. Please try again.';
 export const ADD_ITEM_ERROR = 'Adding error. Please try again.';
 export const REMOVE_ITEM_ERROR = 'Removing error. Please try again.';
