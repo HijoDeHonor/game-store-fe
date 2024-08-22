@@ -5,6 +5,7 @@ export const x = 'x';
 export const NEXT = 'NEXT';
 export const BACK = 'BACK';
 export const ADD = 'Add';
+export const CONFIRM = 'Confirm';
 export const CANCEL = 'Cancel';
 export const DELETE = 'Delete';
 export const UPDATE = 'Update';
@@ -18,6 +19,9 @@ export const REQUEST = 'Request';
 export const NO_ITEM_MATCH = 'There is no match for that item name.';
 export const RECICLER_BIN_TITLE = 'You are about to delete: ';
 export const RECICLER_BIN_SUB_TEXT = 'Are you sure you want to delete it?';
+export const CONFIRM_TRADE_TITLE = 'You are going to recive this';
+export const CONFIRM_TRADE_SUB_TEXT = 'in exchange of this.';
+
 // paths
 export const LOGIN = '/login';
 export const SIGNIN = '/signin';
@@ -29,9 +33,7 @@ export const OFFERMAKER = '/offermaker';
 // OFFER MAKER
 export const ITEMS_TO_OFFER = 'Choose your items for the Offer.';
 export const ADD_TO_OFFER = 'Add to Offer';
-
 export const RESET_ALL = 'Reset All';
-
 export const ITEMS_TO_REQUEST = 'Choose the items that you will recive.';
 export const ADD_TO_REQUEST = 'Add to Request';
 
@@ -71,6 +73,7 @@ export const TRY_AGAIN = 'Something goes wrong. Please try agian.';
 export const TRADE_SUCCESS = 'The trade was complete succcessfully.';
 export const NO_OFFERS = 'THERE ARE NO OFFERS YET';
 export const GETTIN_ITEMS_ERROR = 'Getting items error.';
+
 // LocalStorage
 export const LOCAL_USERNAME = 'GameStore-userName';
 export const TOKEN = 'acces_token';

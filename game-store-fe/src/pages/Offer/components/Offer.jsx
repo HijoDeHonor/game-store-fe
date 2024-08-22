@@ -22,11 +22,12 @@ const Offer = ({ offer }) => {
       if (!isAcecepted) {
         error(TRY_AGAIN);
         window.location.reload();
+        return;
       }
+      success(TRADE_SUCCESS);
+      navigate(INVENTORY);
+      window.location.reload();
     }
-    success(TRADE_SUCCESS);
-    navigate(INVENTORY);
-    window.location.reload();
   };
 
   return (
@@ -47,7 +48,7 @@ const Offer = ({ offer }) => {
         </div>
       </td>
       <td className="td-btn">
-        <ButtonTrade handleConfirmTrade={ handleConfirmTrade } />
+        <ButtonTrade handleConfirmTrade={ handleConfirmTrade } offer={Offer} request={Request} />
       </td>
     </tr >
   );

@@ -35,7 +35,7 @@ function OfferList () {
           const totalPages = Math.ceil(totalOffersCount / 10);
           setTotalPages(totalPages);  
         }
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 500));
         setIsLoading(false);
       } catch (error) {
         console.log(error);
