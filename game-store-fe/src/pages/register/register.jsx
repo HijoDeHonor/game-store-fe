@@ -4,11 +4,12 @@ import handleSubmit from '../../services/registerService';
 import { ERROR_TRY_AGAIN, LOGIN, PASSWORD_DONT_MATCH, SUCCESSFULL_SIGNIN } from '../../utils/textConstants.js';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbarContext } from '../../utils/snackbars.jsx';
+import LoadingSpinner from '../../components/Spinner.jsx';
 
 function RegisterForm () {
 
   const { success, error } = useSnackbarContext();
-
+  const [show, setShow] = useState(false);
   const [newUser, setNewUser] = useState({
     userName: '',
     password: '',
@@ -27,6 +28,7 @@ function RegisterForm () {
 
   const handleClickSubmit = async (e) => {
     e.preventDefault();
+    setShow(true);
     try {
       if (newUser.password !== newUser.confirmPassword) {
         throw new Error(PASSWORD_DONT_MATCH);
@@ -36,13 +38,15 @@ function RegisterForm () {
 
       if (res.ok) {
         success(SUCCESSFULL_SIGNIN);
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        setShow(false);
         navigate(LOGIN);
-        window.location.reload();
       } else {
         throw new Error(ERROR_TRY_AGAIN);
       }
 
     } catch (err) {
+      setShow(false);
       error(err.message);
     }
   };
@@ -95,6 +99,7 @@ function RegisterForm () {
           </button>
         </div>
       </form>
+      {show ? <div className="transparent-div"> <LoadingSpinner /> </div> : null}
     </div>
   );
 }

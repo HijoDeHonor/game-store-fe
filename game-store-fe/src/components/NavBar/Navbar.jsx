@@ -3,13 +3,15 @@ import LinkItem from './components/LinkItem';
 import AccountContent from './components/AccountContent';
 import './NavBar.css';
 import { CREATE_OFFER_NAV, GAMESTORE, HOME, LOCAL_USERNAME, LOG_IN, LOGIN, OFFERMAKER } from '../../utils/textConstants';
+import { useNavBarProvider } from './navbarProvider/navbarProvider';
 
 const NavBar = () => {
   const [login, setLogin] = useState(false);
-
+  const { userName } = useNavBarProvider();
   const checkUser = () => {
-    let userName = localStorage.getItem(LOCAL_USERNAME);
-    if (userName !== null) {
+    let userLog = userName;
+    if (userLog !== null || userLog !== '') {
+      console.log(userLog);
       setLogin(true);
     } else {
       setLogin(false);
@@ -17,7 +19,7 @@ const NavBar = () => {
   };
   useEffect(() => {
     checkUser();
-  }, []);
+  }, [userName]);
 
   return (
     <nav className="nav">

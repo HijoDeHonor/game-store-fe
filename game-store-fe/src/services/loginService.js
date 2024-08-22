@@ -1,7 +1,7 @@
 import { LOCAL_USERNAME, LOGIN_USER_PASS_ERROR, SUCCESSFULL_LOGIN, URL_BACK } from '../utils/textConstants.js';
 
 
-const logInService = async (user, setError) => {
+const logInService = async (user) => {
   try {
     const response = await fetch(`${URL_BACK}/users`, {
       method: 'POST',
@@ -13,8 +13,8 @@ const logInService = async (user, setError) => {
     });
 
     if (!response.ok) {
-      setError(LOGIN_USER_PASS_ERROR);
-      return;
+      throw Error(LOGIN_USER_PASS_ERROR);
+      
     }
 
     const userFound = await response.json();
@@ -27,7 +27,7 @@ const logInService = async (user, setError) => {
       message: SUCCESSFULL_LOGIN,
     };
   } catch (error) {
-    setError(LOGIN_USER_PASS_ERROR);
+    console.log(error);
   }
 };
 
