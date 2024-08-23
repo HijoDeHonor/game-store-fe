@@ -61,6 +61,7 @@ const Inventory = () => {
     if (isLoading) {
       return null;
     }
+    setSearchQuery('');
     setToggle((prevToggle) => !prevToggle);
     setKey(key + 1);
   };
