@@ -40,8 +40,6 @@ const reducer = (state, action) => {
 export const OfferMakerProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
- 
-
   return (
     <OfferMakerContext.Provider
       value={{

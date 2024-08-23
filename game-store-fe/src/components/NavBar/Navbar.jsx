@@ -11,7 +11,6 @@ const NavBar = () => {
   const checkUser = () => {
     let userLog = userName;
     if (userLog !== null && userLog !== '') {
-      console.log(userLog);
       setLogin(true);
     } else {
       setLogin(false);
