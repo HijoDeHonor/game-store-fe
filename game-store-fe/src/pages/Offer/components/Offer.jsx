@@ -6,10 +6,8 @@ import { INVENTORY, LOCAL_USERNAME, LOGIN, TRADE_SUCCESS, TRY_AGAIN } from '../.
 import { useSnackbarContext } from '../../../utils/snackbars.jsx';
 
 const Offer = ({ offer }) => {
-  const { Id, Offer, Request, IdList } = offer;
-
+  const { Id, Offer, Request, UserNamePoster, IdList } = offer;
   const navigate = useNavigate();
-
   const { success, error } = useSnackbarContext();
 
   const handleConfirmTrade = async () => {
@@ -48,7 +46,7 @@ const Offer = ({ offer }) => {
         </div>
       </td>
       <td className="td-btn">
-        <ButtonTrade handleConfirmTrade={ handleConfirmTrade } offer={Offer} request={Request} />
+        <ButtonTrade handleConfirmTrade={ handleConfirmTrade } offer={Offer} request={Request} owner={UserNamePoster} /> 
       </td>
     </tr >
   );

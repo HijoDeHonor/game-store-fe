@@ -13,7 +13,7 @@ function OfferList () {
   const [totalPages, setTotalPages] = useState(1);
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  
   useEffect(() => {
     const fetchOffers = async () => {
       try {

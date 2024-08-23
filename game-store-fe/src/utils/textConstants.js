@@ -21,6 +21,8 @@ export const RECICLER_BIN_TITLE = 'You are about to delete: ';
 export const RECICLER_BIN_SUB_TEXT = 'Are you sure you want to delete it?';
 export const CONFIRM_TRADE_TITLE = 'You are going to recive this';
 export const CONFIRM_TRADE_SUB_TEXT = 'in exchange of this.';
+export const OWN_TRADE = 'Own trade';
+export const TRADE = 'TRADE';
 
 // paths
 export const LOGIN = '/login';
