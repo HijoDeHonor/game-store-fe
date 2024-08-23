@@ -10,7 +10,7 @@ const NavBar = () => {
   const { userName } = useNavBarProvider();
   const checkUser = () => {
     let userLog = userName;
-    if (userLog !== null || userLog !== '') {
+    if (userLog !== null && userLog !== '') {
       console.log(userLog);
       setLogin(true);
     } else {
