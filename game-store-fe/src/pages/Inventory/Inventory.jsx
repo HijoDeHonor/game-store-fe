@@ -1,6 +1,4 @@
-// settings
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, useCallback, useMemo } from 'react';
 // components
 import SearchBar from '../../components/SearchBar';
 import ToggleBtn from './components/ToggleBtn';
@@ -8,7 +6,7 @@ import LoadingSpinner from '../../components/Spinner';
 import ItemList from '../../components/ItemList/Itemlist';
 // fake database
 import { getAllItems, getUserItems } from '../../services/itemService';
-//styles
+// styles
 import './Inventory.css';
 import { MOD, RECICLER_OFF, RECICLER_ON } from '../../utils/constants';
 import { LOCAL_USERNAME } from '../../utils/textConstants';
@@ -16,54 +14,37 @@ import { LOCAL_USERNAME } from '../../utils/textConstants';
 const Inventory = () => {
   const [toggle, setToggle] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
-  const [key, setKey] = useState(0);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const fetchData = async () => {
-    const data = await new Promise((resolve) => {
-      setTimeout(async () => {
-        const result = toggle
-          ? await getAllItems() 
-          : await getUserItems(localStorage.getItem(LOCAL_USERNAME));
-        resolve(result);
-      }, 1000);
-    });
-  
-    setData(data);
 
+  const fetchData = useCallback(async () => {
+    setIsLoading(true);
+    const result = toggle
+      ? await getAllItems()
+      : await getUserItems(localStorage.getItem(LOCAL_USERNAME));
+
+    setData(result || []);
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
-  };
-  
-  useEffect(() => {
-    fetchData();
-    setIsLoading(true);
-    
   }, [toggle]);
 
   useEffect(() => {
-    filterData();
-  }, [toggle, searchQuery, isLoading]);
-  
-  const filterData = () => {
-    if ((data === undefined)||(data.length=== 0)) {
-      setFilteredData([]);
-      return;
+    fetchData();
+  }, [fetchData]);
+
+  const filteredData = useMemo(() => {
+    if (!data.length) {
+      return [];
     }
-    const filtered = data.filter((item) =>
+    return data.filter((item) =>
       item.Name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setFilteredData(filtered);
-  };
+  }, [data, searchQuery]);
 
   const toggleButton = () => {
-    if (isLoading) {
-      return null;
+    if (!isLoading) {
+      setToggle((prevToggle) => !prevToggle);
     }
-    setSearchQuery('');
-    setToggle((prevToggle) => !prevToggle);
-    setKey(key + 1);
   };
 
   return (
@@ -71,7 +52,6 @@ const Inventory = () => {
       <div className="container inventory">
         <div className="inventory-header">
           <SearchBar
-            key={key}
             filterKey={'Name'}
             setSearchQuery={setSearchQuery}
             placeholder={searchQuery}
