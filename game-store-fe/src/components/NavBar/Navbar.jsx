@@ -10,7 +10,7 @@ const NavBar = () => {
   const { userName } = useNavBarProvider();
   const checkUser = () => {
     let userLog = userName;
-    if (userLog !== null && userLog !== '') {
+    if (!userLog) {
       setLogin(true);
     } else {
       setLogin(false);
@@ -31,12 +31,12 @@ const NavBar = () => {
             {GAMESTORE}
           </LinkItem>
           { login ? (
-            <LinkItem key={ 'account' } to={ '' } content={ <AccountContent /> }>
-              { localStorage.getItem(LOCAL_USERNAME) }
-            </LinkItem>
-          ) : (
             <LinkItem key={ 'user' } to={ LOGIN }>
               {LOG_IN}
+            </LinkItem>
+          ) : (
+            <LinkItem key={ 'account' } to={ '' } content={ <AccountContent /> }>
+              { localStorage.getItem(LOCAL_USERNAME) }
             </LinkItem>
           ) }
         </ul>
