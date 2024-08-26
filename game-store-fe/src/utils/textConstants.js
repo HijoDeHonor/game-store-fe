@@ -63,6 +63,7 @@ export const PASSWORD_DONT_MATCH = 'Password Dont match';
 export const SUCCES_CREATE_OFFER = 'The offer was created';
 export const SUCCESS_REMOVE_ITEM = 'The item was removed from your inventory';
 export const SUCCESS_ADD_ITEM = 'The item was added to your inventory';
+export const SUCCESS_UPDATE_ITEM = 'The item was updated';
 export const SUCCESSFULL_LOGIN = 'Log in successfull';
 export const SUCCESSFULL_SIGNIN = 'Sign in successfull';
 export const MODAL_TITLE_401 = 'You need to login again, your session ran out.';

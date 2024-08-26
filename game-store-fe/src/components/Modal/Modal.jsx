@@ -10,7 +10,7 @@ import './Modal.css';
 // components
 import QuantitySelector from '../QuantitySelector/QuantitySelector';
 import { addItem, removeItem } from '../../services/itemService';
-import { ADD, ADD_ITEM_ERROR, DELETE, REMOVE_ITEM_ERROR, SUCCESS_ADD_ITEM, SUCCESS_REMOVE_ITEM, UPDATE } from '../../utils/textConstants';
+import { ADD, ADD_ITEM_ERROR, DELETE, REMOVE_ITEM_ERROR, SUCCESS_ADD_ITEM, SUCCESS_REMOVE_ITEM, SUCCESS_UPDATE_ITEM, UPDATE } from '../../utils/textConstants';
 import { useSnackbarContext } from '../../utils/snackbars.jsx';
 
 
@@ -38,6 +38,10 @@ function ModalItem ({ item, handleClose, show }) {
     };
     try {
       await addItem(updateItem);
+      if (firstQuantity>quantity) {
+        success(SUCCESS_UPDATE_ITEM);
+        return;
+      }
       success(SUCCESS_ADD_ITEM);
     } catch (e) {
       error(ADD_ITEM_ERROR);
