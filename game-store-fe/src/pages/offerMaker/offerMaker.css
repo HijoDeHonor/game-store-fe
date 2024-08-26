@@ -124,6 +124,10 @@
     width: 100%;
   }
 
+  .quantity-selector {
+    width: auto;
+  }
+
   .om-button-add {
     display: flex;
     justify-content: center;
@@ -330,9 +334,29 @@
     z-index: 2;
   }
 
+  .transparent-div {
+    position: absolute;
+    width: 80%;
+    height: 400px;
+    border: 2px solid;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
   @media (max-width: 1080px) and (min-width: 890px) {
     .content {
       flex-wrap: wrap;
+    }
+
+    .transparent-div{
+      height: 80%;
     }
   } 
 
@@ -426,7 +450,14 @@
     .offercheck::-webkit-scrollbar {
       display: none;
     }
+    .transparent-div{
+      height: 85%;
+    }
+    .spinner-container{
+      top: 45vh !important;
+    }
   }
+  
 
   @media (max-width: 450px) {
     .om h3 {

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   OfferMakerProvider,
   useOfferMaker,
@@ -21,12 +21,13 @@ import FinalOfferCheck from './components/FinalOfferCheck';
 import { createOffer } from '../../services/offerService.js';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbarContext } from '../../utils/snackbars.jsx';
+import LoadingSpinner from '../../components/Spinner.jsx';
 
 
 const OfferMaker = () => {
   const { state, dispatch } = useOfferMaker();
   const { currentStage, userItems, serverItems, offer, request } = state;
-
+  const [isLoading, setIsLoading] = useState(false);
   const { success, error } = useSnackbarContext();
 
   const navigate = useNavigate();
@@ -82,17 +83,21 @@ const OfferMaker = () => {
   
 
   const confirmCreateOffer = async () => {
-    const sendOffer= offer.map(({ Name, Quantity }) => ({ itemName: Name, quantity: Quantity }));
-    const sendRequest= request.map(({ Name, Quantity }) => ({ itemName: Name, quantity: Quantity }));
-    
-    if (await createOffer(sendOffer,sendRequest)) {
+    const sendOffer = offer.map(({ Name, Quantity }) => ({ itemName: Name, quantity: Quantity }));
+    const sendRequest = request.map(({ Name, Quantity }) => ({ itemName: Name, quantity: Quantity }));
+    setIsLoading(true);
+    try {
+      await createOffer(sendOffer, sendRequest);
       success(SUCCES_CREATE_OFFER);
-      navigate(HOME);
-      window.location.reload();
+    } catch {
+      error(ERROR_CREATE_OFFER);
+    } finally {
+      setTimeout(() => {
+        setIsLoading(false);
+        navigate(HOME);
+        window.location.reload();
+      }, 3000);
     }
-    error(ERROR_CREATE_OFFER);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    window.location.reload();
   };
 
   return (
@@ -103,7 +108,7 @@ const OfferMaker = () => {
             <Stepper
               steps={[
                 <SelectOffer key={'SelectOffer'} />,
-                <SelectRequest key={'SelectReuest'} />,
+                <SelectRequest key={'SelectRequest'} />,
                 <FinalOfferCheck key={'FinalOfferCheck'} />,
               ]}
               currentStep={currentStage}
@@ -111,9 +116,8 @@ const OfferMaker = () => {
               prevStep={backStage}
               onSubmit={confirmCreateOffer}
             />
-          </div>
-        )
-      }
+            {isLoading ? <div className="transparent-div"> <LoadingSpinner /> </div> : null}
+          </div>)}
     </>
   );
 };
