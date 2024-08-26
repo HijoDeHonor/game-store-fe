@@ -2,31 +2,36 @@ import Item from '../../../components/Item/Item';
 import { useNavigate } from 'react-router-dom';
 import ButtonTrade from './ButtonTrade.jsx';
 import { acceptTrade } from '../../../services/offerService.js';
-import { INVENTORY, LOCAL_USERNAME, LOGIN, TRADE_SUCCESS, TRY_AGAIN } from '../../../utils/textConstants.js';
+import { INVENTORY, LOGIN, TRADE, TRADE_SUCCESS, TRY_AGAIN } from '../../../utils/textConstants.js';
 import { useSnackbarContext } from '../../../utils/snackbars.jsx';
+import { useNavBarProvider } from '../../../components/NavBar/navbarProvider/navbarProvider.jsx';
 
 const Offer = ({ offer }) => {
   const { Id, Offer, Request, UserNamePoster, IdList } = offer;
   const navigate = useNavigate();
   const { success, error } = useSnackbarContext();
+  const { userName } = useNavBarProvider();
+
+
+  const goLogin = () => {
+    console.log(userName);
+    navigate(LOGIN);
+    window.location.reload();
+
+  };
 
   const handleConfirmTrade = async () => {
-    if (localStorage.getItem(LOCAL_USERNAME) === null) {
-      navigate(LOGIN);
+    const isAcecepted = await acceptTrade(Id, userName);
+    if (!isAcecepted) {
+      error(TRY_AGAIN);
       window.location.reload();
-    } else {
-      let userName = localStorage.getItem(LOCAL_USERNAME);
-      const isAcecepted = await acceptTrade(Id, userName);
-      if (!isAcecepted) {
-        error(TRY_AGAIN);
-        window.location.reload();
-        return;
-      }
-      success(TRADE_SUCCESS);
-      navigate(INVENTORY);
-      window.location.reload();
+      return;
     }
+    success(TRADE_SUCCESS);
+    navigate(INVENTORY);
+    window.location.reload();
   };
+  
 
   return (
     <tr className="tr-table">
@@ -46,7 +51,7 @@ const Offer = ({ offer }) => {
         </div>
       </td>
       <td className="td-btn">
-        <ButtonTrade handleConfirmTrade={ handleConfirmTrade } offer={Offer} request={Request} owner={UserNamePoster} /> 
+        {userName ? <ButtonTrade handleConfirmTrade={ handleConfirmTrade } offer={Offer} request={Request} owner={UserNamePoster} /> : <button className='btn-trade' onClick={goLogin}>{TRADE}</button> }
       </td>
     </tr >
   );
