@@ -28,7 +28,7 @@ export default function ButtonTrade ({ handleConfirmTrade, offer, request, owner
     <div className="buttons-container">
       {isMyTrade ?   
         <button
-          className='btn-trade'
+          className='btn-trade own-trade'
           data-tooltip-id="btn-tooltip"
           data-tooltip-content={OWN_TRADE}
           data-tooltip-place="left">
