@@ -18,14 +18,12 @@ function OfferList () {
     const fetchOffers = async () => {
       try {
         const offersData = await getOffers(currentPage);
-        console.log(offersData);
         if (
           (typeof offersData !== 'object' || offersData === null) ||
           (typeof offersData.totalOffers !== 'number' || offersData.totalOffers < 0) ||
           (!Array.isArray(offersData.offers))) {
           setOffers([]);
           setTotalPages(1);
-          console.log(offersData.offers);
         } else {
           let offersList = offersData.offers;
           offersList = offersList.map((offer, index) => ({
@@ -33,7 +31,6 @@ function OfferList () {
             IdList: index + 1 + ((currentPage - 1) * 10),
           }));
           setOffers(offersList);
-          console.log(offers);
           const totalOffersCount = offersData.totalOffers;
           const totalPages = Math.ceil(totalOffersCount / 10);
           setTotalPages(totalPages);  
