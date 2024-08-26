@@ -8,11 +8,11 @@ function ListForModal ({ request, offer }) {
     <div className='list-for-modal'>
       <h2 className='subtext'>{CONFIRM_TRADE_TITLE}</h2>
       <div className='confirm-modal-list'>
-        {offer.map((item)=> <Item item={ item } key={item.itemName}/>)}
+        {offer.map((item)=> <Item item={ item } key={item.Name}/>)}
       </div>
       <h2 className='subtext'>{CONFIRM_TRADE_SUB_TEXT}</h2>
       <div className='confirm-modal-list'>
-        {request.map((item)=> <Item item={ item } key={item.itemName}/>)}
+        {request.map((item)=> <Item item={ item } key={item.Name}/>)}
       </div>
     </div>
   );
