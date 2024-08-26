@@ -47,7 +47,11 @@ function RegisterForm () {
 
     } catch (err) {
       setShow(false);
-      error(err.message);
+      if (err.message === PASSWORD_DONT_MATCH) {
+        error(PASSWORD_DONT_MATCH);
+      } else {
+        error(ERROR_TRY_AGAIN);
+      }
     }
   };
 

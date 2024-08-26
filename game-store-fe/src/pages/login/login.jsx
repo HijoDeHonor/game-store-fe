@@ -36,13 +36,10 @@ function LoginForm () {
         updateUserName(res.userName);
         setShow(false);
         navigate('/');
-        //window.location.reload();
-      } else {
-        throw Error(LOGIN_USER_PASS_ERROR);
       }
     } catch (err) {
       setShow(false);
-      error(err);
+      error(LOGIN_USER_PASS_ERROR);
     }
 
   };

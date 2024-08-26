@@ -1,6 +1,7 @@
 import errorModal from '../utils/401ErrorModal';
 import { LOCAL_USERNAME, URL_BACK, URL_OFFERS } from '../utils/textConstants';
 import { v4 as uuidv4 } from 'uuid';
+
 export const getOffers = async (pageNumber) => {
   try {
     const offers = await fetch(`${URL_BACK}${URL_OFFERS}${pageNumber}`,{

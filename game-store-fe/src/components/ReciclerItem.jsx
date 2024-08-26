@@ -3,7 +3,7 @@ import CloseButton from 'react-bootstrap/esm/CloseButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { removeItem } from '../services/itemService';
 import { useSnackbarContext } from '../utils/snackbars';
-import { CANCEL, DELETE, RECICLER_BIN_SUB_TEXT, RECICLER_BIN_TITLE, SUCCESS_REMOVE_ITEM } from '../utils/textConstants';
+import { CANCEL, DELETE, RECICLER_BIN_SUB_TEXT, RECICLER_BIN_TITLE, REMOVE_ITEM_ERROR, SUCCESS_REMOVE_ITEM } from '../utils/textConstants';
 
 const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
 
@@ -25,7 +25,7 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
       await removeItem(itemToRemove);
       success(SUCCESS_REMOVE_ITEM);
     } catch (e) {
-      error(e);
+      error(REMOVE_ITEM_ERROR);
     } finally {
       handleClose();
       window.location.reload();
