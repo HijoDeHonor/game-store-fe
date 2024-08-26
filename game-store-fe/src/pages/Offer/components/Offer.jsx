@@ -2,7 +2,7 @@ import Item from '../../../components/Item/Item';
 import { useNavigate } from 'react-router-dom';
 import ButtonTrade from './ButtonTrade.jsx';
 import { acceptTrade } from '../../../services/offerService.js';
-import { INVENTORY, LOGIN, TRADE, TRADE_SUCCESS, TRY_AGAIN } from '../../../utils/textConstants.js';
+import { INVENTORY, TRADE_SUCCESS, TRY_AGAIN } from '../../../utils/textConstants.js';
 import { useSnackbarContext } from '../../../utils/snackbars.jsx';
 import { useNavBarProvider } from '../../../components/NavBar/navbarProvider/navbarProvider.jsx';
 
@@ -11,14 +11,6 @@ const Offer = ({ offer }) => {
   const navigate = useNavigate();
   const { success, error } = useSnackbarContext();
   const { userName } = useNavBarProvider();
-
-
-  const goLogin = () => {
-    console.log(userName);
-    navigate(LOGIN);
-    window.location.reload();
-
-  };
 
   const handleConfirmTrade = async () => {
     const isAcecepted = await acceptTrade(Id, userName);
@@ -31,7 +23,6 @@ const Offer = ({ offer }) => {
     navigate(INVENTORY);
     window.location.reload();
   };
-  
 
   return (
     <tr className="tr-table">
@@ -51,7 +42,7 @@ const Offer = ({ offer }) => {
         </div>
       </td>
       <td className="td-btn">
-        {userName ? <ButtonTrade handleConfirmTrade={ handleConfirmTrade } offer={Offer} request={Request} owner={UserNamePoster} /> : <button className='btn-trade' onClick={goLogin}>{TRADE}</button> }
+        <ButtonTrade handleConfirmTrade={ handleConfirmTrade } offer={Offer} request={Request} owner={UserNamePoster} />
       </td>
     </tr >
   );
