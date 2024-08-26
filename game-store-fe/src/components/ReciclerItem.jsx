@@ -22,13 +22,11 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
       itemName: item.Name,
       quantity: item.Quantity }];
     try {
+      handleClose();
       await removeItem(itemToRemove);
       success(SUCCESS_REMOVE_ITEM);
     } catch (e) {
       error(REMOVE_ITEM_ERROR);
-    } finally {
-      handleClose();
-      window.location.reload();
     }
   };
 
