@@ -21,7 +21,6 @@ const Offer = ({ offer, setShow }) => {
       return;
     }
     success(TRADE_SUCCESS);
-    console.log(offersList);
     const newOfferList = offersList.filter((o)=> o.Id !== Id);
     updateOffers(newOfferList);
     await new Promise((resolve) => setTimeout(resolve, 2000));
