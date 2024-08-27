@@ -51,7 +51,7 @@ export default function ButtonTrade ({ handleConfirmTrade, offer, request, owner
             alt={TRADE}
             onClick={handleClick} />}
       </div>
-      <Tooltip id="btn-tooltip" style={{ zIndex: 1000 }} />
+      <Tooltip id="btn-tooltip" style={{ zIndex: 100 }} />
     </div>
   );
 }

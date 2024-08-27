@@ -7,12 +7,16 @@ import LoadingSpinner from '../../components/Spinner';
 
 import './offer.css';
 import { NO_OFFERS, OFFER, REQUEST } from '../../utils/textConstants';
+import { useOffersProvider } from './provider/offesProvider';
 
 function OfferList () {
+  const { offersList , updateOffers } = useOffersProvider();
+  const [offerListed, setOfferListed] = useState(offersList);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [show, setShow] = useState(false);
+  
   
   useEffect(() => {
     const fetchOffers = async () => {
@@ -22,15 +26,15 @@ function OfferList () {
           (typeof offersData !== 'object' || offersData === null) ||
           (typeof offersData.totalOffers !== 'number' || offersData.totalOffers < 0) ||
           (!Array.isArray(offersData.offers))) {
-          setOffers([]);
+          updateOffers([]);
           setTotalPages(1);
         } else {
-          let offersList = offersData.offers;
-          offersList = offersList.map((offer, index) => ({
+          let listOfOffers = offersData.offers;
+          listOfOffers = listOfOffers.map((offer, index) => ({
             ...offer,
             IdList: index + 1 + ((currentPage - 1) * 10),
           }));
-          setOffers(offersList);
+          updateOffers(listOfOffers);
           const totalOffersCount = offersData.totalOffers;
           const totalPages = Math.ceil(totalOffersCount / 10);
           setTotalPages(totalPages);  
@@ -43,6 +47,10 @@ function OfferList () {
     };
     fetchOffers();
   }, [currentPage]);
+
+  useEffect(()=>{
+    setOfferListed(offersList);
+  }, [offersList]);
 
   const goToPage = (targetPage) => {
     if (isLoading === true) {
@@ -81,7 +89,7 @@ function OfferList () {
                 </td>
               </tr>
             </tbody>
-          ) : offers.length === 0 ? (
+          ) : offerListed.length === 0 ? (
             <tbody>
               <tr className='no-offer'>
                 <td>
@@ -91,8 +99,8 @@ function OfferList () {
             </tbody>
           ) : (
             <tbody className="tbody">
-              {offers.map((offer) => (
-                <Offer key={offer.Id} offer={offer} />
+              {offerListed.map((offer) => (
+                <Offer key={offer.Id} offer={offer} setShow={setShow} />
               ))}
             </tbody>
           )}
@@ -107,6 +115,7 @@ function OfferList () {
           />
         </div>
       </div>
+      {show ? <div className="transparent-div"> <LoadingSpinner /> </div> : null}
     </div>
   );
 }

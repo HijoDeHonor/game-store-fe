@@ -1,10 +1,8 @@
-import { HOME, LOCAL_USERNAME, MY_INVENTORY } from '../../../utils/textConstants';
+import { LOCAL_USERNAME, MY_INVENTORY } from '../../../utils/textConstants';
 import { useNavBarProvider } from '../navbarProvider/navbarProvider';
 import CustomLink from './CustomLink';
-import { useNavigate } from 'react-router-dom';
 const AccountContent = () => {
   const { updateUserName } = useNavBarProvider();
-  const navigate = useNavigate();
   return (
     <div>
       <div className="content">
@@ -24,7 +22,6 @@ const AccountContent = () => {
             if (
               localStorage.getItem(LOCAL_USERNAME) === null
             ) {
-              navigate(HOME);
               window.location.reload();
             }
           }}
