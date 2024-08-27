@@ -25,7 +25,6 @@ const addItem = async (item) => {
 
 async function removeItem (item) {
   try {
-    console.log(item);
     const response = await fetch(`${URL_BACK}${URL_USERS_INVENTORY}${localStorage.getItem(LOCAL_USERNAME)}`,{
       method: 'DELETE',
       headers: {

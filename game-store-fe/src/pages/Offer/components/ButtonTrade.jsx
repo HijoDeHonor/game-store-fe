@@ -11,7 +11,6 @@ export default function ButtonTrade ({ handleConfirmTrade, offer, request, owner
   const navigate = useNavigate();
 
   const goLogin = () => {
-    console.log(userName);
     navigate(LOGIN);
     window.location.reload();
   };

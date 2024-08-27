@@ -4,10 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { removeItem } from '../services/itemService';
 import { useSnackbarContext } from '../utils/snackbars';
 import { CANCEL, DELETE, RECICLER_BIN_SUB_TEXT, RECICLER_BIN_TITLE, REMOVE_ITEM_ERROR, SUCCESS_REMOVE_ITEM } from '../utils/textConstants';
+import { useInventoryProvider } from '../pages/Inventory/provider/inventoryProvider';
 
 const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
 
   const { success, error } = useSnackbarContext();
+  const { inventory, updateInventory } = useInventoryProvider();
 
   const handleXClose = () => {
     handleClose();
@@ -25,6 +27,8 @@ const ReciclerItem = ({ item, show, handleClose, deleteAdd }) => {
       handleClose();
       await removeItem(itemToRemove);
       success(SUCCESS_REMOVE_ITEM);
+      const newInventory = inventory.filter((i) => i.Name !== item.Name);
+      updateInventory(newInventory);
     } catch (e) {
       error(REMOVE_ITEM_ERROR);
     }

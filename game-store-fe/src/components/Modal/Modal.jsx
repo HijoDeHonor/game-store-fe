@@ -12,11 +12,14 @@ import QuantitySelector from '../QuantitySelector/QuantitySelector';
 import { addItem, removeItem } from '../../services/itemService';
 import { ADD, ADD_ITEM_ERROR, DELETE, REMOVE_ITEM_ERROR, SUCCESS_ADD_ITEM, SUCCESS_REMOVE_ITEM, SUCCESS_UPDATE_ITEM, UPDATE } from '../../utils/textConstants';
 import { useSnackbarContext } from '../../utils/snackbars.jsx';
+import { useInventoryProvider } from '../../pages/Inventory/provider/inventoryProvider.jsx';
 
 
 function ModalItem ({ item, handleClose, show }) {
 
   const { success, error } = useSnackbarContext();
+  const { inventory, updateInventory } = useInventoryProvider();
+
 
   const firstQuantity = item.Quantity;
   const [quantity, setQuantity] = useState(item.Quantity);
@@ -32,17 +35,29 @@ function ModalItem ({ item, handleClose, show }) {
     setShows(false);
   };
   const handleAddOrUpdate = async () => {
-    const updateItem= {
+    const updateItem = {
       itemName: item.Name,
       quantity: quantity - firstQuantity
     };
+  
     try {
       await addItem(updateItem);
-      if (firstQuantity>quantity) {
-        success(SUCCESS_UPDATE_ITEM);
-        return;
+      
+      const existingItem = inventory.find((i) => i.Name === item.Name);
+      if (existingItem) {
+        const newInventory = inventory.map((i) =>
+          i.Name === item.Name ? { ...i, Quantity: i.Quantity + (quantity - firstQuantity) } : i
+        );
+        updateInventory(newInventory);
+      } else {
+        updateInventory([...inventory, { ...item, Quantity: quantity }]);
       }
-      success(SUCCESS_ADD_ITEM);
+  
+      if (firstQuantity > quantity) {
+        success(SUCCESS_UPDATE_ITEM);
+      } else {
+        success(SUCCESS_ADD_ITEM);
+      }
     } catch (e) {
       error(ADD_ITEM_ERROR);
     } finally {
@@ -61,6 +76,8 @@ function ModalItem ({ item, handleClose, show }) {
     try {
       await removeItem(itemToRemove);
       success(SUCCESS_REMOVE_ITEM);
+      const newInventory = inventory.filter((i) => i.Name !== item.Name);
+      updateInventory(newInventory);
     } catch (e) {
       error(REMOVE_ITEM_ERROR);
     } finally {

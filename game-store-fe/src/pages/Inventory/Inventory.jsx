@@ -5,28 +5,35 @@ import ToggleBtn from './components/ToggleBtn';
 import LoadingSpinner from '../../components/Spinner';
 import ItemList from '../../components/ItemList/Itemlist';
 // fake database
-import { getAllItems, getUserItems } from '../../services/itemService';
+import { getAllItems, } from '../../services/itemService';
 // styles
 import './Inventory.css';
 import { MOD, RECICLER_OFF, RECICLER_ON } from '../../utils/constants';
-import { LOCAL_USERNAME } from '../../utils/textConstants';
+import { useInventoryProvider } from './provider/inventoryProvider';
 
 const Inventory = () => {
+  const { inventory } = useInventoryProvider();
   const [toggle, setToggle] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  
   const fetchData = useCallback(async () => {
     setIsLoading(true);
     const result = toggle
       ? await getAllItems()
-      : await getUserItems(localStorage.getItem(LOCAL_USERNAME));
+      : inventory;
 
     setData(result || []);
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
   }, [toggle]);
+
+  useEffect(()=>{
+    if (!toggle) {
+      setData(inventory);
+    }
+  },[inventory]);
 
   useEffect(() => {
     fetchData();

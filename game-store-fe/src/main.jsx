@@ -13,6 +13,7 @@ import OfferList from './pages/Offer/OfferList.jsx';
 import OfferMakerWithProvider from './pages/offerMaker/OfferMaker.jsx';
 import ProtectedRoute from './utils/ProtectedRoute.jsx';
 import { HOME, INVENTORY, LOGIN, OFFERMAKER, OFFERS, SIGNIN } from './utils/textConstants.js';
+import { InventoryProvider } from './pages/Inventory/provider/inventoryProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,9 @@ const router = createBrowserRouter([
         path: INVENTORY,
         element: (
           <ProtectedRoute>
-            <Inventory />
+            <InventoryProvider>
+              <Inventory />
+            </InventoryProvider>
           </ProtectedRoute>
         ),
       },
